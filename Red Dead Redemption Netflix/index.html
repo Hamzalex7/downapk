@@ -19,16 +19,35 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            color: #fff; /* kol text default byed */
         }
 
         .cr { width: 100%; max-width: 500px; }
         .cr .cover img { width:100%; display: block; }
         .cr .logo { display:flex; padding: 0 15px; align-items: center; }
         .cr .logo img { width:130px; height:130px; border:1px solid #ddd; margin-top:-40px; border-radius:25px; background: #fff; z-index: 10; object-fit: contain; }
+
+        /* title + small publisher */
+        .cr .logo .info h1,
+        .cr .logo .info small {
+            color: #fff;
+        }
+
         .cr .logo .info { padding:15px 0 0 15px; }
         
         .det { display:flex; margin:20px 0; }
-        .det .item { width:100%; text-align:center; font-size:.9rem; }
+        .det .item { 
+            width:100%; 
+            text-align:center; 
+            font-size:.9rem; 
+            color:#fff; /* text stats byed */
+        }
+
+        /* rating / icons color */
+        .det .item .icon,
+        .det .item .icon i {
+            color:#fff;
+        }
 
         .download-container { padding: 0 20px; margin-bottom: 25px; }
         .btn-down {
@@ -77,12 +96,41 @@
             object-fit: cover;
         }
 
-        .bad { display:flex; overflow-x:auto; color:#fff; padding: 0 15px; margin-bottom: 20px; }
-        .bad div { margin-right:10px; padding:4px 10px; border:1.3px solid #ccc; font-size:.8rem; white-space:nowrap; border-radius:5px; }
+        .bad { 
+            display:flex; 
+            overflow-x:auto; 
+            color:#fff; 
+            padding: 0 15px; 
+            margin-bottom: 20px; 
+        }
+        .bad div { 
+            margin-right:10px; 
+            padding:4px 10px; 
+            border:1.3px solid #ccc; 
+            font-size:.8rem; 
+            white-space:nowrap; 
+            border-radius:5px; 
+        }
 
-        p { font-size:.85rem; color:#fff; padding: 0 15px; line-height: 1.6; }
-        h1 { font-size:1.6rem; margin:0; font-weight: 700; }
-        h2 { font-size:1.4rem; padding: 0 15px; margin-top: 20px; font-weight: 600; }
+        p { 
+            font-size:.85rem; 
+            color:#fff; 
+            padding: 0 15px; 
+            line-height: 1.6; 
+        }
+        h1 { 
+            font-size:1.6rem; 
+            margin:0; 
+            font-weight: 700; 
+            color:#fff; 
+        }
+        h2 { 
+            font-size:1.4rem; 
+            padding: 0 15px; 
+            margin-top: 20px; 
+            font-weight: 600; 
+            color:#fff; 
+        }
         
         footer {
             background:#252525;
@@ -92,9 +140,13 @@
             font-size:.9rem;
             width: 100%;
         }
-        .footer-content { max-width: 500px; margin: 0 auto; padding: 0 20px; }
-        hr { border-color: #444; margin: 20px 0; }
-        h4 { color:#eee; font-size:1rem; margin-bottom: 15px; }
+        .footer-content { 
+            max-width: 500px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+        hr { border-color: #fff; margin: 20px 0; }
+        h4 { color:#fff; font-size:1rem; margin-bottom: 15px; }
     </style>
 </head>
 <body>
@@ -159,11 +211,6 @@
         This Netflix edition includes the full single-player campaign, all DLCs like the iconic "Undead Nightmare" zombie expansion, and bonus content from the Game of the Year Edition. Optimized for touch controls on mobile, no ads, no extra purchases – just pure classic gameplay with a Netflix subscription.
     </p>
 
-    <div class="bad">
-        <div>#1 Action Adventure</div> 
-        <div>Open World Masterpiece</div>
-        <div>95/100 Metacritic</div>
-    </div>
 </div>
    
 <footer>
