@@ -40,9 +40,10 @@
         /* Lightweight "glass" style without heavy blur for better scrolling FPS */
         .glass {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
+            /* avoid backdrop-filter here for performance */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
 
         /* Use blur only on the modal (isolated layer) */
