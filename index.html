@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Anime Adventures Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Core */
+        html, body {
+            height: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Outfit', sans-serif;
             background-color: #050505;
@@ -16,72 +24,88 @@
             overflow-x: hidden;
             -ms-overflow-style: none;
             scrollbar-width: none;
+
+            /* Improve touch scrolling smoothness on iOS */
+            -webkit-overflow-scrolling: touch;
         }
         body::-webkit-scrollbar { display: none; }
 
+        /*
+         Performance notes:
+         - Heavy backdrop-filter (blur) can force compositing and slow down scrolling on some devices.
+         - We'll keep blur only where necessary (modal) and avoid it on many repeated elements.
+         - We also promote frequently-transforming elements to their own layer (translateZ(0) / will-change).
+        */
+
+        /* Lightweight "glass" style without heavy blur for better scrolling FPS */
         .glass {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
+            /* avoid backdrop-filter here for performance */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        /* Use blur only on the modal (isolated layer) */
+        .glass-blur {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
         }
 
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            from { transform: translateY(0); }
+            50% { transform: translateY(-6px); } /* smaller amplitude for less repaint cost */
+            to { transform: translateY(0); }
         }
-
         @keyframes pulse-cyan {
-            0% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 243, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(0,243,255,0.35); }
+            70% { box-shadow: 0 0 0 8px rgba(0,243,255,0); }
+            100% { box-shadow: 0 0 0 0 rgba(0,243,255,0); }
         }
-
         @keyframes pulse-pink {
-            0% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 0, 127, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(255,0,127,0.35); }
+            70% { box-shadow: 0 0 0 8px rgba(255,0,127,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,0,127,0); }
         }
-
         @keyframes spring-in {
-            0% { transform: scale(0.9); opacity: 0; }
-            60% { transform: scale(1.05); opacity: 1; }
+            0% { transform: scale(0.98); opacity: 0; }
+            60% { transform: scale(1.02); opacity: 1; }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        .animate-fade-up { animation: fadeIn 0.4s ease-out forwards; }
-        .animate-float { animation: float 2s ease-in-out infinite; }
+        .animate-fade-up { animation: fadeUp 0.45s ease-out forwards; }
+        /* Float uses transform-only animation; keep small amplitude for perf */
+        .animate-float { animation: float 4s ease-in-out infinite; will-change: transform; }
         .animate-pulse-cyan { animation: pulse-cyan 2s infinite; }
         .animate-pulse-pink { animation: pulse-pink 2s infinite; }
-        .animate-spring { animation: spring-in 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        .animate-spring { animation: spring-in 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 
         .neon-glow-cyan:hover {
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-            border-color: rgba(0, 243, 255, 0.5);
-            transform: scale(1.05);
+            transform: translateZ(0) scale(1.03);
+            box-shadow: 0 0 18px rgba(0,243,255,0.18);
+            border-color: rgba(0,243,255,0.32);
         }
-
         .neon-glow-pink:hover {
-            box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
-            border-color: rgba(255, 0, 127, 0.5);
-            transform: scale(1.05);
+            transform: translateZ(0) scale(1.03);
+            box-shadow: 0 0 18px rgba(255,0,127,0.18);
+            border-color: rgba(255,0,127,0.32);
         }
 
         .modal-overlay {
-            transition: opacity 0.3s ease;
+            transition: opacity 0.22s ease;
             display: none;
         }
-
         .modal-overlay.active {
             display: flex;
             opacity: 1;
         }
-        
+
         .live-indicator::after {
             content: '';
             display: inline-block;
@@ -92,6 +116,30 @@
             margin-left: 6px;
             animation: pulse-pink 1.5s infinite;
         }
+
+        /* Promote images and cards to their own layer for smoother transforms */
+        .card-img, .card {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            will-change: transform, opacity;
+        }
+        /* But limit will-change usage on many elements to avoid memory pressure */
+        .card { will-change: transform; }
+
+        /* Image styles */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            backface-visibility: hidden;
+        }
+
+        /* Make sure hover scale won't trigger layout */
+        .group-hover-scale {
+            transition: transform 0.45s cubic-bezier(.2,.9,.2,1);
+            transform-origin: center center;
+            will-change: transform;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -100,7 +148,7 @@
     <header class="fixed top-0 left-0 w-full z-50 glass border-b-0 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center relative">
             <div class="text-xl font-bold tracking-tighter flex items-center">
-                ANIM<span class="text-[#00f3ff]">EX</span>
+                ANIME<span class="text-[#00f3ff]">X</span>
             </div>
             <div class="flex gap-4 items-center">
                 <button id="searchBtn" class="p-2 glass rounded-full hover:bg-white/10 transition-colors" aria-label="Search">
@@ -122,10 +170,10 @@
             </div>
         </div>
         <div id="searchContainer" class="max-w-7xl mx-auto h-0 opacity-0 overflow-hidden transition-all duration-300">
-            <input 
-                type="text" 
+            <input
+                type="text"
                 id="searchInput"
-                placeholder="Search premium titles..." 
+                placeholder="Search premium titles..."
                 class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 mt-4 text-sm focus:outline-none focus:ring-1 focus:ring-[#00f3ff] transition-all"
             />
         </div>
@@ -170,8 +218,8 @@
 
     <!-- Modal Overlay -->
     <div id="modalOverlay" class="fixed inset-0 z-[100] modal-overlay items-center justify-center px-6">
-        <div class="absolute inset-0 bg-black/90 backdrop-blur-xl" id="modalClose"></div>
-        <div class="relative glass w-full max-w-sm rounded-3xl overflow-hidden animate-spring">
+        <div class="absolute inset-0 bg-black/90" id="modalClose"></div>
+        <div class="relative glass-blur w-full max-w-sm rounded-3xl overflow-hidden animate-spring">
             <div id="modalContent">
                 <!-- Modal content injected here -->
             </div>
@@ -179,9 +227,9 @@
     </div>
 
     <script>
-        // Note: Each game now has its own CPA link (cpa property).
+        // Each game has its own CPA link in cpa property
         const GAMES_DATA = [
-            { id: '1', title: 'Shadow Hearts', category: 'ECCHI', thumbnail: 'https://img.itch.zone/aW1hZ2UvOTA4MDgyLzUxMzExNjIuZ2lm/347x500/O424bk.gif', rating: 4.9, cpa: 'https://example.com/cpa1' },
+            { id: '1', title: 'Shadow Hearts', category: 'ECCHI', thumbnail: 'https://picsum.photos/seed/anime1/600/900', rating: 4.9, cpa: 'https://example.com/cpa1' },
             { id: '2', title: 'Neon Valkyrie', category: 'RPG', thumbnail: 'https://picsum.photos/seed/anime2/600/900', rating: 4.8, cpa: 'https://example.com/cpa2' },
             { id: '3', title: 'Succubus Tales', category: 'ECCHI', thumbnail: 'https://picsum.photos/seed/anime3/600/900', rating: 4.7, cpa: 'https://example.com/cpa3' },
             { id: '4', title: 'Cyber Blade X', category: 'ACTION', thumbnail: 'https://picsum.photos/seed/anime4/600/900', rating: 4.9, cpa: 'https://example.com/cpa4' },
@@ -204,12 +252,11 @@
         const menuBtn = document.getElementById('menuBtn');
         const menuContainer = document.getElementById('menuContainer');
 
-        // Render cards with consistent size. Images fill card width and have a slightly taller height
-        // so they sit a little above the category/title area as requested.
+        // Render cards with consistent size. Images fill full width of card and are slightly taller than the category/title area.
         function renderGames(filter = '') {
             const filtered = GAMES_DATA.filter(g => g.title.toLowerCase().includes(filter.toLowerCase()));
             gameGrid.innerHTML = '';
-            
+
             if (filtered.length === 0) {
                 gameGrid.innerHTML = '<div class="col-span-full py-20 text-center text-white/20 font-bold uppercase tracking-widest text-sm">No results found</div>';
                 return;
@@ -219,22 +266,35 @@
                 const isEcchi = game.category === 'ECCHI';
                 const accent = isEcchi ? '#ff007f' : '#00f3ff';
                 const glowClass = isEcchi ? 'neon-glow-pink' : 'neon-glow-cyan';
-                
+
                 const card = document.createElement('div');
-                // fixed uniform height so all cards are same size, responsive tweaks with md:
-                card.className = `glass rounded-2xl overflow-hidden transition-all duration-300 group relative animate-fade-up ${glowClass} flex flex-col h-80 md:h-[420px]`;
+                // uniform card height for consistent layout; flex-col so footer sits at bottom
+                card.className = `card glass rounded-2xl overflow-hidden transition-all duration-300 group relative ${glowClass} flex flex-col h-80 md:h-[420px]`;
                 card.style.animationDelay = `${idx * 0.05}s`;
-                
+
                 card.innerHTML = `
-                    <div class="w-full overflow-hidden">
-                        <!-- Image fills full width of card. Height set to be slightly larger so it sits above the category/title -->
+                    <div class="w-full overflow-hidden relative">
+                        <!-- Image fills full width of card.
+                             We add width/height attributes and decoding="async" to help the browser reserve space
+                             and reduce layout shifts, improving perceived smoothness. -->
                         <div class="w-full h-56 md:h-64 overflow-hidden">
-                            <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                            <img
+                                src="${game.thumbnail}"
+                                alt="${game.title}"
+                                width="600"
+                                height="900"
+                                decoding="async"
+                                fetchpriority="low"
+                                class="card-img group-hover-scale w-full h-full object-cover transition-transform duration-700"
+                                loading="lazy"
+                            >
                         </div>
+
                         <div class="absolute top-3 right-3 glass px-1.5 py-0.5 rounded-lg text-[10px] font-bold flex items-center gap-1">
                             <svg class="text-yellow-400 fill-yellow-400" width="10" height="10" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ${game.rating}
                         </div>
                     </div>
+
                     <div class="p-3 mt-auto">
                         <div class="text-[10px] uppercase font-bold tracking-widest mb-1 opacity-80" style="color: ${accent}">${game.category}</div>
                         <h3 class="text-sm font-semibold truncate mb-3 text-white/90">${game.title}</h3>
@@ -255,12 +315,20 @@
             const accent = isEcchi ? '#ff007f' : '#00f3ff';
             const pulseClass = isEcchi ? 'animate-pulse-pink' : 'animate-pulse-cyan';
 
-            // Use the game's own CPA link (game.cpa) for each download button.
+            // Use game's own CPA link (game.cpa) for each download button.
             modalContent.innerHTML = `
                 <div class="relative h-48 overflow-hidden">
-                    <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover">
+                    <img
+                        src="${game.thumbnail}"
+                        alt="${game.title}"
+                        width="600"
+                        height="900"
+                        decoding="async"
+                        fetchpriority="low"
+                        class="w-full h-full object-cover"
+                    >
                     <div class="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent"></div>
-                    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass flex items-center justify-center transition-transform active:scale-90">
+                    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass-blur flex items-center justify-center transition-transform active:scale-90">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     </button>
                 </div>
@@ -278,7 +346,8 @@
                     <p class="mt-8 text-[10px] uppercase tracking-[0.3em] text-white/20 font-bold">Secure Cloud Download</p>
                 </div>
             `;
-            
+
+            // show modal (modal overlay has blur; it's isolated so this won't heavily affect scroll)
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -288,6 +357,7 @@
             document.body.style.overflow = 'auto';
         }
 
+        // Toggle search container
         searchBtn.addEventListener('click', () => {
             const isOpen = searchContainer.classList.contains('opacity-100');
             if (isOpen) {
@@ -333,7 +403,6 @@
         menuContainer.addEventListener('click', (e) => {
             const btn = e.target.closest('button');
             if (btn) {
-                // You can add real navigation actions here later
                 menuContainer.classList.add('hidden');
                 menuContainer.classList.remove('animate-spring');
             }
@@ -341,6 +410,14 @@
 
         // Initial Render
         renderGames();
+
+        /*
+         Extra tips (optional) if you still see jank on some devices:
+         - Remove continuous animations (like .animate-float) or reduce their frequency/amplitude.
+         - Avoid many semi-transparent layered elements with borders/backdrop-filter.
+         - Ensure you don't have heavy third-party scripts running on the same page.
+         - Test in mobile Safari / Chrome using performance profiler to see paint/heavy layers.
+        */
     </script>
 </body>
 </html>
