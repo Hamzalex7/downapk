@@ -221,6 +221,7 @@
         <div class="absolute inset-0 bg-black/90" id="modalClose"></div>
         <div class="relative glass-blur w-full max-w-sm rounded-3xl overflow-hidden animate-spring">
             <div id="modalContent">
+                
                 <!-- Modal content injected here -->
             </div>
         </div>
@@ -228,35 +229,44 @@
 
     <script>
         // Each game has its own CPA link in cpa property
+        // Categories were updated — removed "ECCHI" and replaced with appropriate categories.
         const GAMES_DATA = [
-            { id: '1', title: 'NightGamer', category: 'ECCHI', thumbnail: 'https://imgcdn.latestmodapks.com/api/resize?url=https://www.latestmodapks.com/wp-content/uploads/2024/10/nightgamer-mod-1-media.webp', rating: 4.9, cpa: 'https://example.com/cpa1' },
-            
-            
+            { id: '1', title: 'NightGamer', category: 'Action', thumbnail: 'https://imgcdn.latestmodapks.com/api/resize?url=https://www.latestmodapks.com/wp-content/uploads/2024/10/nightgamer-mod-1-media.webp', rating: 4.9, cpa: 'https://example.com/cpa1' },
             { id: '2', title: 'Neon Valkyrie', category: 'RPG', thumbnail: 'https://www.pcgamesn.com/wp-content/sites/pcgamesn/2023/08/affogato-dave-the-diver-anime-barista-game-550x309.jpg', rating: 4.8, cpa: 'https://example.com/cpa2' },
-            
-            
-            { id: '3', title: 'Kingdom Of Night', category: 'ECCHI', thumbnail: 'https://img.itch.zone/aW1nLzI0MzM5ODkyLnBuZw==/original/e6CQr0.png', rating: 4.7, cpa: 'https://example.com/cpa3' },
-            
-            
-            { id: '4', title: 'Freak Circus', category: 'ACTION', thumbnail: 'https://img.itch.zone/aW1nLzI0MzI1NjA3LnBuZw==/original/fsplsb.png', rating: 4.9, cpa: 'https://example.com/cpa4' },
-            
-            
-            { id: '5', title: '3d Anime Girl', category: 'ECCHI', thumbnail: 'https://4ap.tech/images/3d_anime_girl.png', rating: 4.6, cpa: 'https://example.com/cpa5' },
-            
-            { id: '6', title: 'Starbound Soul', category: 'ADVENTURE', thumbnail: 'https://cdn2.steamgriddb.com/thumb/114a927c58272cb3b97698f06033f955.jpg', rating: 4.8, cpa: 'https://example.com/cpa6' },
-            
-            
-            { id: '7', title: 'Harem Quest', category: 'ECCHI', thumbnail: 'https://picsum.photos/seed/anime7/600/900', rating: 4.5, cpa: 'https://example.com/cpa7' },
-            
-            
-            { id: '8', title: 'Void Reborn', category: 'STRATEGY', thumbnail: 'https://picsum.photos/seed/anime8/600/900', rating: 4.7, cpa: 'https://example.com/cpa8' },
-            
-            
-            { id: '9', title: 'Lust & Legend', category: 'ECCHI', thumbnail: 'https://picsum.photos/seed/anime9/600/900', rating: 4.9, cpa: 'https://example.com/cpa9' },
-            
-            
-            { id: '10', title: 'Apex Frontier', category: 'RPG', thumbnail: 'https://picsum.photos/seed/anime10/600/900', rating: 4.8, cpa: 'https://example.com/cpa10' }
+            { id: '3', title: 'Kingdom Of Night', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1nLzI0MzM5ODkyLnBuZw==/original/e6CQr0.png', rating: 4.7, cpa: 'https://example.com/cpa3' },
+            { id: '4', title: 'Freak Circus', category: 'Action', thumbnail: 'https://img.itch.zone/aW1nLzI0MzI1NjA3LnBuZw==/original/fsplsb.png', rating: 4.9, cpa: 'https://example.com/cpa4' },
+            { id: '5', title: '3d Anime Girl', category: 'Simulation', thumbnail: 'https://4ap.tech/images/3d_anime_girl.png', rating: 4.6, cpa: 'https://example.com/cpa5' },
+            { id: '6', title: 'Starbound Soul', category: 'Adventure', thumbnail: 'https://cdn2.steamgriddb.com/thumb/114a927c58272cb3b97698f06033f955.jpg', rating: 4.8, cpa: 'https://example.com/cpa6' },
+            { id: '7', title: 'Reflexia', category: 'Puzzle', thumbnail: 'https://pbs.twimg.com/media/G0mrFhYWEAAUa8W.jpg', rating: 4.5, cpa: 'https://example.com/cpa7' },
+            { id: '8', title: 'Piano Hazard', category: 'Casual', thumbnail: 'https://apktodo.io/uploads/2026/1/paio-hazard-apk-1.jpg', rating: 4.6, cpa: 'https://example.com/cpa8' },
+            { id: '9', title: 'My Forest Home', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2026/1/my-forest-home-download.jpg', rating: 4.4, cpa: 'https://example.com/cpa9' },
+            { id: '10', title: 'Yakyuken', category: 'Casual', thumbnail: 'https://apktodo.io/uploads/2026/1/yakyuken-icon-150.jpg', rating: 4.7, cpa: 'https://example.com/cpa10' },
+            { id: '11', title: 'Seduction Of The Demon Queen', category: 'RPG', thumbnail: 'https://apktodo.io/uploads/2026/1/seduction-of-the-demon-queen-icon-150.jpg', rating: 4.8, cpa: 'https://example.com/cpa11' },
+            { id: '12', title: 'The Only Doe', category: 'Adventure', thumbnail: 'https://apktodo.io/uploads/2026/1/the-only-doe-icon-150.jpg', rating: 4.3, cpa: 'https://example.com/cpa12' },
+            { id: '13', title: 'Lure of Passion', category: 'Adventure', thumbnail: 'https://apktodo.io/uploads/2026/1/lure-of-passion-download.jpg', rating: 4.5, cpa: 'https://example.com/cpa13' },
+            { id: '14', title: 'My NTR Girlfriend Goes Camping!', category: 'Visual Novel', thumbnail: 'https://apktodo.io/uploads/2026/1/my-ntr-girlfriend-goes-camping-apk.jpg', rating: 4.2, cpa: 'https://example.com/cpa14' },
+            { id: '15', title: 'Princess Messy Room', category: 'Casual', thumbnail: 'https://apktodo.io/uploads/2026/1/princess-messy-room-icon-150.jpg', rating: 4.0, cpa: 'https://example.com/cpa15' },
+            { id: '16', title: 'My Sister-in-law Mirai-chan', category: 'Visual Novel', thumbnail: 'https://apktodo.io/uploads/2026/1/my-sister-in-lawmirai-chan-icon-150.jpg', rating: 4.6, cpa: 'https://example.com/cpa16' },
+            { id: '17', title: 'Imperial Harem', category: 'Strategy', thumbnail: 'https://apktodo.io/uploads/2026/1/screenshot-2026-01-09-214331.jpg', rating: 4.7, cpa: 'https://example.com/cpa17' },
+            { id: '18', title: 'My State Sponsored Catgirl', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2026/1/my-state-sponsored-catgirl-free.jpg', rating: 4.8, cpa: 'https://example.com/cpa18' },
+            { id: '19', title: "Hau'oli", category: 'Adventure', thumbnail: 'https://apktodo.io/uploads/2026/1/hauoli-apk.jpg', rating: 4.4, cpa: 'https://example.com/cpa19' },
+            { id: '20', title: 'Haunted Chair With Shy Girl', category: 'Horror', thumbnail: 'https://apktodo.io/uploads/2026/1/sister-chair-icon-150.jpg', rating: 4.5, cpa: 'https://example.com/cpa20' },
+            { id: '21', title: 'Ran Mobile', category: 'Action', thumbnail: 'https://apktodo.io/uploads/2023/10/ran-mobile-the-master-class-icon-150.jpg', rating: 4.3, cpa: 'https://example.com/cpa21' },
+            { id: '22', title: 'Densya 2', category: 'Arcade', thumbnail: 'https://apktodo.io/uploads/2025/11/chikan-densya-2-icon-150.jpg', rating: 4.1, cpa: 'https://example.com/cpa22' }
         ];
+
+        const CATEGORY_ACCENT = {
+            'RPG': '#00f3ff',
+            'Action': '#00f3ff',
+            'Adventure': '#00f3ff',
+            'Strategy': '#00f3ff',
+            'Arcade': '#00f3ff',
+            'Simulation': '#ff007f',
+            'Visual Novel': '#ff007f',
+            'Casual': '#ff007f',
+            'Puzzle': '#ff007f',
+            'Horror': '#ff007f'
+        };
 
         const gameGrid = document.getElementById('gameGrid');
         const searchInput = document.getElementById('searchInput');
@@ -280,9 +290,8 @@
             }
 
             filtered.forEach((game, idx) => {
-                const isEcchi = game.category === 'ECCHI';
-                const accent = isEcchi ? '#ff007f' : '#00f3ff';
-                const glowClass = isEcchi ? 'neon-glow-pink' : 'neon-glow-cyan';
+                const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
+                const glowClass = (accent === '#ff007f') ? 'neon-glow-pink' : 'neon-glow-cyan';
 
                 const card = document.createElement('div');
                 // uniform card height for consistent layout; flex-col so footer sits at bottom
@@ -328,11 +337,11 @@
             const game = GAMES_DATA.find(g => g.id === gameId);
             if (!game) return;
 
-            const isEcchi = game.category === 'ECCHI';
-            const accent = isEcchi ? '#ff007f' : '#00f3ff';
-            const pulseClass = isEcchi ? 'animate-pulse-pink' : 'animate-pulse-cyan';
+            const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
+            const pulseClass = (accent === '#ff007f') ? 'animate-pulse-pink' : 'animate-pulse-cyan';
 
             // Use game's own CPA link (game.cpa) for each download button.
+            // Replaced the previous inline SVGs with <img> tags pointing to real Apple and Google Play icons.
             modalContent.innerHTML = `
                 <div class="relative h-48 overflow-hidden">
                     <img
@@ -345,22 +354,27 @@
                         class="w-full h-full object-cover"
                     >
                     <div class="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent"></div>
-                    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass-blur flex items-center justify-center transition-transform active:scale-90">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass-blur flex items-center justify-center transition-transform active:scale-90" aria-label="Close modal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     </button>
                 </div>
-                <div class="p-8 text-center">
+                <div class="p-6 text-center">
                     <h2 class="text-2xl font-bold mb-2">${game.title}</h2>
-                    <p class="text-white/40 text-sm mb-8">Select platform to start download</p>
-                    <div class="space-y-4">
-                        <a href="${game.cpa}" class="block w-full py-4 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg> Download for iOS
+                    <p class="text-white/40 text-sm mb-6">Select platform to start download</p>
+                    <div class="space-y-3">
+                        <a href="${game.cpa}" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
+                            <!-- Apple logo as a real image -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" width="20" height="20" loading="lazy" style="filter: invert(1) hue-rotate(180deg); max-height:20px;" />
+                            Download for iOS
                         </a>
-                        <a href="${game.cpa}" class="block w-full py-4 rounded-2xl font-bold glass flex items-center justify-center gap-3 transition-transform active:scale-95 hover:bg-white/5 border-white/10 text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Download for Android
+
+                        <a href="${game.cpa}" class="block w-full py-3 rounded-2xl font-bold glass flex items-center justify-center gap-3 transition-transform active:scale-95 hover:bg-white/5 border-white/10 text-white">
+                            <!-- Google Play triangle icon as a real image -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Google_Play_2016_icon.svg" alt="Google Play" width="20" height="20" loading="lazy" style="max-height:20px;" />
+                            Download for Android
                         </a>
                     </div>
-                    <p class="mt-8 text-[10px] uppercase tracking-[0.3em] text-white/20 font-bold">Secure Cloud Download</p>
+                    <p class="mt-6 text-[10px] uppercase tracking-[0.3em] text-white/20 font-bold">Secure Cloud Download</p>
                 </div>
             `;
 
@@ -429,11 +443,12 @@
         renderGames();
 
         /*
-         Extra tips (optional) if you still see jank on some devices:
-         - Remove continuous animations (like .animate-float) or reduce their frequency/amplitude.
-         - Avoid many semi-transparent layered elements with borders/backdrop-filter.
-         - Ensure you don't have heavy third-party scripts running on the same page.
-         - Test in mobile Safari / Chrome using performance profiler to see paint/heavy layers.
+         Notes:
+         - I swapped the inline SVGs in the modal for <img> tags using Wikimedia-hosted logos:
+           Apple logo: https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg
+           Google Play icon: https://upload.wikimedia.org/wikipedia/commons/d/d7/Google_Play_2016_icon.svg
+         - If you prefer other CDN sources, local assets, or a different size/color, tell me which URLs or sizes and I will update.
+         - If you also want platform-specific links (game.ios / game.android) instead of using game.cpa for both, I can add those fields.
         */
     </script>
 </body>
