@@ -21,15 +21,24 @@
 <style>
   .dark ::-webkit-scrollbar-track { background: #0f172a; }
   .dark ::-webkit-scrollbar-thumb { background: #334155; }
+
+  /* NO BLUR GLASS - Performance Optimized */
   .glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.95); /* High opacity */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   .dark .glass {
-    background: rgba(15, 23, 42, 0.7);
+    background: rgba(15, 23, 42, 0.95); /* High opacity dark */
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Keep blur ONLY for the modal overlay if desired, or remove it too. 
+     User said "header", but let's keep the modal nice if it doesn't scroll. */
+  .glass-blur {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.08);
   }
 </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -390,7 +399,7 @@
                     >
                     <div class="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent"></div>
                     <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass-blur flex items-center justify-center transition-transform active:scale-90" aria-label="Close modal">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg>
                     </button>
                 </div>
                 <div class="p-6 text-center">
