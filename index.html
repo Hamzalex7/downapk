@@ -132,6 +132,132 @@
             transition: transform 0.45s cubic-bezier(.2,.9,.2,1);
             transform-origin: center center;
         }
+
+        /* ------------------ NEW: Full-width stacked rectangular cards ------------------
+           This block implements the exact card look you asked: each game is a full-width
+           rounded rectangle with a small thumbnail at left, rating badge on the thumb,
+           category (small, uppercase), bold title, and a pill-like download button on the right.
+           No other page logic is changed.
+        ---------------------------------------------------------------------------------- */
+
+        /* Container becomes a vertical list */
+        #gameGrid.vertical-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding-bottom: 12px;
+        }
+
+        .fw-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px;
+            border-radius: 14px;
+            width: 100%;
+            transition: transform .12s ease, box-shadow .12s ease;
+            background: #0b0b0d; /* dark fallback for card */
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+        /* Light mode card variation */
+        :root .fw-card {
+            background: linear-gradient(180deg, #ffffff, #fafafa);
+            color: #111827;
+        }
+        .dark .fw-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.04);
+            color: #fff;
+        }
+
+        .fw-left {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            min-width: 0;
+        }
+
+        .fw-thumb {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(180deg, #111, #000);
+        }
+        .fw-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .fw-rating {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            padding: 4px 6px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(6px);
+        }
+
+        .fw-meta {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+        .fw-category {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .11em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .fw-title {
+            font-size: 16px;
+            font-weight: 800;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .fw-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 12px;
+        }
+        .fw-download {
+            min-width: 120px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            cursor: pointer;
+            transition: transform .12s ease, background .12s ease;
+        }
+        .fw-download:hover { transform: translateY(-2px); background: rgba(255,255,255,0.04); }
+
+        /* Accent color usage (category + download text) applied inline via style attribute for each card */
+        @media (min-width: 768px) {
+            .fw-thumb { width: 72px; height: 72px; border-radius: 12px; }
+            .fw-title { font-size: 17px; }
+            .fw-download { min-width: 140px; padding: 10px 20px; }
+        }
+
+        /* keep the card subtle on hover */
+        .fw-card:hover { box-shadow: 0 10px 30px rgba(2,6,23,0.45); transform: translateY(-4px); }
+
+        /* ------------------------------------------------------------------------------ */
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-darkbg dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col">
@@ -140,7 +266,7 @@
     <header id="main-header" class="fixed top-0 transition-transform duration-300 left-0 w-full z-50 glass border-b-0 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center relative">
             <div class="text-xl font-bold tracking-tighter flex items-center">
-                Download<span class="text-[#00f3ff]">Apk</span>
+                ANIME<span class="text-[#00f3ff]">H-X</span>
             </div>
             <div class="flex gap-4 items-center">
                 
@@ -192,7 +318,7 @@
             </p>
         </section>
 
-        <!-- Game Grid -->
+        <!-- Game Grid (stacked full-width cards) -->
         <div id="gameGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
             <!-- Game cards will be injected here -->
         </div>
@@ -231,92 +357,34 @@
         // Game Data
         const GAMES_DATA = [
            { id:  '1', title: 'NightGamer', category: 'Casual', thumbnail: 'https://imgcdn.latestmodapks.com/api/resize?url=https://www.latestmodapks.com/wp-content/uploads/2024/10/nightgamer-mod-1-media.webp', rating: 4.9, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '10', title: 'Erica: Knight of the Sun ', category: 'Simulation', thumbnail: 'https://techloky.com/public/uploads/images/Erica_Knight_of_the_sun.jpg', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
-            { id: '134', title: 'Last Train JK', category: 'Simulation', thumbnail: 'https://izigames.net/uploads/2023/4/jk-on-the-last-train-for-android-1.png', rating: 3.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
+           { id: '134', title: 'Last Train JK', category: 'Simulation', thumbnail: 'https://izigames.net/uploads/2023/4/jk-on-the-last-train-for-android-1.png', rating: 3.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id:  '2', title: 'College Brawl', category: 'RPG', thumbnail: 'https://qa-apk.com/wp-content/uploads/2024/04/college-brawl.png', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '24', title: 'Summer Melody', category: 'Arcade', thumbnail: 'https://atelier.wiki.gg/images/thumb/Klaudia_One_Summer_Melody_5.png/300px-Klaudia_One_Summer_Melody_5.png?1891ff', rating: 4.1, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id:  '3', title: 'Spooky Milk', category: 'Casual', thumbnail: 'https://www.latestmodapks.com/wp-content/uploads/2023/07/Spooky.Milk_.Life-1.jpeg', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id:'3.5', title: 'The Stray Cat of Belheim', category: 'Casual', thumbnail: 'https://apktodo.io/uploads/2025/4/the-stray-cat-of-belheim-apk.jpg', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-                     
            { id:  '09', title: 'Max the elf', category: 'Simulation', thumbnail: 'https://img.itch.zone/aW1nLzIyOTQwNjUxLnBuZw==/315x250%23c/CWvbdc.png', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
           { id:'3.4', title: 'Dark Hunter Kuro', category: 'Arcade', thumbnail: 'https://images.steamusercontent.com/ugc/1785135165615831365/D4BA543E0E041ED83851A43F15733800F7BE27B6/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false', rating: 4.1, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-            
-            
            { id:  '4', title: 'Princess Request', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1hZ2UvNzE1NTIvMzI4MjQ4LmpwZw==/315x250%23c/OaP3Ln.jpg', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id:  '5', title: 'Kingdom Of Night', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1nLzI0MzM5ODkyLnBuZw==/original/e6CQr0.png', rating: 4.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id:  '6', title: 'Freak Circus', category: 'Action', thumbnail: 'https://img.itch.zone/aW1nLzI0MzI1NjA3LnBuZw==/original/fsplsb.png', rating: 4.9, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id:  '7', title: '3d Anime Girl', category: 'Simulation', thumbnail: 'https://4ap.tech/images/3d_anime_girl.png', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id:  '8', title: 'Starbound Soul', category: 'Adventure', thumbnail: 'https://cdn2.steamgriddb.com/thumb/114a927c58272cb3b97698f06033f955.jpg', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id:  '9', title: 'Reflexia', category: 'Puzzle', thumbnail: 'https://pbs.twimg.com/media/G0mrFhYWEAAUa8W.jpg', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '177', title: 'Piano Hazard', category: 'Casual', thumbnail: 'https://apktodo.io/uploads/2026/1/paio-hazard-apk-1.jpg', rating: 4.3, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '11', title: 'My Forest Home', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2026/1/my-forest-home-download.jpg', rating: 4.4, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '12', title: 'Unstrange', category: 'Adventure', thumbnail: 'https://img.itch.zone/aW1nLzI1MDE5NTQ1LmdpZg==/315x250%23c/eeAgO%2F.gif', rating: 4.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '13', title: 'Miko Gun', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1nLzU1NzA0ODAucG5n/315x250%23c/onFvUl.png', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '14', title: 'Tag After School', category: 'Adventure', thumbnail: 'https://myvideogamelist-com.s3.amazonaws.com/assets/boxart/NBSOjcDLZoMdlLDfS7n4EwQuxnboe0DeeL7Cq7Q5.jpg', rating: 4.3, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '15', title: 'Lure of Passion', category: 'Adventure', thumbnail: 'https://apktodo.io/uploads/2026/1/lure-of-passion-download.jpg', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '16', title: 'My NTR Girlfriend Goes Camping!', category: 'Visual Novel', thumbnail: 'https://apktodo.io/uploads/2026/1/my-ntr-girlfriend-goes-camping-apk.jpg', rating: 4.2, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '17', title: 'Princess Messy Room', category: 'Casual', thumbnail: 'https://apktodo.io/uploads/2026/1/princess-messy-room-free.jpg', rating: 4.0, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '18', title: 'My Sister-in-law Mirai-chan', category: 'Visual Novel', thumbnail: 'https://apktodo.io/uploads/2026/1/my-sister-in-lawmirai-chan-free.jpg', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '19', title: 'Imperial Harem', category: 'Strategy', thumbnail: 'https://apktodo.io/uploads/2026/1/screenshot-2026-01-09-214331.jpg', rating: 4.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '20', title: 'My State Sponsored Catgirl', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2026/1/my-state-sponsored-catgirl-free.jpg', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '21', title: "Hau'oli", category: 'Adventure', thumbnail: 'https://apktodo.io/uploads/2026/1/hauoli-apk.jpg', rating: 4.4, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '22', title: 'Haunted Chair With Shy Girl', category: 'Horror', thumbnail: 'https://apktodo.io/uploads/2025/12/haunted-chair-with-shy-girl-free.jpg', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '23', title: 'Ran Mobile', category: 'Action', thumbnail: 'https://i0.wp.com/blogranonline.game.blog/wp-content/uploads/2016/12/ran-online-wallpaper.jpg?fit=1200%2C960&ssl=1', rating: 4.3, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
            { id: '289', title: 'Densya 2', category: 'Rpg', thumbnail: 'https://apktodo.io/uploads/2025/11/chikan-densya-2-apk.jpg', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' }
         ];
 
@@ -367,9 +435,17 @@
             }
         });
 
-        // --- RENDER LOGIC ---
+        // --- RENDER LOGIC (cards adapted from online_viewer_net style, stacked full-width) ---
         function renderGames(filter = '') {
             if(!gameGrid) return;
+
+            // ensure container is a vertical list
+            if (!gameGrid.classList.contains('vertical-list')) {
+                // remove grid classes if present
+                gameGrid.classList.remove('grid','grid-cols-2','md:grid-cols-4','lg:grid-cols-5','gap-4','md:gap-6');
+                gameGrid.classList.add('vertical-list');
+            }
+
             const filtered = GAMES_DATA.filter(g => g.title.toLowerCase().includes(filter.toLowerCase()));
             gameGrid.innerHTML = '';
 
@@ -383,26 +459,29 @@
                 const glowClass = (accent === '#ff007f') ? 'neon-glow-pink' : 'neon-glow-cyan';
 
                 const card = document.createElement('div');
-                card.className = `card glass rounded-2xl overflow-hidden transition-all duration-300 group relative ${glowClass} flex flex-col h-80 md:h-[420px]`;
-                card.style.animationDelay = `${idx * 0.05}s`;
+                card.className = `fw-card glass ${glowClass}`;
+                card.style.animationDelay = `${idx * 0.03}s`;
 
                 card.innerHTML = `
-                    <div class="w-full overflow-hidden relative">
-                        <div class="w-full h-40 md:h-48 overflow-hidden">
-                            <img src="${game.thumbnail}" alt="${game.title}" width="600" height="900" decoding="async" loading="lazy" class="card-img group-hover-scale w-full h-full object-cover transition-transform duration-700">
+                    <div class="fw-left">
+                        <div class="fw-thumb">
+                            <img src="${game.thumbnail}" alt="${game.title}" decoding="async" loading="lazy">
+                            <div class="fw-rating">★ ${game.rating}</div>
                         </div>
-                        <div class="absolute top-3 right-3 glass px-1.5 py-0.5 rounded-lg text-[10px] font-bold flex items-center gap-1 text-gray-900 dark:text-white">
-                            <svg class="text-yellow-400 fill-yellow-400" width="10" height="10" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ${game.rating}
+
+                        <div class="fw-meta">
+                            <div class="fw-category" style="color: ${accent}">${game.category}</div>
+                            <div class="fw-title">${game.title}</div>
                         </div>
                     </div>
-                    <div class="p-3 mt-auto">
-                        <div class="text-[10px] uppercase font-bold tracking-widest mb-1 opacity-80" style="color: ${accent}">${game.category}</div>
-                        <h3 class="text-sm font-semibold truncate mb-3 text-gray-900 dark:text-white/90">${game.title}</h3>
-                        <button onclick="openModal('${game.id}')" class="w-full py-2 rounded-xl text-xs font-bold uppercase transition-all duration-300 glass border-gray-200 dark:border-white/10 hover:bg-gray-200 dark:hover:bg-white/10" style="color: ${accent}">
+
+                    <div class="fw-actions">
+                        <button onclick="openModal('${game.id}')" class="fw-download" style="color: ${accent}; border-color: rgba(255,255,255,0.04);">
                             Download
                         </button>
                     </div>
                 `;
+
                 gameGrid.appendChild(card);
             });
         }
