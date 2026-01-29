@@ -107,11 +107,7 @@
             box-shadow: 0 0 15px rgba(0,243,255,0.2);
             border-color: rgba(0,243,255,0.4);
         }
-        .neon-glow-pink:hover {
-            transform: translateZ(0) scale(1.03);
-            box-shadow: 0 0 15px rgba(255,0,127,0.2);
-            border-color: rgba(255,0,127,0.4);
-        }
+        /* removed neon-glow-pink usage to keep uniform color */
 
         .modal-overlay {
             transition: opacity 0.22s ease;
@@ -133,11 +129,11 @@
             transform-origin: center center;
         }
 
-        /* ------------------ NEW: Full-width stacked rectangular cards ------------------
-           This block implements the exact card look you asked: each game is a full-width
-           rounded rectangle with a small thumbnail at left, rating badge on the thumb,
-           category (small, uppercase), bold title, and a pill-like download button on the right.
-           No other page logic is changed.
+        /* ------------------ NEW: Full-width stacked rectangular cards (tweaked) ------------------
+           Adjustments requested:
+           - rating badge size reduced
+           - download buttons unified to a single color (removed pink variations)
+           - category text uses same color as download button
         ---------------------------------------------------------------------------------- */
 
         /* Container becomes a vertical list */
@@ -160,9 +156,8 @@
             background: #0b0b0d; /* dark fallback for card */
             border: 1px solid rgba(255,255,255,0.03);
         }
-        /* Light mode card variation */
         :root .fw-card {
-            background: linear-gradient(180deg, #ffffff, #fafafa);
+            background: linear-gradient(180deg, #1a1a1a, #1a1a1a);
             color: #111827;
         }
         .dark .fw-card {
@@ -189,20 +184,21 @@
         }
         .fw-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
+        /* REDUCED RATING BADGE SIZE */
         .fw-rating {
             position: absolute;
-            bottom: 6px;
-            right: 6px;
-            background: rgba(0,0,0,0.6);
+            bottom: 1.5px;
+            right: 3px;
+            background: rgba(0,0,0,0.55);
             color: #fff;
-            padding: 4px 6px;
+            padding: 1px 2px;         /* reduced padding */
             border-radius: 8px;
             font-weight: 700;
-            font-size: 11px;
+            font-size: 10px;         /* reduced font-size */
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            backdrop-filter: blur(6px);
+            backdrop-filter: blur(4px);
         }
 
         .fw-meta {
@@ -217,6 +213,7 @@
             letter-spacing: .11em;
             text-transform: uppercase;
             margin-bottom: 6px;
+            /* color will be set to the unified download color in JS */
         }
         .fw-title {
             font-size: 16px;
@@ -225,6 +222,10 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        /* Make game titles white in light mode only */
+body:not(.dark) .fw-title {
+  color: #ffffff !important;
+}
 
         .fw-actions {
             display: flex;
@@ -232,6 +233,7 @@
             gap: 12px;
             margin-left: 12px;
         }
+        /* UNIFIED DOWNLOAD BUTTON STYLE (single color) */
         .fw-download {
             min-width: 120px;
             padding: 10px 18px;
@@ -240,24 +242,24 @@
             font-size: 12px;
             letter-spacing: .06em;
             text-transform: uppercase;
-            background: rgba(255,255,255,0.02);
+            background: transparent;
             border: 1px solid rgba(255,255,255,0.04);
             cursor: pointer;
             transition: transform .12s ease, background .12s ease;
+            color: var(--download-color, #00f3ff); /* default via CSS var */
+            border-color: rgba(255,255,255,0.04);
         }
         .fw-download:hover { transform: translateY(-2px); background: rgba(255,255,255,0.04); }
 
-        /* Accent color usage (category + download text) applied inline via style attribute for each card */
         @media (min-width: 768px) {
             .fw-thumb { width: 72px; height: 72px; border-radius: 12px; }
             .fw-title { font-size: 17px; }
             .fw-download { min-width: 140px; padding: 10px 20px; }
         }
 
-        /* keep the card subtle on hover */
         .fw-card:hover { box-shadow: 0 10px 30px rgba(2,6,23,0.45); transform: translateY(-4px); }
 
-        /* ------------------------------------------------------------------------------ */
+        /* ---------------------------------------------------------------------------------- */
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-darkbg dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col">
@@ -266,7 +268,7 @@
     <header id="main-header" class="fixed top-0 transition-transform duration-300 left-0 w-full z-50 glass border-b-0 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center relative">
             <div class="text-xl font-bold tracking-tighter flex items-center">
-                ANIME<span class="text-[#00f3ff]">H-X</span>
+                ANIME<span class="text-[#00f3ff]">X-H</span>
             </div>
             <div class="flex gap-4 items-center">
                 
@@ -310,7 +312,7 @@
             <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight leading-tight">
                <br />
                 <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#00f3ff] to-[#ff007f]">
-                    Explore Best Anime Games
+                    Download Best Hidden Anime Games
                 </span>
             </h1>
             <p class="text-gray-500 dark:text-white/40 text-lg md:text-xl max-w-md mx-auto animate-float">
@@ -435,6 +437,11 @@
             }
         });
 
+        // Unified download/category color (single color for all cards)
+        const UNIFIED_DOWNLOAD_COLOR = '#00f3ff'; // change here if you want another color
+        // set CSS variable so fw-download uses it
+        document.documentElement.style.setProperty('--download-color', UNIFIED_DOWNLOAD_COLOR);
+
         // --- RENDER LOGIC (cards adapted from online_viewer_net style, stacked full-width) ---
         function renderGames(filter = '') {
             if(!gameGrid) return;
@@ -455,8 +462,10 @@
             }
 
             filtered.forEach((game, idx) => {
-                const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
-                const glowClass = (accent === '#ff007f') ? 'neon-glow-pink' : 'neon-glow-cyan';
+                // keep original accent variable if needed elsewhere, but do not use pink accents for download/category
+                const accent = CATEGORY_ACCENT[game.category] || UNIFIED_DOWNLOAD_COLOR;
+                // force glow to cyan only (remove pink variants)
+                const glowClass = 'neon-glow-cyan';
 
                 const card = document.createElement('div');
                 card.className = `fw-card glass ${glowClass}`;
@@ -470,13 +479,15 @@
                         </div>
 
                         <div class="fw-meta">
-                            <div class="fw-category" style="color: ${accent}">${game.category}</div>
+                            <!-- category color now matches unified download color -->
+                            <div class="fw-category" style="color: ${UNIFIED_DOWNLOAD_COLOR}">${game.category}</div>
                             <div class="fw-title">${game.title}</div>
                         </div>
                     </div>
 
                     <div class="fw-actions">
-                        <button onclick="openModal('${game.id}')" class="fw-download" style="color: ${accent}; border-color: rgba(255,255,255,0.04);">
+                        <!-- download button uses unified color (text color) -->
+                        <button onclick="openModal('${game.id}')" class="fw-download" style="color: ${UNIFIED_DOWNLOAD_COLOR}; border-color: rgba(255,255,255,0.04);">
                             Download
                         </button>
                     </div>
