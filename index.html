@@ -79,7 +79,7 @@
         .animate-pulse-cyan { animation: pulse-cyan 2s infinite; }
         .animate-pulse-pink { animation: pulse-pink 2s infinite; }
 
-        /* CARD STYLE FROM FIRST CODE (vertical list, preserved exactly) */
+        /* CARD STYLE FROM FIRST CODE */
         #gameGrid.vertical-list {
             display: flex;
             flex-direction: column;
@@ -166,7 +166,7 @@
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.2s;
-            color: #00f3ff; /* unified cyan as main accent */
+            color: #00f3ff;
         }
 
         .fw-download-btn:hover {
@@ -180,45 +180,66 @@
             flex-grow: 1;
         }
 
-        /* Keep other styles (header, modal, etc.) unchanged */
+        /* --- Slider Styles --- */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            height: 220px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+        }
+        .slide.active { opacity: 1; z-index: 10; }
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, transparent 70%);
+        }
+        .slide-content {
+            position: relative;
+            z-index: 20;
+            text-align: left;
+        }
 
-        /* --- Fix: hide modal overlay by default so it doesn't block clicks --- */
         #modalOverlay {
             display: none;
-            /* keep centering behavior when active */
             align-items: center;
             justify-content: center;
         }
         #modalOverlay.active {
             display: flex;
         }
-        /* --------------------------------------------------------------- */
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-darkbg dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col">
 
-    <!-- Header (kept exactly as in your code) -->
     <header id="main-header" class="fixed top-0 transition-transform duration-300 left-0 w-full z-50 glass border-b-0 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center relative">
             <div class="text-xl font-bold tracking-tighter flex items-center">
                 ANIME<span class="text-[#00f3ff]">G✘</span>
             </div>
             <div class="flex gap-4 items-center">
-                
                 <button id="themeToggle" class="p-2 glass rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors mr-2" aria-label="Toggle Theme">
                     <svg id="sunIcon" class="w-6 h-6 hidden text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     <svg id="moonIcon" class="w-6 h-6 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                 </button>
-                
                 <button id="searchBtn" class="p-2 glass rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors" aria-label="Search">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                 </button>
-                
                 <button id="menuBtn" class="p-2 glass rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors" aria-label="Menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                 </button>
-
-                <!-- Menu Dropdown -->
                 <div id="menuContainer" class="absolute right-6 top-16 w-77 glass rounded-xl py-2 shadow-lg hidden">
                     <ul class="flex flex-col gap-1 px-2">
                         <li><button class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-white/5 rounded-md text-gray-800 dark:text-gray-100">Home</button></li>
@@ -230,46 +251,27 @@
             </div>
         </div>
         <div id="searchContainer" class="max-w-7xl mx-auto h-0 opacity-0 overflow-hidden transition-all duration-300">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search here..."
-                class="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl px-5 py-3 mt-4 text-sm focus:outline-none focus:ring-1 focus:ring-[#00f3ff] transition-all text-gray-900 dark:text-white"
-            />
+            <input type="text" id="searchInput" placeholder="Search here..." class="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl px-5 py-3 mt-4 text-sm focus:outline-none focus:ring-1 focus:ring-[#00f3ff] transition-all text-gray-900 dark:text-white" />
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <main class="flex-grow pt-36 pb-20 px-6 max-w-7xl mx-auto w-full">
-        <section class="text-center mb-16 animate-fade-up">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight leading-tight">
-               <br />
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#00f3ff] to-[#ff007f]">
-                    Download Best Hidden Anime Games 
-                </span>
-            </h1>
-            <p class="text-gray-500 dark:text-white/40 text-lg md:text-xl max-w-md mx-auto animate-float">
-                For Android & iOS
-            </p>
+    <main class="flex-grow pt-32 pb-20 px-6 max-w-7xl mx-auto w-full">
+        <section class="mb-12 animate-fade-up">
+            <div id="heroSlider" class="slider-container">
+                </div>
         </section>
 
-        <!-- Game Grid - now vertical list with old card style -->
         <div id="gameGrid" class="vertical-list">
-            <!-- Cards injected via JS -->
-        </div>
+            </div>
     </main>
 
-    <!-- Footer (kept as is) -->
     <footer class="py-16 border-t border-gray-200 dark:border-white/5 text-center px-6">
         <div class="flex justify-center gap-8 mb-8 opacity-40 dark:opacity-20 items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-600 dark:text-white"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             <svg width="22" height="22" viewBox="0 0 384 512" fill="currentColor" class="text-gray-600 dark:text-white"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
             <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:22px; height:22px; object-fit: contain; filter: brightness(0) invert(1);" class="dark:invert filter invert-0 dark:invert" />
         </div>
-        
-        <p class="text-[10px] text-gray-400 dark:text-white/20 uppercase tracking-[0.5em] font-bold">
-            © 2026 DOWNAPK ALL RIGHTS RESERVED
-        </p>
+        <p class="text-[10px] text-gray-400 dark:text-white/20 uppercase tracking-[0.5em] font-bold">© 2026 DOWNAPK ALL RIGHTS RESERVED</p>
         <div class="mt-6 flex justify-center gap-6 text-[10px] text-gray-400 dark:text-white/10 font-bold">
             <span class="cursor-pointer hover:text-gray-600 dark:hover:text-white/30 transition-colors">PRIVACY POLICY</span>
             <span class="cursor-pointer hover:text-gray-600 dark:hover:text-white/30 transition-colors">TERMS OF SERVICE</span>
@@ -277,19 +279,14 @@
         </div>
     </footer>
 
-    <!-- Modal Overlay -->
     <div id="modalOverlay" class="fixed inset-0 z-[100] modal-overlay items-center justify-center px-6">
         <div class="absolute inset-0 bg-black/60 dark:bg-black/90" id="modalClose"></div>
         <div class="relative glass-blur w-full max-w-sm rounded-3xl overflow-hidden animate-spring">
-            <div id="modalContent">
-                <!-- Content injected via JS -->
-            </div>
+            <div id="modalContent"></div>
         </div>
     </div>
 
-    <!-- MAIN SCRIPT (updated renderGames only for card style) -->
     <script>
-        // Game Data (kept as is)
         const GAMES_DATA = [
             { id:  '1', title: 'NightGamer', category: 'Casual', thumbnail: 'https://imgcdn.latestmodapks.com/api/resize?url=https://www.latestmodapks.com/wp-content/uploads/2024/10/nightgamer-mod-1-media.webp', rating: 4.9, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '10', title: 'Erica: Knight of the Sun ', category: 'Simulation', thumbnail: 'https://techloky.com/public/uploads/images/Erica_Knight_of_the_sun.jpg', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
@@ -332,6 +329,7 @@
         };
 
         const gameGrid = document.getElementById('gameGrid');
+        const heroSlider = document.getElementById('heroSlider');
         const searchInput = document.getElementById('searchInput');
         const searchBtn = document.getElementById('searchBtn');
         const searchContainer = document.getElementById('searchContainer');
@@ -346,7 +344,6 @@
         const htmlEl = document.documentElement;
         const header = document.getElementById('main-header');
 
-        // Theme logic (kept as is)
         function applyTheme() {
             if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 htmlEl.classList.add('dark');
@@ -362,40 +359,43 @@
 
         themeToggleBtn.addEventListener('click', () => {
             htmlEl.classList.toggle('dark');
-            if (htmlEl.classList.contains('dark')) {
-                localStorage.setItem('theme', 'dark');
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            } else {
-                localStorage.setItem('theme', 'light');
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
-            }
+            localStorage.setItem('theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
+            applyTheme();
         });
 
-        // Render games with OLD CARD STYLE
+        // Initialize Slider
+        function initSlider() {
+            const sliderGames = GAMES_DATA.slice(0, 5); 
+            heroSlider.innerHTML = sliderGames.map((game, idx) => `
+                <div class="slide ${idx === 0 ? 'active' : ''}" style="background: url('${game.thumbnail}') center/cover no-repeat;">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="text-[10px] font-black uppercase tracking-widest" style="color: ${CATEGORY_ACCENT[game.category] || '#00f3ff'}">${game.category}</span>
+                        <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">${game.title}</h2>
+                        <button onclick="openModal('${game.id}')" class="px-6 py-2 bg-white text-black text-xs font-bold rounded-full hover:scale-105 transition-transform">VIEW GAME</button>
+                    </div>
+                </div>
+            `).join('');
+
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 4000);
+        }
+
         function renderGames(filter = '') {
             if(!gameGrid) return;
-
-            // Force vertical list
-            gameGrid.classList.remove('grid','grid-cols-2','md:grid-cols-4','lg:grid-cols-5','gap-4','md:gap-6');
             gameGrid.classList.add('vertical-list');
-
             const filtered = GAMES_DATA.filter(g => g.title.toLowerCase().includes(filter.toLowerCase()));
-            gameGrid.innerHTML = '';
-
-            if (filtered.length === 0) {
-                gameGrid.innerHTML = '<div class="py-20 text-center text-gray-500 dark:text-white/20 font-bold uppercase tracking-widest text-sm">No results found</div>';
-                return;
-            }
+            gameGrid.innerHTML = filtered.length ? '' : '<div class="py-20 text-center text-gray-500 dark:text-white/20 font-bold uppercase tracking-widest text-sm">No results found</div>';
 
             filtered.forEach((game, idx) => {
                 const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
-
                 const card = document.createElement('div');
                 card.className = 'fw-card';
-                card.style.animationDelay = `${idx * 0.05}s`;
-
                 card.innerHTML = `
                     <div class="fw-left">
                         <div class="fw-thumb">
@@ -413,42 +413,28 @@
                         </div>
                     </div>
                 `;
-
                 gameGrid.appendChild(card);
             });
         }
 
-        // openModal, closeModal, events (kept as is, no change needed)
         function openModal(gameId) {
             const game = GAMES_DATA.find(g => g.id === gameId);
             if (!game) return;
-
             const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
             const pulseClass = (accent === '#ff007f') ? 'animate-pulse-pink' : 'animate-pulse-cyan';
-
             modalContent.innerHTML = `
                 <div class="relative h-48 overflow-hidden">
-                    <img src="${game.thumbnail}" alt="${game.title}" width="600" height="900" decoding="async" class="w-full h-full object-cover">
+                    <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent dark:from-[#050505] dark:to-transparent"></div>
-                    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass-blur flex items-center justify-center transition-transform active:scale-90 text-gray-900 dark:text-white" aria-label="Close modal">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                    </button>
+                    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass-blur flex items-center justify-center text-gray-900 dark:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                 </div>
                 <div class="p-6 text-center">
                     <h2 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">${game.title}</h2>
                     <p class="text-gray-500 dark:text-white/40 text-sm mb-6">Select your device to start download</p>
                     <div class="space-y-3">
-                        <a href="${game.cpa}" target="_blank" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
-                             <svg width="20" height="20" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-                            Download for iOS
-                        </a>
-
-                        <a href="${game.cpa}" target="_blank" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
-                            <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain;" />
-                            Download for Android
-                        </a>
+                        <a href="${game.cpa}" target="_blank" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 ${pulseClass}" style="background-color: ${accent}; color: #000">Download for iOS</a>
+                        <a href="${game.cpa}" target="_blank" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 ${pulseClass}" style="background-color: ${accent}; color: #000">Download for Android</a>
                     </div>
-                    <p class="mt-6 text-[10px] uppercase tracking-[0.3em] text-gray-400 dark:text-white/20 font-bold">ENJOY!</p>
                 </div>
             `;
             modalOverlay.classList.add('active');
@@ -463,50 +449,25 @@
         window.openModal = openModal;
         window.closeModal = closeModal;
 
-        // Events (kept as is)
         searchBtn.addEventListener('click', () => {
-            if (searchContainer.classList.contains('opacity-0')) {
-                searchContainer.classList.remove('h-0', 'opacity-0');
-                searchContainer.classList.add('h-16', 'opacity-100', 'mt-4');
-                searchInput.focus();
-            } else {
-                searchContainer.classList.add('h-0', 'opacity-0');
-                searchContainer.classList.remove('h-16', 'opacity-100', 'mt-4');
-            }
+            searchContainer.classList.toggle('opacity-0');
+            searchContainer.classList.toggle('h-0');
+            searchContainer.classList.toggle('h-16');
+            if(!searchContainer.classList.contains('opacity-0')) searchInput.focus();
         });
 
         searchInput.addEventListener('input', (e) => renderGames(e.target.value));
         modalClose.addEventListener('click', closeModal);
-
-        menuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (menuContainer.classList.contains('hidden')) {
-                menuContainer.classList.remove('hidden');
-                menuContainer.classList.add('animate-spring');
-            } else {
-                menuContainer.classList.add('hidden');
-                menuContainer.classList.remove('animate-spring');
-            }
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('#menuContainer') && !e.target.closest('#menuBtn')) {
-                menuContainer.classList.add('hidden');
-            }
-        });
+        menuBtn.addEventListener('click', (e) => { e.stopPropagation(); menuContainer.classList.toggle('hidden'); });
+        document.addEventListener('click', () => menuContainer.classList.add('hidden'));
 
         let lastScrollY = window.scrollY;
         window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY && currentScrollY > 80) {
-                header.style.transform = 'translateY(-100%)';
-            } else {
-                header.style.transform = 'translateY(0)';
-            }
-            lastScrollY = currentScrollY;
+            header.style.transform = (window.scrollY > lastScrollY && window.scrollY > 80) ? 'translateY(-100%)' : 'translateY(0)';
+            lastScrollY = window.scrollY;
         });
 
-        // Initialize
+        initSlider();
         renderGames();
     </script>
 </body>
