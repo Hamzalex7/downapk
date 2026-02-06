@@ -781,7 +781,7 @@
                     <div class="logo-icon" style="background:transparent;padding:0;">
     <img src="https://i.ibb.co/gbsY945Q/Black-and-Green-Illustrative-E-Sports-Gaming-Logo-2-removebg.png" alt="DownAPK Logo" style="width:40px;height:40px;object-fit:contain;">
 </div>
-                    <span class="logo-text">Downapk<span>.online</span></span>
+                    <span class="logo-text">Mod<span>Xplay</span></span>
                 </a>
                 
                 <nav class="nav-desktop">
@@ -980,9 +980,9 @@
                         <div class="section-icon" style="background: var(--gradient-blue);">
                             <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
                         </div>
-                        <span>From Our Blog</span>
+                        <span>How To Unlock The Games</span>
                     </div>
-                    <a href="#" class="btn-navy">More <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    <a href="" class="btn-navy">More <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
                 </h2>
                 
                 <div class="blog-grid" id="blogGrid"></div>
@@ -995,7 +995,7 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-copyright">
-                    DOWNAPK.ONLINE © Copyright <span id="currentYear"></span>. All Rights Reserved.
+                    MODXPLAY.ONLINE © Copyright <span id="currentYear"></span>. All Rights Reserved.
                 </div>
                 <div class="footer-links">
                     <a href="#" class="footer-link">Privacy Policy</a>
@@ -1055,19 +1055,19 @@
             { title: "CarX Street Mod Apk", category: "Cars", version: "v1.5.2", size: "2.6 GB", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4pqJlpezWAKhl0bwwWy1GIc_zVOGXjHvz9Q&s", isMod: true, url: "https://downapk.online/CarX Street Mod Apk 2026" },
             
             
-            { title: "Poppy Playtime Chapter 2", category: "Action", version: "v1.42", size: "850 MB", image: "https://mingapks.com/wp-content/uploads/2025/10/poppy-playtime-chapter-2-thumbnail.png", url: "/poppy-playtime-chapter-2" },
+            { title: "Car Parking Multiplayer 2", category: "Cars", version: "v1.42", size: "2.3 GB", image: "https://play-lh.googleusercontent.com/1DhZDejbhLxExB4o4WyhtcIrpO5s4BaWqbk3nsjl64TM9nwO3iCQqpV18ZO3PyklnA=w240-h480-rw", url: "/poppy-playtime-chapter-2" },
             
             
-             { title: "Tomb Raider™", category: "Action", version: "v1.0", size: "Varies", image: "https://mingapks.com/wp-content/uploads/2026/01/489-tomb-raider.webp", isUpdate: true, url: "https://downapk.online/BeamNG Drive 2026" },
+             { title: "Tomb Raider™", category: "Action", version: "v1.0", size: "Varies", image: "https://mingapks.com/wp-content/uploads/2026/01/489-tomb-raider.webp", isUpdate: true, url: "https://downapk.online/Coming Soon ..." },
             
             
-            { title: "Poppy Playtime Chapter 3", category: "Adventure", version: "v1.0.25", size: "1.2 GB", image: "https://mingapks.com/wp-content/uploads/2025/10/poppy-playtime-chapter-3-thumbnail.png", url: "/poppy-playtime-chapter-3" },
+            { title: "SnowRunner Mobile", category: "Heavy Trucks", version: "v1.0.25", size: "2.2 GB", image: "https://cdn.focus-home.com/fhi-fastforward-admin/resources/games/snowrunner/images/10042025_9ea4150ca57244068421faecdbc3215b.jpeg", isMod: true, url: "/poppy-playtime-chapter-3" },
             
             
-            { title: "Streets Of Rage 4", category: "Arcade", version: "v1.4.5", size: "780 MB", image: "https://mingapks.com/wp-content/uploads/2025/10/streets-of-rage-4-thumbnail.png", url: "/streets-of-rage-4" },
+            { title: "The Crew Motorfest Mobile", category: "Open world", version: "v1.4.5", size: "3.1 GB", image: "https://i.pinimg.com/736x/4d/cc/24/4dcc245b74b92bfcf3d447eafc39a98b.jpg", url: "/streets-of-rage-4" },
             
             
-            { title: "Gangstar Vegas", category: "Action", version: "v8.9.0", size: "1.8 GB", image: "https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Gangstar_Vegas.jpg/250px-Gangstar_Vegas.jpg", isMod: true, url: "https://downapk.online/Assetto Corsa 2026" },
+            { title: "Grand Theft Auto V Mobile", category: "", version: "v8.9.0", size: "1.8 GB", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGD7M8gzVQtpayN0kdH2m8FbHnVhlf7Remyg&s", url: "https://downapk.online/Assetto Corsa 2026" },
             
             
             { title: "Little Nightmares", category: "Adventure", version: "v144", size: "920 MB", image: "https://mingapks.com/wp-content/uploads/2025/10/little-nightmares-thumbnail.png", url: "/little-nightmares" },
@@ -1076,7 +1076,7 @@
             { title: "Hollow Knight", category: "Action", version: "v22.10", size: "914 MB", image: "https://images.sftcdn.net/images/t_app-icon-m/p/b0bb283f-9192-4104-ae0f-ac6f274a360e/173199076/hollow-knight-silksong-download-Hollow-Knight-Silksong.jpg", isMod: true, url: "/hollow-knight" },
             
             
-            { title: "Prince Of Persia: Lost Crown", category: "Adventure", version: "v1.1.1a", size: "4.2 GB", image: "https://mingapks.com/wp-content/uploads/2025/10/431-prince-of-persia-lost-crown.png", isMod: true, url: "/prince-of-persia-lost-crown" },
+            { title: "Euro Truck Simulator2 Mobile", category: "Trucks", version: "v1.1.1a", size: "3.2 GB", image: "https://i.pinimg.com/736x/bf/9a/48/bf9a48c60a44f0fb95e68cccc41bff47.jpg", isMobile: true, url: "/prince-of-persia-lost-crown" },
             
             
             { title: "SpongeBob - The Cosmic Shake", category: "Action", version: "v1.1.2", size: "3.9 GB", image: "https://mingapks.com/wp-content/uploads/2025/10/434-spongebob-the-cosmic-shake.png", isMod: true, url: "/spongebob-the-cosmic-shake" },
@@ -1090,30 +1090,30 @@
         ];
         
         const apps = [
-            { title: "TikTok Premium", category: "Social", version: "v40.5.16", size: "220 MB", image: "https://play-lh.googleusercontent.com/LdBITldj-tJxqLm-CsWSbnt4BMo2gk53cgM7mWIL-zn44m1ywLyQgxRsHKqp8r0qceXs", isMod: true, url: "/tiktok-premium" },
+            { title: "TikTok Premium", category: "Social", version: "v40.5.16", size: "220 MB", image: "https://play-lh.googleusercontent.com/LdBITldj-tJxqLm-CsWSbnt4BMo2gk53cgM7mWIL-zn44m1ywLyQgxRsHKqp8r0qceXs", isMod: true, url: "https://downapk.online/Coming Soon ..." },
             
             
-            { title: "Instagram", category: "Social", version: "v340.0", size: "180 MB", image: "https://play-lh.googleusercontent.com/VRMWkE5p3CkWhJs6nv-9ZsLAs1QOg5ob1_3qg-rckwYW7yp1fMrYZqnEFpk0IoVP4LM", isMod: true, url: "/instagram" },
+            { title: "Instagram", category: "Social", version: "v340.0", size: "180 MB", image: "https://play-lh.googleusercontent.com/VRMWkE5p3CkWhJs6nv-9ZsLAs1QOg5ob1_3qg-rckwYW7yp1fMrYZqnEFpk0IoVP4LM", isMod: true, url: "https://downapk.online/Coming Soon ..." },
             
             
-            { title: "Spotify Premium", category: "Music", version: "v8.9.42", size: "85 MB", image: "https://play-lh.googleusercontent.com/cShys-AmJ93dB0SV8kE6Fl5eSaf4-qMMZdwEDKI5VEmKAXfzOqbiaeAsqqrEBCTdIEs", isMod: true, url: "/spotify-premium" },
+            { title: "Spotify Premium", category: "Music", version: "v8.9.42", size: "85 MB", image: "https://play-lh.googleusercontent.com/cShys-AmJ93dB0SV8kE6Fl5eSaf4-qMMZdwEDKI5VEmKAXfzOqbiaeAsqqrEBCTdIEs", isMod: true, url: "https://downapk.online/Coming Soon ..." },
             
             
-            { title: "YouTube Premium", category: "Entertainment", version: "v19.45", size: "150 MB", image: "https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc", isMod: true, url: "/youtube-premium" },
+            { title: "YouTube Premium", category: "Entertainment", version: "v19.45", size: "150 MB", image: "https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc", isMod: true, url: "https://downapk.online/Coming Soon ..." },
             
             
-            { title: "Photo Studio PRO", category: "Photography", version: "v2.8.2", size: "120 MB", image: "https://play-lh.googleusercontent.com/3UojVLVXeXnz6fHg76Od05LxALKOOhw4nDR8hGY3qtoW3UsuRHdpZB9lX8goUl7q3UE", isMod: true, url: "/photo-studio-pro" },
+            { title: "Photo Studio PRO", category: "Photography", version: "v2.8.2", size: "120 MB", image: "https://play-lh.googleusercontent.com/3UojVLVXeXnz6fHg76Od05LxALKOOhw4nDR8hGY3qtoW3UsuRHdpZB9lX8goUl7q3UE", isMod: true, url: "https://downapk.online/Coming Soon ..." },
             
             
-            { title: "Netflix", category: "Entertainment", version: "v8.115", size: "95 MB", image: "https://play-lh.googleusercontent.com/TBRwjS_qfJCSj1m7zZB93FnpJM5fSpMA_wUlFDLxWAb45T9RmwBvQd5cWR5viJJOhkI", isMod: true, url: "/netflix" }
+            { title: "Netflix", category: "Entertainment", version: "v8.115", size: "95 MB", image: "https://play-lh.googleusercontent.com/TBRwjS_qfJCSj1m7zZB93FnpJM5fSpMA_wUlFDLxWAb45T9RmwBvQd5cWR5viJJOhkI", isMod: true, url: "https://downapk.online/Coming Soon ..." }
         ];
         
         const premium = [
             
-            { title: "Photo Studio PRO", category: "Paid", version: "v2.8.2", size: "120 MB", image: "https://play-lh.googleusercontent.com/3UojVLVXeXnz6fHg76Od05LxALKOOhw4nDR8hGY3qtoW3UsuRHdpZB9lX8goUl7q3UE", isMod: true, url: "/photo-studio-pro" },
+            { title: "Photo Studio PRO", category: "Paid", version: "v2.8.2", size: "120 MB", image: "https://play-lh.googleusercontent.com/3UojVLVXeXnz6fHg76Od05LxALKOOhw4nDR8hGY3qtoW3UsuRHdpZB9lX8goUl7q3UE", isMod: true, url: "https://downapk.online/Coming Soon ..." },
             
             
-            { title: "NARUTO: Ultimate Ninja STORM", category: "Paid", version: "v1.2.9", size: "3.2 GB", image: "https://mingapks.com/wp-content/uploads/2025/09/226-naruto-ultimate-ninja-storm.png", isUpdate: true, url: "/naruto-ultimate-ninja-storm" },
+            { title: "NARUTO: Ultimate Ninja STORM", category: "Paid", version: "v1.2.9", size: "3.2 GB", image: "https://mingapks.com/wp-content/uploads/2025/09/226-naruto-ultimate-ninja-storm.png", isUpdate: true, url: "https://downapk.online/Coming Soon ..." },
             
             
             { title: "Resident Evil 4", category: "Paid", version: "v1.0", size: "8.5 GB", image: "https://play-lh.googleusercontent.com/5Z-KRFR6gE3lX9d8W8kHJvAEVEJGEYHU9W95nRDLj4E_fO8EDALMEq0O9oQC8O9s9dA", isMod: true, url: "/resident-evil-4" },
@@ -1129,10 +1129,10 @@
         ];
         
         const blogPosts = [
-            { title: "How to Download Bybit: Buy Bitcoin & Crypto APK Latest Version", image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&h=250&fit=crop", views: "3.7K", date: "Dec 28, 2025" },
+            { title: "How to Download Bybit: Buy Bitcoin & Crypto APK Latest Version", image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&h=250&fit=crop", views: "3.7K", date: "Dec 28, 2025", url:"https://downapk.online/MyVoiceZoo Mobile/"},
             
             
-            { title: "Top 10 Best Android Games to Play in 2026", image: "https://images.unsplash.com/photo-1493711662062-fa541f7f3d24?w=400&h=250&fit=crop", views: "5.2K", date: "Dec 25, 2025" },
+            { title: "Top 10 Best Android Games to Play in 2026", image: "https://images.unsplash.com/photo-1493711662062-fa541f7f3d24?w=400&h=250&fit=crop", views: "5.2K", date: "Dec 25, 2025",url: "/hitman-absolution" },
             
             
             { title: "Complete Guide: How to Install MOD APK Files Safely", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop", views: "8.1K", date: "Dec 20, 2025" }
@@ -1146,6 +1146,8 @@
                     <div class="game-card-img-wrapper">
                         <img src="${item.image}" alt="${item.title}" class="game-card-image" loading="lazy">
                         ${item.isMod ? '<div class="mod-label">Mod</div>' : ''}
+                    </div>
+                    ${item.isMobile ? '<div class="mod-label">Mobile</div>' : ''}
                     </div>
                     <div class="game-card-content">
                         <h3 class="game-card-title">${item.title}</h3>
