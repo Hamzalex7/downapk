@@ -167,6 +167,16 @@
             cursor: pointer;
             transition: all 0.2s;
             color: #00f3ff;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .fw-download-btn img.icon {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
         }
 
         .fw-download-btn:hover {
@@ -212,6 +222,7 @@
             text-align: left;
         }
 
+        /* Modal visibility control (hidden unless active) */
         #modalOverlay {
             display: none;
             align-items: center;
@@ -219,6 +230,44 @@
         }
         #modalOverlay.active {
             display: flex;
+        }
+
+        /* Age verification modal */
+        #ageModal {
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        #ageModal.active {
+            display: flex;
+        }
+        .age-input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            /* changed to black background with white text per request */
+            background: #000;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.08);
+            caret-color: #fff;
+        }
+        .age-input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        /* make calendar icon visible on dark bg */
+        .age-input::-webkit-calendar-picker-indicator {
+            filter: invert(1) contrast(200%);
+        }
+        .age-error {
+            color: #ff4d4f;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        /* small responsive tweak for the modal content */
+        .modal-inner {
+            width: 100%;
+            max-width: 420px;
         }
     </style>
 </head>
@@ -279,10 +328,30 @@
         </div>
     </footer>
 
+    <!-- Main Modal (game details + download choices) -->
     <div id="modalOverlay" class="fixed inset-0 z-[100] modal-overlay items-center justify-center px-6">
         <div class="absolute inset-0 bg-black/60 dark:bg-black/90" id="modalClose"></div>
         <div class="relative glass-blur w-full max-w-sm rounded-3xl overflow-hidden animate-spring">
             <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Age verification modal -->
+    <div id="ageModal" class="fixed inset-0 z-[110] items-center justify-center px-6">
+        <div class="absolute inset-0 bg-black/60 dark:bg-black/90" id="ageModalClose"></div>
+        <div class="relative glass-blur rounded-2xl overflow-hidden p-6 modal-inner">
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Age verification</h3>
+            <p class="text-sm text-gray-600 dark:text-white/60 mb-4">Please enter your date of birth to confirm you are 18 or older. You must be 18+ to proceed.</p>
+
+            <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Date of birth</label>
+            <input id="birthdateInput" class="age-input" type="date" max="" aria-label="Date of birth" />
+            <div id="ageError" class="age-error" style="display:none"></div>
+
+            <div class="mt-4 flex gap-2">
+                <button id="ageVerifyBtn" class="flex-1 py-3 rounded-2xl bg-[#00f3ff] text-black font-bold">Verify and Continue</button>
+                <button id="ageCancelBtn" class="flex-1 py-3 rounded-2xl glass text-sm font-bold">Cancel</button>
+            </div>
+            <p class="mt-3 text-[11px] text-gray-500 dark:text-white/40">We only use this to verify age. No data is sent anywhere from this demo.</p>
         </div>
     </div>
 
@@ -301,9 +370,6 @@
            { id:  '09', title: 'Max the elf', category: 'Simulation', thumbnail: 'https://img.itch.zone/aW1nLzIyOTQwNjUxLnBuZw==/315x250%23c/CWvbdc.png', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
           { id:'3.4', title: 'Dark Hunter Kuro', category: 'Arcade', thumbnail: 'https://images.steamusercontent.com/ugc/1785135165615831365/D4BA543E0E041ED83851A43F15733800F7BE27B6/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false', rating: 4.1, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            
-           
-           
-           
            { id: '17', title: 'Little Sis', category: 'Casual', thumbnail: 'https://4ap.tech/images/little_sis.jpg', rating: 4.0, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '18', title: 'The Gentle Priestess', category: 'Visual Novel', thumbnail: 'https://4ap.tech/images/THE_GENTLE_PRIESTESS.jpg', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '19', title: 'Miko Chan', category: 'Strategy', thumbnail: 'https://4ap.tech/images/x22.webp', rating: 4.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
@@ -318,12 +384,6 @@
            { id: '21', title: "Derpixon", category: 'Adventure', thumbnail: 'https://4ap.tech/images/x55.webp', rating: 4.4, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '22', title: 'Anuncio', category: 'Horror', thumbnail: 'https://4ap.tech/images/ANUNCIO.jpg', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '23', title: 'Room', category: 'Action', thumbnail: 'https://4ap.tech/images/room.webp', rating: 4.3, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
-           
-           
-           
-           
-          
            { id:  '4', title: 'Princess Request', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1hZ2UvNzE1NTIvMzI4MjQ4LmpwZw==/315x250%23c/OaP3Ln.jpg', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id:  '5', title: 'Kingdom Of Night', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1nLzI0MzM5ODkyLnBuZw==/original/e6CQr0.png', rating: 4.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id:  '6', title: 'Freak Circus', category: 'Action', thumbnail: 'https://img.itch.zone/aW1nLzI0MzI1NjA3LnBuZw==/original/fsplsb.png', rating: 4.9, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
@@ -368,6 +428,17 @@
         const htmlEl = document.documentElement;
         const header = document.getElementById('main-header');
 
+        // Age modal elements
+        const ageModal = document.getElementById('ageModal');
+        const ageModalClose = document.getElementById('ageModalClose');
+        const birthdateInput = document.getElementById('birthdateInput');
+        const ageError = document.getElementById('ageError');
+        const ageVerifyBtn = document.getElementById('ageVerifyBtn');
+        const ageCancelBtn = document.getElementById('ageCancelBtn');
+
+        // pending CPA url (set when user picks platform)
+        let pendingCpaUrl = null;
+
         function applyTheme() {
             if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 htmlEl.classList.add('dark');
@@ -387,6 +458,15 @@
             applyTheme();
         });
 
+        // Set max date on birthdate input to today to prevent future selection
+        (function setMaxBirthDate() {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            birthdateInput.max = `${yyyy}-${mm}-${dd}`;
+        })();
+
         // Initialize Slider
         function initSlider() {
             const sliderGames = GAMES_DATA.slice(0, 5); 
@@ -404,6 +484,7 @@
             let currentSlide = 0;
             const slides = document.querySelectorAll('.slide');
             setInterval(() => {
+                if (slides.length === 0) return;
                 slides[currentSlide].classList.remove('active');
                 currentSlide = (currentSlide + 1) % slides.length;
                 slides[currentSlide].classList.add('active');
@@ -432,7 +513,10 @@
                                 <h3 class="fw-title">${game.title}</h3>
                             </div>
                             <div class="fw-download-container">
-                                <button onclick="openModal('${game.id}')" class="fw-download-btn">Download</button>
+                                <button onclick="openModal('${game.id}')" class="fw-download-btn">
+                                    <!-- Icon removed from card download button per request -->
+                                    Download
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -441,24 +525,40 @@
             });
         }
 
+        // openModal: shows game modal with platform buttons. Platform buttons now trigger age check.
         function openModal(gameId) {
             const game = GAMES_DATA.find(g => g.id === gameId);
             if (!game) return;
             const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
             const pulseClass = (accent === '#ff007f') ? 'animate-pulse-pink' : 'animate-pulse-cyan';
+
+            // Put icons back into platform buttons and make them trigger age verification
             modalContent.innerHTML = `
                 <div class="relative h-48 overflow-hidden">
-                    <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover">
+                    <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover" decoding="async" loading="lazy">
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent dark:from-[#050505] dark:to-transparent"></div>
-                    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass-blur flex items-center justify-center text-gray-900 dark:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+                    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass-blur flex items-center justify-center text-gray-900 dark:text-white" aria-label="Close modal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
                 </div>
                 <div class="p-6 text-center">
                     <h2 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">${game.title}</h2>
                     <p class="text-gray-500 dark:text-white/40 text-sm mb-6">Select your device to start download</p>
                     <div class="space-y-3">
-                        <a href="${game.cpa}" target="_blank" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 ${pulseClass}" style="background-color: ${accent}; color: #000">Download for iOS</a>
-                        <a href="${game.cpa}" target="_blank" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 ${pulseClass}" style="background-color: ${accent}; color: #000">Download for Android</a>
+                        <!-- iOS button (triggers age verification) -->
+                        <button onclick="startAgeCheck('${game.cpa}')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
+                             <!-- Apple icon (SVG) -->
+                             <svg width="18" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                            Download for iOS
+                        </button>
+
+                        <!-- Android button (triggers age verification) -->
+                        <button onclick="startAgeCheck('${game.cpa}')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
+                            <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain;" />
+                            Download for Android
+                        </button>
                     </div>
+                    <p class="mt-6 text-[10px] uppercase tracking-[0.3em] text-gray-400 dark:text-white/20 font-bold">ENJOY!</p>
                 </div>
             `;
             modalOverlay.classList.add('active');
@@ -470,9 +570,70 @@
             document.body.style.overflow = 'auto';
         }
 
+        // startAgeCheck: show age modal and store the CPA url to open after verification
+        function startAgeCheck(cpaUrl) {
+            pendingCpaUrl = cpaUrl;
+            ageError.style.display = 'none';
+            ageError.textContent = '';
+            birthdateInput.value = ''; // reset input for user
+            ageModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAgeModal() {
+            pendingCpaUrl = null;
+            ageModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // verifyAge: check birthdate and open the CPA if user is >= 18
+        function verifyAgeAndProceed() {
+            const dobValue = birthdateInput.value;
+            if (!dobValue) {
+                ageError.style.display = 'block';
+                ageError.textContent = 'Please enter your date of birth.';
+                return;
+            }
+
+            const dob = new Date(dobValue + 'T00:00:00'); // ensure no timezone shift
+            const today = new Date();
+            if (dob > today) {
+                ageError.style.display = 'block';
+                ageError.textContent = 'Date of birth cannot be in the future.';
+                return;
+            }
+
+            // Calculate age (approximate using year/month/day)
+            let age = today.getFullYear() - dob.getFullYear();
+            const m = today.getMonth() - dob.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+                age--;
+            }
+
+            if (age >= 18) {
+                // Open CPA in a new tab
+                if (pendingCpaUrl) {
+                    window.open(pendingCpaUrl, '_blank', 'noopener,noreferrer');
+                }
+                // close modals
+                closeAgeModal();
+                closeModal();
+            } else {
+                ageError.style.display = 'block';
+                ageError.textContent = 'Sorry — you must be 18 years or older to download.';
+            }
+        }
+
+        // Wire age modal buttons
+        ageVerifyBtn.addEventListener('click', verifyAgeAndProceed);
+        ageCancelBtn.addEventListener('click', closeAgeModal);
+        ageModalClose.addEventListener('click', closeAgeModal);
+
         window.openModal = openModal;
         window.closeModal = closeModal;
+        window.startAgeCheck = startAgeCheck;
 
+        // Events (kept as-is behavior)
         searchBtn.addEventListener('click', () => {
             searchContainer.classList.toggle('opacity-0');
             searchContainer.classList.toggle('h-0');
@@ -491,6 +652,7 @@
             lastScrollY = window.scrollY;
         });
 
+        // Initialize
         initSlider();
         renderGames();
     </script>
