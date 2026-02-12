@@ -194,9 +194,9 @@
         .slider-container {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 900px; /* slightly larger so more slides look better */
             margin: 0 auto;
-            height: 220px;
+            height: 260px; /* increased height to better show more titles */
             border-radius: 32px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
@@ -214,12 +214,13 @@
         .slide-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, transparent 70%);
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 10%, transparent 70%);
         }
         .slide-content {
             position: relative;
             z-index: 20;
             text-align: left;
+            max-width: 70%;
         }
 
         /* Modal visibility control (hidden unless active) */
@@ -245,7 +246,7 @@
             width: 100%;
             padding: 10px 12px;
             border-radius: 10px;
-            /* changed to black background with white text per request */
+            /* black background and white text per request */
             background: #000;
             color: #fff;
             border: 1px solid rgba(255,255,255,0.08);
@@ -254,7 +255,6 @@
         .age-input::placeholder {
             color: rgba(255,255,255,0.6);
         }
-        /* make calendar icon visible on dark bg */
         .age-input::-webkit-calendar-picker-indicator {
             filter: invert(1) contrast(200%);
         }
@@ -264,7 +264,6 @@
             margin-top: 8px;
         }
 
-        /* small responsive tweak for the modal content */
         .modal-inner {
             width: 100%;
             max-width: 420px;
@@ -359,17 +358,14 @@
         const GAMES_DATA = [
             { id:  '1', title: 'NightGamer', category: 'Casual', thumbnail: 'https://imgcdn.latestmodapks.com/api/resize?url=https://www.latestmodapks.com/wp-content/uploads/2024/10/nightgamer-mod-1-media.webp', rating: 4.9, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '10', title: 'Erica: Knight of the Sun ', category: 'Simulation', thumbnail: 'https://techloky.com/public/uploads/images/Erica_Knight_of_the_sun.jpg', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
            { id:  '8', title: 'My Voice Zoo Mobile', category: 'Adventure', thumbnail: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4015530/efa2e94af1d2e95199ae3da5217ea59e37f8230a/page_bg_raw.jpg?t=1764608958', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
            { id: '134', title: 'Last Train JK', category: 'Simulation', thumbnail: 'https://izigames.net/uploads/2023/4/jk-on-the-last-train-for-android-1.png', rating: 3.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id:  '2', title: 'College Brawl', category: 'RPG', thumbnail: 'https://qa-apk.com/wp-content/uploads/2024/04/college-brawl.png', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '24', title: 'Summer Melody', category: 'Arcade', thumbnail: 'https://atelier.wiki.gg/images/thumb/Klaudia_One_Summer_Melody_5.png/300px-Klaudia_One_Summer_Melody_5.png?1891ff', rating: 4.1, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id:  '3', title: 'Spooky Milk', category: 'Casual', thumbnail: 'https://www.latestmodapks.com/wp-content/uploads/2023/07/Spooky.Milk_.Life-1.jpeg', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id:'3.5', title: 'The Stray Cat of Belheim', category: 'Casual', thumbnail: 'https://apktodo.io/uploads/2025/4/the-stray-cat-of-belheim-apk.jpg', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id:  '09', title: 'Max the elf', category: 'Simulation', thumbnail: 'https://img.itch.zone/aW1nLzIyOTQwNjUxLnBuZw==/315x250%23c/CWvbdc.png', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-          { id:'3.4', title: 'Dark Hunter Kuro', category: 'Arcade', thumbnail: 'https://images.steamusercontent.com/ugc/1785135165615831365/D4BA543E0E041ED83851A43F15733800F7BE27B6/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false', rating: 4.1, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           
+           { id:'3.4', title: 'Dark Hunter Kuro', category: 'Arcade', thumbnail: 'https://images.steamusercontent.com/ugc/1785135165615831365/D4BA543E0E041ED83851A43F15733800F7BE27B6/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false', rating: 4.1, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '17', title: 'Little Sis', category: 'Casual', thumbnail: 'https://4ap.tech/images/little_sis.jpg', rating: 4.0, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '18', title: 'The Gentle Priestess', category: 'Visual Novel', thumbnail: 'https://4ap.tech/images/THE_GENTLE_PRIESTESS.jpg', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '19', title: 'Miko Chan', category: 'Strategy', thumbnail: 'https://4ap.tech/images/x22.webp', rating: 4.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
@@ -377,33 +373,16 @@
            { id: '21', title: "Panofia", category: 'Adventure', thumbnail: 'https://4ap.tech/images/panofia.jpg', rating: 4.4, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '22', title: 'Hypnotized', category: 'Horror', thumbnail: 'https://4ap.tech/images/x44.webp', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '23', title: 'Neet Chan', category: 'Action', thumbnail: 'https://4ap.tech/images/x4.webp', rating: 4.3, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '17', title: 'Love with the devil prince', category: 'Casual', thumbnail: 'https://4ap.tech/images/x5.webp', rating: 4.0, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '18', title: 'Spankbot', category: 'Visual Novel', thumbnail: 'https://4ap.tech/images/x3.webp', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '19', title: 'Together Again', category: 'Strategy', thumbnail: 'https://4ap.tech/images/x8.webp', rating: 4.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '20', title: 'Night Call Dojo', category: 'Simulation', thumbnail: 'https://4ap.tech/images/NIGHT_CALL_DOJO.jpg', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '21', title: "Derpixon", category: 'Adventure', thumbnail: 'https://4ap.tech/images/x55.webp', rating: 4.4, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '22', title: 'Anuncio', category: 'Horror', thumbnail: 'https://4ap.tech/images/ANUNCIO.jpg', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '23', title: 'Room', category: 'Action', thumbnail: 'https://4ap.tech/images/room.webp', rating: 4.3, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id:  '4', title: 'Princess Request', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1hZ2UvNzE1NTIvMzI4MjQ4LmpwZw==/315x250%23c/OaP3Ln.jpg', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id:  '5', title: 'Kingdom Of Night', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1nLzI0MzM5ODkyLnBuZw==/original/e6CQr0.png', rating: 4.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id:  '6', title: 'Freak Circus', category: 'Action', thumbnail: 'https://img.itch.zone/aW1nLzI0MzI1NjA3LnBuZw==/original/fsplsb.png', rating: 4.9, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id:  '7', title: '3d Anime Girl', category: 'Simulation', thumbnail: 'https://4ap.tech/images/3d_anime_girl.png', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id:  '8', title: 'Starbound Soul', category: 'Adventure', thumbnail: 'https://cdn2.steamgriddb.com/thumb/114a927c58272cb3b97698f06033f955.jpg', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id:  '9', title: 'Reflexia', category: 'Puzzle', thumbnail: 'https://pbs.twimg.com/media/G0mrFhYWEAAUa8W.jpg', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '177', title: 'Piano Hazard', category: 'Casual', thumbnail: 'https://apktodo.io/uploads/2026/1/paio-hazard-apk-1.jpg', rating: 4.3, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '11', title: 'My Forest Home', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2026/1/my-forest-home-download.jpg', rating: 4.4, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '12', title: 'Unstrange', category: 'Adventure', thumbnail: 'https://img.itch.zone/aW1nLzI1MDE5NTQ1LmdpZg==/315x250%23c/eeAgO%2F.gif', rating: 4.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '13', title: 'Miko Gun', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1nLzU1NzA0ODAucG5n/315x250%23c/onFvUl.png', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '14', title: 'Tag After School', category: 'Adventure', thumbnail: 'https://myvideogamelist-com.s3.amazonaws.com/assets/boxart/NBSOjcDLZoMdlLDfS7n4EwQuxnboe0DeeL7Cq7Q5.jpg', rating: 4.3, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '15', title: 'Lure of Passion', category: 'Adventure', thumbnail: 'https://apktodo.io/uploads/2026/1/lure-of-passion-download.jpg', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '16', title: 'My NTR Girlfriend Goes Camping!', category: 'Visual Novel', thumbnail: 'https://apktodo.io/uploads/2026/1/my-ntr-girlfriend-goes-camping-apk.jpg', rating: 4.2, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '17', title: 'Princess Messy Room', category: 'Casual', thumbnail: 'https://apktodo.io/uploads/2026/1/princess-messy-room-free.jpg', rating: 4.0, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '18', title: 'My Sister-in-law Mirai-chan', category: 'Visual Novel', thumbnail: 'https://apktodo.io/uploads/2026/1/my-sister-in-lawmirai-chan-free.jpg', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '19', title: 'Imperial Harem', category: 'Strategy', thumbnail: 'https://apktodo.io/uploads/2026/1/screenshot-2026-01-09-214331.jpg', rating: 4.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '20', title: 'My State Sponsored Catgirl', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2026/1/my-state-sponsored-catgirl-free.jpg', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '21', title: "Hau'oli", category: 'Adventure', thumbnail: 'https://apktodo.io/uploads/2026/1/hauoli-apk.jpg', rating: 4.4, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '22', title: 'Haunted Chair With Shy Girl', category: 'Horror', thumbnail: 'https://apktodo.io/uploads/2025/12/haunted-chair-with-shy-girl-free.jpg', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
-           { id: '23', title: 'Ran Mobile', category: 'Action', thumbnail: 'https://i0.wp.com/blogranonline.game.blog/wp-content/uploads/2016/12/ran-online-wallpaper.jpg?fit=1200%2C960&ssl=1', rating: 4.3, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
+           { id:  '8b', title: 'Starbound Soul - Echoes', category: 'Adventure', thumbnail: 'https://cdn2.steamgriddb.com/thumb/114a927c58272cb3b97698f06033f955.jpg', rating: 4.9, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
+           { id:  '9b', title: 'Reflexia: Remaster', category: 'Puzzle', thumbnail: 'https://pbs.twimg.com/media/G0mrFhYWEAAUa8W.jpg', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
+           { id: '30', title: 'Neon Dusk', category: 'Arcade', thumbnail: 'https://images.unsplash.com/photo-1543872084-c7bd3822856f?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcd', rating: 4.7, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
+           { id: '31', title: 'Moonlight Detective', category: 'Visual Novel', thumbnail: 'https://images.unsplash.com/photo-1505685296765-3a2736de412f?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=efgh', rating: 4.5, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
+           { id: '32', title: 'Skybound Knights', category: 'RPG', thumbnail: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=ijkl', rating: 4.8, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
+           { id: '33', title: 'Mystic Garden', category: 'Simulation', thumbnail: 'https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=mnop', rating: 4.4, cpa: 'https://lockedapp.space/cl/i/j77o9j' },
            { id: '289', title: 'Densya 2', category: 'Rpg', thumbnail: 'https://apktodo.io/uploads/2025/11/chikan-densya-2-apk.jpg', rating: 4.6, cpa: 'https://lockedapp.space/cl/i/j77o9j' }
         ];
 
@@ -469,7 +448,8 @@
 
         // Initialize Slider
         function initSlider() {
-            const sliderGames = GAMES_DATA.slice(0, 5); 
+            // Show more games in the hero slider — now uses the first 12 entries (or fewer if list smaller)
+            const sliderGames = GAMES_DATA.slice(0, 12);
             heroSlider.innerHTML = sliderGames.map((game, idx) => `
                 <div class="slide ${idx === 0 ? 'active' : ''}" style="background: url('${game.thumbnail}') center/cover no-repeat;">
                     <div class="slide-overlay"></div>
@@ -483,8 +463,8 @@
 
             let currentSlide = 0;
             const slides = document.querySelectorAll('.slide');
+            if (slides.length === 0) return;
             setInterval(() => {
-                if (slides.length === 0) return;
                 slides[currentSlide].classList.remove('active');
                 currentSlide = (currentSlide + 1) % slides.length;
                 slides[currentSlide].classList.add('active');
@@ -514,7 +494,7 @@
                             </div>
                             <div class="fw-download-container">
                                 <button onclick="openModal('${game.id}')" class="fw-download-btn">
-                                    <!-- Icon removed from card download button per request -->
+                                    <!-- Icon removed from card download button per previous request -->
                                     Download
                                 </button>
                             </div>
@@ -532,7 +512,6 @@
             const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
             const pulseClass = (accent === '#ff007f') ? 'animate-pulse-pink' : 'animate-pulse-cyan';
 
-            // Put icons back into platform buttons and make them trigger age verification
             modalContent.innerHTML = `
                 <div class="relative h-48 overflow-hidden">
                     <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover" decoding="async" loading="lazy">
@@ -545,14 +524,11 @@
                     <h2 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">${game.title}</h2>
                     <p class="text-gray-500 dark:text-white/40 text-sm mb-6">Select your device to start download</p>
                     <div class="space-y-3">
-                        <!-- iOS button (triggers age verification) -->
                         <button onclick="startAgeCheck('${game.cpa}')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
-                             <!-- Apple icon (SVG) -->
                              <svg width="18" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
                             Download for iOS
                         </button>
 
-                        <!-- Android button (triggers age verification) -->
                         <button onclick="startAgeCheck('${game.cpa}')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
                             <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain;" />
                             Download for Android
