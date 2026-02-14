@@ -233,7 +233,7 @@
             display: flex;
         }
 
-        /* Age verification modal */
+        /* Age confirmation modal (simplified "Are you 18?") */
         #ageModal {
             display: none;
             align-items: center;
@@ -241,27 +241,6 @@
         }
         #ageModal.active {
             display: flex;
-        }
-        .age-input {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 10px;
-            /* black background and white text per request */
-            background: #000;
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.08);
-            caret-color: #fff;
-        }
-        .age-input::placeholder {
-            color: rgba(255,255,255,0.6);
-        }
-        .age-input::-webkit-calendar-picker-indicator {
-            filter: invert(1) contrast(200%);
-        }
-        .age-error {
-            color: #ff4d4f;
-            font-size: 13px;
-            margin-top: 8px;
         }
 
         .modal-inner {
@@ -335,22 +314,17 @@
         </div>
     </div>
 
-    <!-- Age verification modal -->
+    <!-- Age confirmation modal (simplified) -->
     <div id="ageModal" class="fixed inset-0 z-[110] items-center justify-center px-6">
         <div class="absolute inset-0 bg-black/60 dark:bg-black/90" id="ageModalClose"></div>
-        <div class="relative glass-blur rounded-2xl overflow-hidden p-6 modal-inner">
-            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Age verification</h3>
-            <p class="text-sm text-gray-600 dark:text-white/60 mb-4">Please enter your date of birth to confirm you are 18 or older. You must be 18+ to proceed.</p>
-
-            <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Date of birth</label>
-            <input id="birthdateInput" class="age-input" type="date" max="" aria-label="Date of birth" />
-            <div id="ageError" class="age-error" style="display:none"></div>
-
+        <div class="relative glass-blur rounded-2xl overflow-hidden p-6 modal-inner text-center">
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Are You 18 or older !?</h3>
+            <p class="text-sm text-gray-600 dark:text-white/60 mb-4">Click Continue to proceed to the download link.</p>
             <div class="mt-4 flex gap-2">
-                <button id="ageVerifyBtn" class="flex-1 py-3 rounded-2xl bg-[#00f3ff] text-black font-bold">Verify and Continue</button>
+                <button id="ageConfirmBtn" class="flex-1 py-3 rounded-2xl bg-[#00f3ff] text-black font-bold">Yes Continue</button>
                 <button id="ageCancelBtn" class="flex-1 py-3 rounded-2xl glass text-sm font-bold">Cancel</button>
             </div>
-            <p class="mt-3 text-[11px] text-gray-500 dark:text-white/40">We only use this to verify age. No data is sent anywhere from this demo.</p>
+            <p class="mt-3 text-[11px] text-gray-500 dark:text-white/40">We only show this confirmation before opening the download link.</p>
         </div>
     </div>
 
@@ -407,12 +381,10 @@
         const htmlEl = document.documentElement;
         const header = document.getElementById('main-header');
 
-        // Age modal elements
+        // Age confirmation modal elements (simplified)
         const ageModal = document.getElementById('ageModal');
         const ageModalClose = document.getElementById('ageModalClose');
-        const birthdateInput = document.getElementById('birthdateInput');
-        const ageError = document.getElementById('ageError');
-        const ageVerifyBtn = document.getElementById('ageVerifyBtn');
+        const ageConfirmBtn = document.getElementById('ageConfirmBtn');
         const ageCancelBtn = document.getElementById('ageCancelBtn');
 
         // pending CPA url (set when user picks platform)
@@ -436,15 +408,6 @@
             localStorage.setItem('theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
             applyTheme();
         });
-
-        // Set max date on birthdate input to today to prevent future selection
-        (function setMaxBirthDate() {
-            const today = new Date();
-            const yyyy = today.getFullYear();
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const dd = String(today.getDate()).padStart(2, '0');
-            birthdateInput.max = `${yyyy}-${mm}-${dd}`;
-        })();
 
         // Initialize Slider
         function initSlider() {
@@ -505,7 +468,7 @@
             });
         }
 
-        // openModal: shows game modal with platform buttons. Platform buttons now trigger age check.
+        // openModal: shows game modal with platform buttons. Platform buttons now trigger confirmation modal.
         function openModal(gameId) {
             const game = GAMES_DATA.find(g => g.id === gameId);
             if (!game) return;
@@ -524,12 +487,12 @@
                     <h2 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">${game.title}</h2>
                     <p class="text-gray-500 dark:text-white/40 text-sm mb-6">Select your device to start download</p>
                     <div class="space-y-3">
-                        <button onclick="startAgeCheck('${game.cpa}')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
+                        <button onclick="startAgeConfirm('${game.cpa}')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
                              <svg width="18" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
                             Download for iOS
                         </button>
 
-                        <button onclick="startAgeCheck('${game.cpa}')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
+                        <button onclick="startAgeConfirm('${game.cpa}')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
                             <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain;" />
                             Download for Android
                         </button>
@@ -546,12 +509,9 @@
             document.body.style.overflow = 'auto';
         }
 
-        // startAgeCheck: show age modal and store the CPA url to open after verification
-        function startAgeCheck(cpaUrl) {
+        // startAgeConfirm: show simple confirmation modal and store the CPA url
+        function startAgeConfirm(cpaUrl) {
             pendingCpaUrl = cpaUrl;
-            ageError.style.display = 'none';
-            ageError.textContent = '';
-            birthdateInput.value = ''; // reset input for user
             ageModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -562,52 +522,23 @@
             document.body.style.overflow = 'auto';
         }
 
-        // verifyAge: check birthdate and open the CPA if user is >= 18
-        function verifyAgeAndProceed() {
-            const dobValue = birthdateInput.value;
-            if (!dobValue) {
-                ageError.style.display = 'block';
-                ageError.textContent = 'Please enter your date of birth.';
-                return;
+        // confirm and open CPA
+        function confirmAndProceed() {
+            if (pendingCpaUrl) {
+                window.open(pendingCpaUrl, '_blank', 'noopener,noreferrer');
             }
-
-            const dob = new Date(dobValue + 'T00:00:00'); // ensure no timezone shift
-            const today = new Date();
-            if (dob > today) {
-                ageError.style.display = 'block';
-                ageError.textContent = 'Date of birth cannot be in the future.';
-                return;
-            }
-
-            // Calculate age (approximate using year/month/day)
-            let age = today.getFullYear() - dob.getFullYear();
-            const m = today.getMonth() - dob.getMonth();
-            if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
-                age--;
-            }
-
-            if (age >= 18) {
-                // Open CPA in a new tab
-                if (pendingCpaUrl) {
-                    window.open(pendingCpaUrl, '_blank', 'noopener,noreferrer');
-                }
-                // close modals
-                closeAgeModal();
-                closeModal();
-            } else {
-                ageError.style.display = 'block';
-                ageError.textContent = 'Sorry — you must be 18 years or older to download.';
-            }
+            closeAgeModal();
+            closeModal();
         }
 
-        // Wire age modal buttons
-        ageVerifyBtn.addEventListener('click', verifyAgeAndProceed);
+        // Wire confirmation modal buttons
+        ageConfirmBtn.addEventListener('click', confirmAndProceed);
         ageCancelBtn.addEventListener('click', closeAgeModal);
         ageModalClose.addEventListener('click', closeAgeModal);
 
         window.openModal = openModal;
         window.closeModal = closeModal;
-        window.startAgeCheck = startAgeCheck;
+        window.startAgeConfirm = startAgeConfirm;
 
         // Events (kept as-is behavior)
         searchBtn.addEventListener('click', () => {
