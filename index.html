@@ -846,8 +846,9 @@
         // Initialize Filters
         function initFilters() {
             if (!filterContainer) return;
-            // Extract unique categories
-            const categories = ['All', ...new Set(GAMES_DATA.map(g => g.category))].sort();
+            // Extract unique categories, sort them, then prepend 'All'
+            const uniqueCats = [...new Set(GAMES_DATA.map(g => g.category))].sort();
+            const categories = ['All', ...uniqueCats];
 
             filterContainer.innerHTML = categories.map(cat => `
                 <button class="filter-btn ${cat === 'All' ? 'active' : ''}" onclick="setCategory('${cat}')">${cat}</button>
