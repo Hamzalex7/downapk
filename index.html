@@ -63,11 +63,7 @@
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .dark .glass-blur {
-            background: rgba(255, 255, 255, 0.03);
+            border: 1px sola rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -442,6 +438,38 @@
         #backToTop:hover {
             transform: translateY(-4px);
         }
+
+        /* Verification Modal Styles */
+        .secure-icon-container {
+            width: 80px;
+            height: 80px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: #10b981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .animate-pulse-green {
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
     </style>
 </head>
 
@@ -524,6 +552,29 @@
         <div id="filterContainer" class="filter-container max-w-6xl mx-auto mb-8 justify-start md:justify-center px-4">
         </div>
 
+        <!-- Pixel Games Section -->
+        <section id="pixelSection" class="max-w-6xl mx-auto px-4 mb-16 hidden">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="h-10 w-10 flex items-center justify-center bg-[#8b5cf6]/20 rounded-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />
+                        <line x1="7" y1="2" x2="7" y2="22" />
+                        <line x1="17" y1="2" x2="17" y2="22" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                        <line x1="2" y1="7" x2="7" y2="7" />
+                        <line x1="2" y1="17" x2="7" y2="17" />
+                        <line x1="17" y1="17" x2="22" y2="17" />
+                        <line x1="17" y1="7" x2="22" y2="7" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-black text-gray-900 dark:text-white tracking-tight">PIXEL ART GEMS</h2>
+            </div>
+            <div id="pixelGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <!-- Pixel games injected here -->
+            </div>
+        </section>
+
         <div id="gameGrid" class="vertical-list">
         </div>
     </main>
@@ -562,20 +613,7 @@
         </div>
     </div>
 
-    <!-- Age confirmation modal (simplified) -->
-    <div id="ageModal" class="fixed inset-0 z-[110] items-center justify-center px-6">
-        <div class="absolute inset-0 bg-black/60 dark:bg-black/90" id="ageModalClose"></div>
-        <div class="relative glass-blur rounded-2xl overflow-hidden p-6 modal-inner text-center">
-            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Are You 18 or older !?</h3>
-            <p class="text-sm text-gray-600 dark:text-white/60 mb-4">Click Continue to proceed to the download link.</p>
-            <div class="mt-4 flex gap-2">
-                <button id="ageConfirmBtn" class="flex-1 py-3 rounded-2xl bg-[#00f3ff] text-black font-bold">Yes
-                    Continue</button>
-                <button id="ageCancelBtn" class="flex-1 py-3 rounded-2xl glass text-sm font-bold">Cancel</button>
-            </div>
-            <p class="mt-3 text-[11px] text-gray-500 dark:text-white/40">We only show this confirmation before opening
-                the download link.</p>
-        </div>
+
     </div>
 
     <!-- Back to Top Button -->
@@ -618,6 +656,13 @@
             { id: '28', title: '3d Anime Girl', category: 'Simulation', thumbnail: 'https://4ap.tech/images/3d_anime_girl.png', rating: 4.6, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
             { id: '29', title: 'Starbound Soul', category: 'Adventure', thumbnail: 'https://cdn2.steamgriddb.com/thumb/114a927c58272cb3b97698f06033f955.jpg', rating: 4.8, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
             { id: '30', title: 'Reflexia', category: 'Puzzle', thumbnail: 'https://pbs.twimg.com/media/G0mrFhYWEAAUa8W.jpg', rating: 4.5, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
+            { id: '45', title: 'Legend of Elementia', category: 'Pixel', thumbnail: 'https://yt3.googleusercontent.com/oMou3EmnbPQUKL2YCCXsY97aqBBoFYmsk_qp4rB48f6kgzRH7fniOqxzAqzQg7UzmCsQsO2hZw=s160-c-k-c0x00ffffff-no-rj', rating: 4.9, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
+            { id: '46', title: 'Faeland', category: 'Pixel', thumbnail: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1280080/extras/Faeland_Cover_600x338.jpg?t=1710307630', rating: 4.8, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
+            { id: '47', title: 'Sea of Stars', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/1244090/capsule_616x353.jpg', rating: 4.9, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
+            { id: '48', title: 'Octopath Traveler', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/921570/capsule_616x353.jpg', rating: 4.7, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
+            { id: '49', title: 'Stardew Valley', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/413150/capsule_616x353.jpg', rating: 4.9, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
+            
+            
             { id: '31', title: 'Piano Hazard', category: 'Casual', thumbnail: 'https://apktodo.io/uploads/2026/1/paio-hazard-apk-1.jpg', rating: 4.3, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
             { id: '32', title: 'My Forest Home', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2026/1/my-forest-home-download.jpg', rating: 4.4, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
             { id: '33', title: 'Unstrange', category: 'Adventure', thumbnail: 'https://img.itch.zone/aW1nLzI1MDE5NTQ1LmdpZg==/315x250%23c/eeAgO%2F.gif', rating: 4.7, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
@@ -631,15 +676,29 @@
             { id: '41', title: 'My State Sponsored Catgirl', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2026/1/my-state-sponsored-catgirl-free.jpg', rating: 4.8, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
             { id: '42', title: "Hau'oli", category: 'Adventure', thumbnail: 'https://apktodo.io/uploads/2026/1/hauoli-apk.jpg', rating: 4.4, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
             { id: '43', title: 'Haunted Chair With Shy Girl', category: 'Horror', thumbnail: 'https://apktodo.io/uploads/2025/12/haunted-chair-with-shy-girl-free.jpg', rating: 4.5, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
-            { id: '44', title: 'Ran Mobile', category: 'Action', thumbnail: 'https://i0.wp.com/blogranonline.game.blog/wp-content/uploads/2016/12/ran-online-wallpaper.jpg?fit=1200%2C960&ssl=1', rating: 4.3, cpa: 'https://verification.downapk.online/cl/i/j77o9j' }
+            { id: '44', title: 'Ran Mobile', category: 'Action', thumbnail: 'https://i0.wp.com/blogranonline.game.blog/wp-content/uploads/2016/12/ran-online-wallpaper.jpg?fit=1200%2C960&ssl=1', rating: 4.3, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
+            // PIXEL GAMES
+            
+            { id: '50', title: 'Terraria', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/105600/capsule_616x353.jpg', rating: 4.8, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
+            { id: '51', title: 'Celeste', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/504230/capsule_616x353.jpg', rating: 4.9, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
+            { id: '52', title: 'Dead Cells', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/588650/capsule_616x353.jpg', rating: 4.8, cpa: 'https://verification.downapk.online/cl/i/j77o9j' },
+            { id: '53', title: 'Katana ZERO', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/460950/capsule_616x353.jpg', rating: 4.9, cpa: 'https://verification.downapk.online/cl/i/j77o9j' }
         ];
 
         const CATEGORY_ACCENT = {
-            'RPG': '#00f3ff', 'Action': '#00f3ff', 'Adventure': '#00f3ff', 'Strategy': '#00f3ff', 'Arcade': '#00f3ff',
-            'Simulation': '#ff007f', 'Visual Novel': '#ff007f', 'Casual': '#ff007f', 'Puzzle': '#ff007f', 'Horror': '#ff007f'
+            'Action': '#ff4747',
+            'RPG': '#a855f7',
+            'Strategy': '#3b82f6',
+            'Adventure': '#22c55e',
+            'Simulation': '#eab308',
+            'Horror': '#ef4444',
+            'Casual': '#ec4899',
+            'Visual Novel': '#d946ef',
+            'Puzzle': '#06b6d4',
+            'Arcade': '#f97316',
+            'Pixel': '#8b5cf6'
         };
 
-        const filterContainer = document.getElementById('filterContainer');
         const backToTopBtn = document.getElementById('backToTop');
         let currentCategory = 'All';
 
@@ -659,14 +718,6 @@
         const htmlEl = document.documentElement;
         const header = document.getElementById('main-header');
 
-        // Age confirmation modal elements (simplified)
-        const ageModal = document.getElementById('ageModal');
-        const ageModalClose = document.getElementById('ageModalClose');
-        const ageConfirmBtn = document.getElementById('ageConfirmBtn');
-        const ageCancelBtn = document.getElementById('ageCancelBtn');
-
-        // pending CPA url (set when user picks platform)
-        let pendingCpaUrl = null;
 
         function applyTheme() {
             if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -759,29 +810,36 @@
             const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
             const pulseClass = (accent === '#ff007f') ? 'animate-pulse-pink' : 'animate-pulse-cyan';
 
+            // Targeti l-container l-kbir bach t-k7el l-background kamla
+            const modalInner = modalContent.parentElement; 
+            modalInner.className = "relative w-full max-w-sm rounded-3xl overflow-hidden animate-spring";
+            modalInner.style.backgroundColor = "#1a1a1a"; // Lawn l-k7al lli bghiti
+            modalInner.style.border = "1px solid rgba(255, 255, 255, 0.1)";
+
             modalContent.innerHTML = `
                 <div class="relative h-48 overflow-hidden">
                     <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover" decoding="async" loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/10 to-transparent dark:from-[#050505] dark:to-transparent"></div>
-                    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass-blur flex items-center justify-center text-gray-900 dark:text-white" aria-label="Close modal">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] to-transparent"></div>
+                    
+                    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white" aria-label="Close modal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     </button>
                 </div>
                 <div class="p-6 text-center">
-                    <h2 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">${game.title}</h2>
-                    <p class="text-gray-500 dark:text-white/40 text-sm mb-6">Select your device to start download</p>
+                    <h2 class="text-2xl font-bold mb-2 text-white">${game.title}</h2>
+                    <p class="text-white/60 text-sm mb-6">Select your device to start download</p>
                     <div class="space-y-3">
-                        <button onclick="startAgeConfirm('${game.cpa}')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
-                             <svg width="18" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                        <button onclick="window.open('${game.cpa}', '_blank')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #1a1a1a;">
+                             <svg width="18" height="18" viewBox="0 0 384 512" fill="#1a1a1a"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
                             Download for iOS
                         </button>
 
-                        <button onclick="startAgeConfirm('${game.cpa}')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #000">
-                            <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain;" />
+                        <button onclick="window.open('${game.cpa}', '_blank')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #1a1a1a;">
+                            <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain; filter: brightness(0.1);" />
                             Download for Android
                         </button>
                     </div>
-                    <p class="mt-6 text-[10px] uppercase tracking-[0.3em] text-gray-400 dark:text-white/20 font-bold">ENJOY!</p>
+                    <p class="mt-6 text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold">ENJOY!</p>
                 </div>
             `;
             modalOverlay.classList.add('active');
@@ -793,36 +851,7 @@
             document.body.style.overflow = 'auto';
         }
 
-        // startAgeConfirm: show simple confirmation modal and store the CPA url
-        function startAgeConfirm(cpaUrl) {
-            pendingCpaUrl = cpaUrl;
-            ageModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
 
-        function closeAgeModal() {
-            pendingCpaUrl = null;
-            ageModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // confirm and open CPA
-        function confirmAndProceed() {
-            if (pendingCpaUrl) {
-                window.open(pendingCpaUrl, '_blank', 'noopener,noreferrer');
-            }
-            closeAgeModal();
-            closeModal();
-        }
-
-        // Wire confirmation modal buttons
-        ageConfirmBtn.addEventListener('click', confirmAndProceed);
-        ageCancelBtn.addEventListener('click', closeAgeModal);
-        ageModalClose.addEventListener('click', closeAgeModal);
-
-        window.openModal = openModal;
-        window.closeModal = closeModal;
-        window.startAgeConfirm = startAgeConfirm;
 
         // Events (kept as-is behavior)
         searchBtn.addEventListener('click', () => {
