@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Best Hidden Anime Games</title>
+    <title>Download the latest Anime Games with all items unlocked. Get working mobile versions and premium anime games at DownApk.online. Fast and secure for iOS & Android</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -282,10 +283,8 @@
             position: relative;
             width: 100%;
             max-width: 900px;
-            /* slightly larger so more slides look better */
             margin: 0 auto;
             height: 260px;
-            /* increased height to better show more titles */
             border-radius: 32px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
@@ -354,9 +353,7 @@
             padding: 4px 4px 16px 4px;
             margin-bottom: 24px;
             scrollbar-width: none;
-            /* Firefox */
             -ms-overflow-style: none;
-            /* IE and Edge */
         }
 
         .filter-container::-webkit-scrollbar {
@@ -470,6 +467,73 @@
                 box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
             }
         }
+        
+        /* Iframe Overlay Styles */
+        .locker-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 8, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .locker-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .locker-container {
+            width: 90%;
+            max-width: 1000px;
+            height: 80vh;
+            background: #0f0f1a;
+            border-radius: 24px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .locker-overlay.active .locker-container {
+            transform: scale(1);
+        }
+        .locker-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .close-locker {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10001;
+            backdrop-filter: blur(5px);
+        }
+        .close-locker:hover {
+            background: rgba(139, 92, 246, 0.3);
+            transform: rotate(90deg);
+        }
+        .terminal-text { font-family: 'Courier New', Courier, monospace; text-shadow: 0 0 5px rgba(139, 92, 246, 0.5); }
     </style>
 </head>
 
@@ -548,32 +612,8 @@
             </div>
         </section>
 
-        <!-- Filter Container -->
         <div id="filterContainer" class="filter-container max-w-6xl mx-auto mb-8 justify-start md:justify-center px-4">
         </div>
-
-        <!-- Pixel Games Section -->
-        <section id="pixelSection" class="max-w-6xl mx-auto px-4 mb-16 hidden">
-            <div class="flex items-center gap-4 mb-6">
-                <div class="h-10 w-10 flex items-center justify-center bg-[#8b5cf6]/20 rounded-xl">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />
-                        <line x1="7" y1="2" x2="7" y2="22" />
-                        <line x1="17" y1="2" x2="17" y2="22" />
-                        <line x1="2" y1="12" x2="22" y2="12" />
-                        <line x1="2" y1="7" x2="7" y2="7" />
-                        <line x1="2" y1="17" x2="7" y2="17" />
-                        <line x1="17" y1="17" x2="22" y2="17" />
-                        <line x1="17" y1="7" x2="22" y2="7" />
-                    </svg>
-                </div>
-                <h2 class="text-2xl font-black text-gray-900 dark:text-white tracking-tight">PIXEL ART GEMS</h2>
-            </div>
-            <div id="pixelGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                <!-- Pixel games injected here -->
-            </div>
-        </section>
 
         <div id="gameGrid" class="vertical-list">
         </div>
@@ -605,7 +645,6 @@
         </div>
     </footer>
 
-    <!-- Main Modal (game details + download choices) -->
     <div id="modalOverlay" class="fixed inset-0 z-[100] modal-overlay items-center justify-center px-6">
         <div class="absolute inset-0 bg-black/60 dark:bg-black/90" id="modalClose"></div>
         <div class="relative glass-blur w-full max-w-sm rounded-3xl overflow-hidden animate-spring">
@@ -616,17 +655,23 @@
 
     </div>
 
-    <!-- Back to Top Button -->
     <button id="backToTop" class="glass" aria-label="Back to Top">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m18 15-6-6-6 6" />
         </svg>
     </button>
+    
+    <div id="locker-overlay" class="locker-overlay" onclick="closeLocker(event)">
+        <div class="locker-container" onclick="event.stopPropagation()">
+            <div class="close-locker" onclick="closeLocker(event)">✕</div>
+            <iframe id="locker-iframe" class="locker-iframe" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" loading="lazy"></iframe>
+        </div>
+    </div>
 
     <script>
         const GAMES_DATA = [
-  { id: '1', title: 'NightGamer', category: 'Simulation', thumbnail: 'https://www.latestmodapks.com/wp-content/uploads/2024/10/nightgamer-mod-3-media.webp', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+            { id: '1', title: 'NightGamer', category: 'Simulation', thumbnail: 'https://www.latestmodapks.com/wp-content/uploads/2024/10/nightgamer-mod-3-media.webp', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
     { id: '2', title: 'Kunoichi Sekiren', category: 'Action', thumbnail: 'https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/67cf0321785b53001dad9298.png', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
     { id: '3', title: 'College Brawl', category: 'Action', thumbnail: 'https://qa-apk.com/wp-content/uploads/2024/04/college-brawl.png', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
     { id: '4', title: 'Tag After School', category: 'Horror', thumbnail: 'https://myvideogamelist-com.s3.amazonaws.com/assets/boxart/NBSOjcDLZoMdlLDfS7n4EwQuxnboe0DeeL7Cq7Q5.jpg', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
@@ -734,7 +779,8 @@
     { id: '106', title: 'Ran Mobile', category: 'RPG', thumbnail: 'https://i0.wp.com/blogranonline.game.blog/wp-content/uploads/2016/12/ran-online-wallpaper.jpg?fit=1200%2C960&ssl=1', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
     { id: '107', title: 'Milk outside a bag of milk', category: 'Visual Novel', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1606270/header.jpg', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
     { id: '108', title: 'Kingdom Of Night', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1nLzI0MzM5ODkyLnBuZw==/original/e6CQr0.png', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' }
-];
+        ];
+
         const CATEGORY_ACCENT = {
             'Action': '#ff4747',
             'RPG': '#a855f7',
@@ -748,6 +794,30 @@
             'Arcade': '#f97316',
             'Pixel': '#8b5cf6'
         };
+
+        const NAMES = [
+           "John_Smith", "Mike_Johnson", "Sarah_Wilson", "Chris_Davis", "Emma_Miller",
+            "David_Brown", "Jessica_Taylor", "Robert_Williams", "Lisa_Anderson", "James_Thomas",
+            "Jennifer_Jackson", "Daniel_White", "Amanda_Harris", "Kevin_Martin", "Michelle_Lee",
+            "Pierre_Dubois", "Marie_Laurent", "Jean_Martin", "Sophie_Bernard", "Thomas_Petit",
+            "Julie_Roux", "Nicolas_Michel", "Camille_Fournier", "Luc_Durand", "Claire_Morel",
+            "Marco_Rossi", "Giulia_Bianchi", "Luca_Romano", "Alessia_Ferrari", "Francesco_Russo",
+            "Elena_Gallo", "Davide_Costa", "Chiara_Conti",
+            "Carlos_Garcia", "Ana_Rodriguez", "Javier_Martinez", "Laura_Hernandez", "Miguel_Lopez",
+            "Elena_Gonzalez", "Pablo_Sanchez",
+            "Ryan_Tremblay", "Olivia_Clark", "Nathan_Roy", "Sophie_Morin", "Liam_Pelletier",
+            "Oliver_Jones", "Charlotte_Williams", "Harry_Brown",
+            "Juan_Dela_Cruz", "Maria_Santos"
+        ];
+        
+        const MESSAGES = [
+            "Got all items unlocked!", "Received 50k instantly!", "Delivered to my account!", "Unlocked successfully!", 
+            "Working perfectly!", "Acquired in game!", "Hack 100% working!", "Coins delivered!",
+            "Beli received!", "Premium items unlocked!", "Generator works like a charm!", "Thank you for the resources!",
+            "Fast and secure delivery!", "My account is safe and loaded!", "Best generator I've ever used!", "Verified and working perfectly!"
+        ];
+
+        let currentActiveGame = null;
 
         const backToTopBtn = document.getElementById('backToTop');
         let currentCategory = 'All';
@@ -834,6 +904,7 @@
                         <div class="fw-thumb">
                             <img src="${game.thumbnail}" alt="${game.title}" decoding="async" loading="lazy">
                             <div class="fw-rating">★ ${game.rating}</div>
+                            
                         </div>
                         <div class="card-content-wrapper">
                             <div class="fw-meta">
@@ -842,7 +913,6 @@
                             </div>
                             <div class="fw-download-container">
                                 <button onclick="openModal('${game.id}')" class="fw-download-btn">
-                                    <!-- Icon removed from card download button per previous request -->
                                     Download
                                 </button>
                             </div>
@@ -871,34 +941,144 @@
                     <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover" decoding="async" loading="lazy">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] to-transparent"></div>
                     
-                    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white" aria-label="Close modal">
+                    
+                    <button onclick="closeModal()" class="absolute top-4 left-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white" aria-label="Close modal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     </button>
                 </div>
-                <div class="p-6 text-center">
-                    <h2 class="text-2xl font-bold mb-2 text-white">${game.title}</h2>
-                    <p class="text-white/60 text-sm mb-6">Select your device to start download</p>
-                    <div class="space-y-3">
-                        <button onclick="window.open('${game.cpa}', '_blank')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #1a1a1a;">
-                             <svg width="18" height="18" viewBox="0 0 384 512" fill="#1a1a1a"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-                            Download for iOS
-                        </button>
+                <div class="p-6 text-center relative max-h-[60vh] overflow-y-auto" style="scrollbar-width: none;">
+                    
+                    <div id="modal-step-1">
+                        <h2 class="text-2xl font-bold mb-2 text-white">${game.title}</h2>
+                        <p class="text-white/60 text-sm mb-6">Select your device to start download</p>
+                        <div class="space-y-3">
+                            <button onclick="startGenerator('${game.id}', 'iOS')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #1a1a1a;">
+                                 <svg width="18" height="18" viewBox="0 0 384 512" fill="#1a1a1a"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                                Download for iOS
+                            </button>
 
-                        <button onclick="window.open('${game.cpa}', '_blank')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #1a1a1a;">
-                            <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain; filter: brightness(0.1);" />
-                            Download for Android
-                        </button>
+                            <button onclick="startGenerator('${game.id}', 'Android')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #1a1a1a;">
+                                <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain; filter: brightness(0.1);" />
+                                Download for Android
+                            </button>
+                        </div>
+                        <p class="mt-6 text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold">Fast & Secure</p>
                     </div>
-                    <p class="mt-6 text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold">Fast & Secure</p>
+
+                    <div id="modal-step-2" class="hidden text-center py-6">
+                        <div class="relative w-20 h-20 mx-auto mb-6">
+                            <div class="absolute inset-0 border-4 border-slate-800 rounded-full"></div>
+                            <div class="absolute inset-0 border-4 border-violet-500 rounded-full border-t-transparent animate-spin"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <svg class="w-8 h-8 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v6a2 2 0 01-2-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                            </div>
+                        </div>
+                        <div id="console-logs" class="bg-[#050911] rounded-lg p-4 h-32 overflow-hidden flex flex-col justify-end items-start font-mono text-[10px] text-violet-400 border border-white/5 shadow-inner"></div>
+                    </div>
+                    
+                    <div class="mt-8 pt-8 border-t border-white/5 text-left">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse"></span>
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Recent Activity</span>
+                        </div>
+                        <div id="comments-list" class="space-y-4"></div>
+                    </div>
+
                 </div>
             `;
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            startFakeComments();
+        }
+
+        async function startGenerator(gameId, platform) {
+            currentActiveGame = GAMES_DATA.find(g => g.id === gameId);
+            document.getElementById('modal-step-1').classList.add('hidden');
+            document.getElementById('modal-step-2').classList.remove('hidden');
+            
+            const logsDiv = document.getElementById('console-logs');
+            logsDiv.innerHTML = "";
+            
+            let logs = [
+                `Connecting to ${currentActiveGame.title} Server...`, "Handshake successful.",
+                `Authenticating User on ${platform}...`, "User Verified.",
+                `Injecting MOD Data...`, "Bypassing Anti-Cheat...",
+                "Injection: 100%...", "Finalizing Installation..."
+            ];
+            
+            for(let log of logs) {
+                logsDiv.innerHTML += `<div class="terminal-text">> ${log}</div>`;
+                logsDiv.scrollTop = logsDiv.scrollHeight;
+                await new Promise(r => setTimeout(r, 800));
+            }
+            
+            addNewComment();
+            
+            setTimeout(() => {
+                showLocker();
+            }, 2000);
+        }
+
+        function showLocker() {
+            const lockerUrl = currentActiveGame ? currentActiveGame.cpa : 'about:blank';
+            document.getElementById('locker-iframe').src = lockerUrl;
+            document.getElementById('locker-overlay').classList.add('active');
+        }
+
+        function closeLocker(event) {
+            document.getElementById('locker-overlay').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('locker-iframe').src = 'about:blank';
+            }, 300);
+        }
+
+        function addNewComment() {
+            const name = NAMES[Math.floor(Math.random() * NAMES.length)];
+            const msg = MESSAGES[Math.floor(Math.random() * MESSAGES.length)];
+            const list = document.getElementById('comments-list');
+            if(!list) return;
+            const div = document.createElement('div');
+            div.className = "flex items-start gap-3 animate__animated animate__fadeInUp";
+            div.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center font-bold text-xs text-slate-400 border border-white/5">${name[0]}</div>
+                <div class="flex-1">
+                    <div class="flex justify-between items-center mb-0.5"><span class="text-xs font-bold text-white">${name}</span><span class="text-[9px] text-green-500 font-mono">JUST NOW</span></div>
+                    <p class="text-[10px] text-slate-400">${msg}</p>
+                </div>`;
+            list.prepend(div);
+            if(list.children.length > 4) list.lastChild.remove();
+        }
+
+        function startFakeComments() {
+            const list = document.getElementById('comments-list');
+            if(!list) return;
+            list.innerHTML = "";
+            function add() {
+                const listCheck = document.getElementById('comments-list');
+                if(!listCheck) return; 
+                const name = NAMES[Math.floor(Math.random() * NAMES.length)];
+                const msg = MESSAGES[Math.floor(Math.random() * MESSAGES.length)];
+                const div = document.createElement('div');
+                div.className = "flex items-start gap-3 animate__animated animate__fadeInUp";
+                div.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center font-bold text-xs text-slate-400 border border-white/5">${name[0]}</div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-0.5"><span class="text-xs font-bold text-white">${name}</span><span class="text-[9px] text-violet-500 font-mono">VERIFIED</span></div>
+                        <p class="text-[10px] text-slate-400">${msg}</p>
+                    </div>`;
+                listCheck.prepend(div);
+                if(listCheck.children.length > 4) listCheck.lastChild.remove();
+            }
+            for(let i=0; i<3; i++) add();
+            if(window.comInt) clearInterval(window.comInt);
+            window.comInt = setInterval(add, 2500);
         }
 
         function closeModal() {
             modalOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
+            if(window.comInt) clearInterval(window.comInt);
         }
 
 
