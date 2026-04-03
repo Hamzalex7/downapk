@@ -1,1356 +1,1148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    
-    <title>ModXplay - Free MOD APK Games Download</title>
-    <meta name="description" content="Download the latest MOD APK games for free. Get unlimited money, unlocked features at ModXplay.online">
-    <meta name="keywords" content="mod apk, free games, android games, mod games">
-    
-    <link rel="canonical" href="https://modxplay.online/">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://modxplay.online/">
-    <meta property="og:title" content="ModXplay - Free MOD APK Games">
-    <meta property="og:description" content="Download the latest MOD APK games for free.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Lato:wght@300;400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download the latest Anime Games with all items unlocked. Get working mobile versions and premium anime games at DownApk.online. Fast and secure for iOS & Android</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0f172a',
+                        darkcard: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* CSS Reset & Base */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        :root {
-            --background: hsl(225, 30%, 96%);
-            --foreground: hsl(222, 84%, 5%);
-            --card: hsl(0, 0%, 100%);
-            --card-foreground: hsl(222, 84%, 5%);
-            --primary: hsl(210, 100%, 50%);
-            --primary-foreground: hsl(0, 0%, 100%);
-            --secondary: hsl(145, 63%, 42%);
-            --muted: hsl(210, 40%, 96%);
-            --muted-foreground: hsl(215, 16%, 47%);
-            --border: hsl(214, 32%, 91%);
-            --radius: 0.5rem;
-            
-            --gradient-blue: linear-gradient(135deg, hsl(214, 100%, 75%), hsl(210, 100%, 50%));
-            --gradient-red: linear-gradient(135deg, hsl(20, 100%, 76%), hsl(11, 100%, 50%));
-            --gradient-purple: linear-gradient(135deg, hsl(280, 100%, 76%), hsl(276, 100%, 50%));
-            --gradient-orange: linear-gradient(135deg, hsl(35, 100%, 76%), hsl(36, 100%, 50%));
-            --gradient-green: linear-gradient(135deg, hsl(110, 100%, 41%), hsl(113, 100%, 38%));
-        }
-        
-        .dark {
-            --background: hsl(210, 50%, 10%);
-            --foreground: hsl(210, 40%, 98%);
-            --card: hsl(210, 50%, 15%);
-            --card-foreground: hsl(210, 40%, 98%);
-            --muted: hsl(217, 33%, 18%);
-            --muted-foreground: hsl(215, 20%, 65%);
-            --border: hsl(217, 33%, 18%);
-        }
-        
-        html { transition: background-color 0.3s ease, color 0.3s ease; scroll-behavior: smooth; }
-        
+        /* Core */
+        html,
         body {
-            font-family: 'Poppins', Arial, sans-serif;
-            background-color: var(--background);
-            color: var(--foreground);
-            min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-            line-height: 1.5;
-        }
-        
-        a { text-decoration: none; color: inherit; }
-        img { max-width: 100%; height: auto; display: block; }
-        button { cursor: pointer; border: none; background: none; font-family: inherit; }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        
-        /* Header (same as before) */
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: var(--card);
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 64px;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .logo-icon {
-            background: var(--gradient-blue);
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.25rem;
-        }
-        
-        .logo-text {
-            font-family: 'Kanit', sans-serif;
-            font-weight: bold;
-            font-size: 1.25rem;
-            color: var(--foreground);
-        }
-        
-        .logo-text span { color: var(--primary); }
-        
-        .nav-desktop {
-            display: none;
-            align-items: center;
-            gap: 1.5rem;
-        }
-        
-        @media (min-width: 768px) {
-            .nav-desktop { display: flex; }
-        }
-        
-        .nav-link {
-            color: var(--foreground);
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        
-        .nav-link:hover { color: var(--primary); }
-        
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .icon-btn {
-            padding: 0.5rem;
-            border-radius: 50%;
-            background: var(--muted);
-            color: var(--foreground);
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .icon-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .dark-mode-btn {
-            background: var(--gradient-orange);
-            color: white;
-        }
-        
-        .menu-btn {
-            display: flex;
-        }
-        
-        @media (min-width: 768px) {
-            .menu-btn { display: none; }
-        }
-        
-        .search-bar {
-            padding: 1rem 0;
-            border-top: 1px solid var(--border);
-            display: none;
-        }
-        
-        .search-bar.active { display: block; }
-        
-        .search-input-wrapper {
-            position: relative;
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            padding-right: 3rem;
-            border-radius: 12px;
-            background: var(--muted);
-            border: 1px solid var(--border);
-            outline: none;
-            font-size: 1rem;
-            color: var(--foreground);
-            transition: border-color 0.2s;
-        }
-        
-        .search-input:focus { border-color: var(--primary); }
-        
-        .search-icon {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--muted-foreground);
-        }
-        
-        /* Hero Carousel */
-        .hero-section { padding: 2rem 0; }
-        
-        .carousel-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 30px;
-        }
-        
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-out;
-        }
-        
-        .carousel-slide {
-            min-width: 100%;
-            height: 300px;
-            border-radius: 30px;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: flex-end;
-            padding: 1.5rem;
-        }
-        
-        @media (min-width: 768px) {
-            .carousel-slide {
-                height: 400px;
-                padding: 2.5rem;
-            }
-        }
-        
-        .slide-content { max-width: 600px; }
-        
-        .slide-category {
-            display: inline-block;
-            background: var(--gradient-blue);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-        
-        .slide-title {
-            font-family: 'Kanit', sans-serif;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-        
-        @media (min-width: 768px) {
-            .slide-title { font-size: 2.5rem; }
-        }
-        
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            background: white;
-            color: #374151;
-            padding: 1rem 1.5rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 1.125rem;
-            transition: all 0.3s;
-        }
-        
-        .download-btn:hover {
-            background: var(--gradient-blue);
-            color: white;
-        }
-        
-        .download-btn-icon {
-            background: var(--gradient-blue);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin-left: 0.75rem;
-        }
-        
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(4px);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-        
-        .carousel-arrow:hover { background: rgba(255,255,255,0.4); }
-        .carousel-arrow.prev { left: 1rem; }
-        .carousel-arrow.next { right: 1rem; }
-        
-        .carousel-dots {
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .carousel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.5);
-            transition: all 0.3s;
-        }
-        
-        .carousel-dot.active {
-            background: white;
-            width: 24px;
-            border-radius: 4px;
-        }
-        
-        /* Sections */
-        .section { padding: 2rem 0; }
-        
-        .section-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            font-family: 'Kanit', sans-serif;
-            font-weight: bold;
-            font-size: 1.25rem;
-            color: var(--foreground);
-        }
-        
-        @media (min-width: 768px) {
-            .section-head { font-size: 1.5rem; }
-        }
-        
-        .section-head-left {
-            display: flex;
-            align-items: center;
-        }
-        
-        .section-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin-right: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-        }
-        
-        .btn-navy {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 0.75rem;
-            border-radius: 8px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-        
-        .btn-navy:hover { opacity: 0.9; }
-        
-        /* Game Grid */
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
-        }
-        
-        @media (min-width: 768px) {
-            .game-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1rem;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .game-grid { grid-template-columns: repeat(6, 1fr); }
-        }
-        
-        /* Game Card */
-        .game-card {
-            display: block;
-            background: var(--card);
-            border-radius: 18px;
-            padding: 1.5rem;
-            padding-bottom: 1rem;
-            transition: all 0.3s;
-            position: relative;
             height: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
         }
-        
-        .game-card:hover {
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9fafb;
+            color: #111827;
+            overflow-x: hidden;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .dark body {
+            background-color: #05000A;
+            color: #ffffff;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Modal Blur */
+        .glass-blur {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px sola rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spring-in {
+            0% {
+                transform: scale(0.98);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.02);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse-cyan {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.35);
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(0, 243, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 243, 255, 0);
+            }
+        }
+
+        @keyframes pulse-pink {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 127, 0.35);
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(255, 0, 127, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 127, 0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 0.95s ease-out forwards;
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        .animate-spring {
+            animation: spring-in 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .animate-pulse-cyan {
+            animation: pulse-cyan 2s infinite;
+        }
+
+        .animate-pulse-pink {
+            animation: pulse-pink 2s infinite;
+        }
+
+        /* CARD STYLE FROM FIRST CODE */
+        #gameGrid.vertical-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .fw-card {
+            display: flex;
+            align-items: center;
+            padding: 24px;
+            border-radius: 24px;
+            background: #0D0D0D;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .fw-card:hover {
             transform: translateY(-4px);
         }
-        
-        .status-badge {
-            position: absolute;
-            left: 10px;
-            top: 8px;
-            font-size: 11px;
-            text-transform: uppercase;
-            padding: 4px 8px;
-            padding-left: 16px;
-            border-radius: 50px;
-            font-weight: 600;
-            z-index: 10;
-            color: var(--primary);
-            background: rgba(255,255,255,0.5);
+
+        .fw-left {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-grow: 1;
         }
-        
-        .dark .status-badge { background: rgba(0,0,0,0.3); }
-        
-        .status-badge::before {
-            content: '';
-            position: absolute;
-            left: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--primary);
-        }
-        
-        .game-card-image {
+
+        .fw-thumb {
             width: 100px;
             height: 100px;
-            border-radius: 18px;
-            object-fit: cover;
-            margin: 0 auto;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            border-radius: 20px;
+            overflow: hidden;
             position: relative;
         }
-        
-        @media (min-width: 768px) {
-            .game-card-image {
-                width: 125px;
-                height: 125px;
-            }
-        }
-        
-        .game-card-img-wrapper { position: relative; margin: 0 auto; width: fit-content; }
-        
-        .mod-label {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: -12px;
-            background: var(--gradient-red);
-            color: white;
-            font-size: 11px;
-            text-transform: uppercase;
-            padding: 4px 8px;
-            border-radius: 50px;
-            font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            z-index: 10;
-        }
-        
-        .game-card-content {
-            text-align: center;
-            margin: 1rem 0;
-        }
-        
-        .game-card-title {
-            font-family: 'Lato', sans-serif;
-            font-weight: 600;
-            color: var(--foreground);
-            line-height: 1.3;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .game-card-category {
-            font-family: 'Poppins', sans-serif;
-            font-size: 13px;
-            color: var(--muted-foreground);
-            margin-top: 0.5rem;
-        }
-        
-        .game-card-stats {
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid var(--border);
-            padding-top: 1rem;
-            position: relative;
-        }
-        
-        .game-card-stat {
-            flex: 1;
-            text-align: center;
-            color: var(--muted-foreground);
-        }
-        
-        .game-card-stat svg { margin: 0 auto 4px; }
-        
-        .game-card-stat span {
-            font-family: 'Lato', sans-serif;
-            font-size: 12px;
-            display: block;
-        }
-        
-        .stats-divider {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: var(--border);
-        }
-        
-        /* Blog Grid */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-        
-        @media (min-width: 768px) {
-            .blog-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .blog-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        
-        .blog-card {
-            display: block;
-            background: var(--card);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: box-shadow 0.3s;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .blog-card:hover { box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
-        
-        .blog-card-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-        
-        .blog-card:hover .blog-card-image { transform: scale(1.03); }
-        
-        .blog-card-img-wrapper { overflow: hidden; position: relative; }
-        
-        .play-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.3));
-            transition: background 0.2s;
-        }
-        
-        .play-button {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
-        
-        .blog-card-content { padding: 1rem; }
-        
-        .blog-card-title {
-            font-family: 'Lato', sans-serif;
-            font-weight: bold;
-            font-size: 1.125rem;
-            color: var(--foreground);
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            margin-bottom: 0.75rem;
-            transition: color 0.2s;
-        }
-        
-        .blog-card-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: var(--muted-foreground);
-            font-size: 0.875rem;
-        }
-        
-        .blog-card-meta span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        /* Footer */
-        .footer {
-            background: var(--card);
-            border-top: 1px solid var(--border);
-            padding: 2rem 0;
-            padding-bottom: 6rem;
-        }
-        
-        @media (min-width: 768px) {
-            .footer { padding-bottom: 2rem; }
-        }
-        
-        .footer-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-        
-        @media (min-width: 768px) {
-            .footer-inner {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
-        
-        .footer-copyright {
-            color: var(--muted-foreground);
-            font-size: 0.875rem;
-            text-align: center;
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .footer-link {
-            color: var(--muted-foreground);
-            font-size: 0.875rem;
-            transition: color 0.2s;
-        }
-        
-        .footer-link:hover { color: var(--primary); }
-        
-        /* Bottom Navigation (Mobile) */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--card);
-            border-top: 1px solid var(--border);
-            z-index: 50;
-            display: flex;
-        }
-        
-        @media (min-width: 768px) {
-            .bottom-nav { display: none; }
-        }
-        
-        .bottom-nav-inner {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
-        }
-        
-        .bottom-nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem 0.75rem;
-            color: var(--muted-foreground);
-            transition: color 0.2s;
-        }
-        
-        .bottom-nav-item:hover,
-        .bottom-nav-item.active { color: var(--primary); }
-        
-        .bottom-nav-item span {
-            font-size: 12px;
-            margin-top: 4px;
-        }
-        
-        /* Utility */
-        .hidden { display: none !important; }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: var(--muted); }
-        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { opacity: 0.8; }
-        
-        .icon { width: 20px; height: 20px; }
-        .icon-sm { width: 16px; height: 16px; }
 
-        /* Video modal */
-        .video-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.85);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            padding: 1rem;
-        }
-        .video-modal.hidden { display: none; }
-        .video-modal-inner {
-            width: 100%;
-            max-width: 1000px;
-            background: transparent;
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            aspect-ratio: 16/9;
-        }
-        .video-modal-close {
-            position: absolute;
-            right: 8px;
-            top: 8px;
-            z-index: 3;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            border-radius: 6px;
-            padding: 6px 8px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .video-modal iframe {
+        .fw-thumb img {
             width: 100%;
             height: 100%;
-            border: 0;
-            display: block;
+            object-fit: cover;
         }
 
-        /* Sidebar Overlay (الضبابة) */
-        .sidebar-overlay {
-            position: fixed;
-            inset: 0;
+        .fw-rating {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
             background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            z-index: 999;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .fw-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .fw-category {
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .fw-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .fw-download-container {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .fw-download-btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #00f3ff;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .fw-download-btn img.icon {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .fw-download-btn:hover {
+            background: rgba(0, 243, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .card-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        /* --- Slider Styles --- */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            height: 260px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 10%, transparent 70%);
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 20;
+            text-align: left;
+            max-width: 70%;
+        }
+
+        /* Modal visibility control (hidden unless active) */
+        #modalOverlay {
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #modalOverlay.active {
+            display: flex;
+        }
+
+        /* Age confirmation modal (simplified "Are you 18?") */
+        #ageModal {
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #ageModal.active {
+            display: flex;
+        }
+
+        .modal-inner {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        /* Category Filters */
+        .filter-container {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 4px 4px 16px 4px;
+            margin-bottom: 24px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .filter-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-btn {
+            white-space: nowrap;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.8);
+            color: #4b5563;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+
+        .dark .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .filter-btn.active {
+            background: #00f3ff;
+            color: #000;
+            border-color: #00f3ff;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        /* Back to Top */
+        #backToTop {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            color: #111827;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 40;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .sidebar-overlay.active {
+        .dark #backToTop {
+            background: rgba(30, 41, 59, 0.9);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #backToTop.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #backToTop:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Verification Modal Styles */
+        .secure-icon-container {
+            width: 80px;
+            height: 80px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: #10b981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .animate-pulse-green {
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+        
+        /* Iframe Overlay Styles */
+        .locker-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 8, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .locker-overlay.active {
             opacity: 1;
             visibility: visible;
         }
-
-        /* Sidebar Menu (القائمة الجانبية) */
-        .sidebar-menu {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 280px;
-            background: #0f172a;
-            z-index: 1000;
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            color: #f8fafc;
-            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        .locker-container {
+            width: 90%;
+            max-width: 1000px;
+            height: 80vh;
+            background: #0f0f1a;
+            border-radius: 24px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
         }
-
-        .sidebar-menu.active {
-            transform: translateX(0);
+        .locker-overlay.active .locker-container {
+            transform: scale(1);
         }
-
-        /* Header ديال القائمة */
-        .sidebar-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        .locker-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
-
-        .sidebar-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-family: 'Kanit', sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        .sidebar-close {
-            color: #94a3b8;
-            background: rgba(255, 255, 255, 0.1);
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+        .close-locker {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
             transition: all 0.2s;
+            z-index: 10001;
+            backdrop-filter: blur(5px);
         }
-
-        .sidebar-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+        .close-locker:hover {
+            background: rgba(139, 92, 246, 0.3);
+            transform: rotate(90deg);
         }
-
-        /* المحتوى والروابط */
-        .sidebar-content {
-            padding: 1.5rem;
-            overflow-y: auto;
-            flex: 1;
-        }
-
-        .sidebar-section {
-            margin-bottom: 2rem;
-        }
-
-        .sidebar-section-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #64748b;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-
-        .sidebar-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.85rem 1rem;
-            color: #cbd5e1;
-            border-radius: 12px;
-            transition: all 0.2s;
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .sidebar-link:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-        }
-
-        .sidebar-link.active {
-            background: linear-gradient(90deg, rgba(59, 130, 246, 0.15) 0%, transparent 100%);
-            color: white;
-            position: relative;
-        }
-
-        .sidebar-link.active::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 60%;
-            background: var(--primary);
-            border-radius: 0 4px 4px 0;
-        }
+        .terminal-text { font-family: 'Courier New', Courier, monospace; text-shadow: 0 0 5px rgba(139, 92, 246, 0.5); }
     </style>
 </head>
-<body>
 
-    <header class="header">
-        <div class="container">
-            <div class="header-inner">
-                <a href="/" class="logo">
-                    <div class="logo-icon" style="background:transparent;padding:0;">
-                        <img src="https://i.ibb.co/gbsY945Q/Black-and-Green-Illustrative-E-Sports-Gaming-Logo-2-removebg.png" alt="ModXplay Logo" style="width:40px;height:40px;object-fit:contain;">
-                    </div>
-                    <span class="logo-text">Mod<span>Xplay</span></span>
-                </a>
-                
-                <nav class="nav-desktop">
-                    <a href="/" class="nav-link">Home</a>
-                    <a href="#games" class="nav-link">Games</a>
-                    <a href="#blog" class="nav-link">How To Unlock</a>
-                </nav>
-                
-                <div class="header-actions">
-                    <button class="icon-btn" id="searchToggle" aria-label="Search">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-                    </button>
-                    <button class="icon-btn dark-mode-btn" id="themeToggle" aria-label="Toggle dark mode">
-                        <svg class="icon moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                        <svg class="icon sun-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                    </button>
-                    <button class="icon-btn menu-btn" id="menuToggle" aria-label="Menu">
-                        <svg class="icon menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-                        <svg class="icon close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-                    </button>
+<body
+    class="bg-gray-50 text-gray-900 dark:bg-darkbg dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <header id="main-header"
+        class="fixed top-0 transition-transform duration-300 left-0 w-full z-50 glass border-b-0 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center relative">
+            <div class="text-xl font-bold tracking-tighter flex items-center">
+                Down<span class="text-[#00f3ff]">Apk</span>
+            </div>
+            <div class="flex gap-4 items-center">
+                <button id="themeToggle"
+                    class="p-2 glass rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors mr-2"
+                    aria-label="Toggle Theme">
+                    <svg id="sunIcon" class="w-6 h-6 hidden text-yellow-500" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                        </path>
+                    </svg>
+                    <svg id="moonIcon" class="w-6 h-6 text-gray-700 dark:text-gray-200" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                        </path>
+                    </svg>
+                </button>
+                <button id="searchBtn"
+                    class="p-2 glass rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
+                    aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.3-4.3" />
+                    </svg>
+                </button>
+                <button id="menuBtn"
+                    class="p-2 glass rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors"
+                    aria-label="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" x2="20" y1="12" y2="12" />
+                        <line x1="4" x2="20" y1="6" y2="6" />
+                        <line x1="4" x2="20" y1="18" y2="18" />
+                    </svg>
+                </button>
+                <div id="menuContainer" class="absolute right-6 top-16 w-77 glass rounded-xl py-2 shadow-lg hidden">
+                    <ul class="flex flex-col gap-1 px-2">
+                        <li><button
+                                class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-white/5 rounded-md text-gray-800 dark:text-gray-100">Home</button>
+                        </li>
+                        <li><button
+                                class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-white/5 rounded-md text-gray-800 dark:text-gray-100">Categories</button>
+                        </li>
+                        <li><button
+                                class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-white/5 rounded-md text-gray-800 dark:text-gray-100">My
+                                Account</button></li>
+                        <li><button
+                                class="w-full text-left px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-white/5 rounded-md text-gray-800 dark:text-gray-100">Support</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="search-bar" id="searchBar">
-                <div class="search-input-wrapper">
-                    <input type="text" class="search-input" id="searchInput" placeholder="Search games...">
-                    <svg class="icon search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-                </div>
-            </div>
+        </div>
+        <div id="searchContainer" class="max-w-7xl mx-auto h-0 opacity-0 overflow-hidden transition-all duration-300">
+            <input type="text" id="searchInput" placeholder="Search here..."
+                class="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl px-5 py-3 mt-4 text-sm focus:outline-none focus:ring-1 focus:ring-[#00f3ff] transition-all text-gray-900 dark:text-white" />
         </div>
     </header>
 
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-    <nav class="sidebar-menu" id="sidebarMenu">
-        <div class="sidebar-header">
-            <div class="sidebar-logo">
-                <svg class="icon" fill="var(--primary)" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                <span>modxplay.online</span>
+    <main class="flex-grow pt-32 pb-20 px-6 max-w-7xl mx-auto w-full">
+        <section class="mb-12 animate-fade-up">
+            <div id="heroSlider" class="slider-container">
             </div>
-            <button class="sidebar-close" id="sidebarClose">✕</button>
+        </section>
+
+        <div id="filterContainer" class="filter-container max-w-6xl mx-auto mb-8 justify-start md:justify-center px-4">
         </div>
-        
-        <div class="sidebar-content">
-            <div class="sidebar-section">
-                <div class="sidebar-section-title">MENUS</div>
-                <a href="/" class="sidebar-link">
-                    <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> 
-                    Home
-                </a>
-                <a href="#games" class="sidebar-link active">
-                    <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/></svg> 
-                    Games
-                </a>
-                <a href="#" class="sidebar-link">
-                    <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> 
-                    Trending
-                </a>
-            </div>
 
-            <div class="sidebar-section">
-                <div class="sidebar-section-title">PLATFORMS</div>
-                <a href="#" class="sidebar-link">
-                    <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M17.523 15.3414c-.0112-2.1852 1.7824-3.2325 1.865-3.2842-1.0116-1.483-2.5855-1.696-3.1495-1.7224-1.3364-.136-2.607.7896-3.2865.7896-.682 0-1.722-.7676-2.836-.7455-1.442.022-2.776.842-3.518 2.1408-1.503 2.617-.384 6.495 1.086 8.625.72 1.0425 1.5645 2.2036 2.6845 2.164 1.077-.042 1.484-.6986 2.784-.6986 1.303 0 1.688.7008 2.798.68 1.134-.02 1.865-1.07 2.583-2.117.83-1.214 1.173-2.392 1.192-2.454-.026-.01-2.292-.882-2.302-3.376zM14.686 4.9004c.594-.72 1-1.722.89-2.722-.862.036-1.92.576-2.528 1.288-.544.636-.983 1.65-.86 2.636.96.074 1.905-.48 2.498-1.202z"/></svg> 
-                    iOS
-                </a>
-                <a href="#" class="sidebar-link">
-                    <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M17.523 11.234l-3.264-5.632c-.183-.316-.52-.512-.885-.512h-6.748c-.365 0-.702.196-.885.512l-3.264 5.632c-.183.316-.183.708 0 1.024l3.264 5.632c.183.316.52.512.885.512h6.748c.365 0 .702-.196.885-.512l3.264-5.632c.183-.316.183-.708 0-1.024z"/></svg> 
-                    Android
-                </a>
-                <a href="#" class="sidebar-link">
-                    <svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.131H0V3.449zm10.5 8.98V1.98L24 0v11.23h-13.5zM0 12.4h9.75v9.13L0 20.19v-7.79zm10.5.2h13.5V24l-13.5-1.85v-9.55z"/></svg> 
-                    Windows
-                </a>
-            </div>
-
-            <div class="sidebar-section">
-                <div class="sidebar-section-title">SUPPORT</div>
-                <a href="#" class="sidebar-link">
-                    <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> 
-                    Support & Home
-                </a>
-            </div>
+        <div id="gameGrid" class="vertical-list">
         </div>
-    </nav>
-    
-    <main>
-        <section class="hero-section">
-            <div class="container">
-                <div class="carousel-wrapper">
-                    <div class="carousel-track" id="carouselTrack">
-                        <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://leclaireur.fnac.com/wp-content/uploads/2022/01/gta-5.jpeg');">
-                            <div class="slide-content">
-                                <span class="slide-category">Action</span>
-                                <h2 class="slide-title">GTA: V MOBILE</h2>
-                                <a href="#" class="download-btn">Download <span class="download-btn-icon"><svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></span></a>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://mingapks.com/wp-content/uploads/2025/12/480-red-dead-redemption-netflix.webp');">
-                            <div class="slide-content">
-                                <span class="slide-category">Adventure</span>
-                                <h2 class="slide-title">Red Dead Redemption NETFLIX</h2>
-                                <a href="#" class="download-btn">Download <span class="download-btn-icon"><svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></span></a>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://mingapks.com/wp-content/uploads/2025/10/bully-anniversary-edition-banner.jpg');">
-                            <div class="slide-content">
-                                <span class="slide-category">Action</span>
-                                <h2 class="slide-title">Bully: Anniversary Edition</h2>
-                                <a href="#" class="download-btn">Download <span class="download-btn-icon"><svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></span></a>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://mingapks.com/wp-content/uploads/2025/10/hitman-absolution-banner.jpg');">
-                            <div class="slide-content">
-                                <span class="slide-category">Action</span>
-                                <h2 class="slide-title">Hitman: Absolution</h2>
-                                <a href="#" class="download-btn">Download <span class="download-btn-icon"><svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></span></a>
-                            </div>
-                        </div>
-                        <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://cdn1.epicgames.com/spt-assets/388003807ca94d23ae22451bdabd774e/beamngdrive-1ou4u.jpg');">
-                            <div class="slide-content">
-                                <span class="slide-category">Mobile Cars</span>
-                                <h2 class="slide-title">BeamNG Drive Mobile</h2>
-                                <a href="#" class="download-btn">Download <span class="download-btn-icon"><svg class="icon-sm" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button class="carousel-arrow prev" id="carouselPrev">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
-                    </button>
-                    <button class="carousel-arrow next" id="carouselNext">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-                    </button>
-                    
-                    <div class="carousel-dots" id="carouselDots">
-                        <button class="carousel-dot active"></button>
-                        <button class="carousel-dot"></button>
-                        <button class="carousel-dot"></button>
-                        <button class="carousel-dot"></button>
-                        <button class="carousel-dot"></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section" id="games">
-            <div class="container">
-                <h2 class="section-head">
-                    <div class="section-head-left">
-                        <div class="section-icon" style="background: var(--gradient-blue);">
-                            <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/></svg>
-                        </div>
-                        <span>Latest Games</span>
-                    </div>
-                    <a href="#" class="btn-navy">All Games <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-                </h2>
-                
-                <div class="game-grid" id="gamesGrid"></div>
-            </div>
-        </section>
-        
-        <section class="section" id="blog">
-            <div class="container">
-                <h2 class="section-head">
-                    <div class="section-head-left">
-                        <div class="section-icon" style="background: var(--gradient-blue);">
-                            <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
-                        </div>
-                        <span>How To Unlock The Games</span>
-                    </div>
-                    <a href="#" class="btn-navy">More <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-                </h2>
-                
-                <div class="blog-grid" id="blogGrid"></div>
-            </div>
-        </section>
     </main>
-    
-    <div id="videoModal" class="video-modal hidden" aria-hidden="true">
-        <div class="video-modal-inner">
-            <button id="videoModalClose" class="video-modal-close" aria-label="Close video">✕</button>
-            <iframe id="videoPlayer" src="" title="Video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <footer class="py-16 border-t border-gray-200 dark:border-white/5 text-center px-6">
+        <div class="flex justify-center gap-8 mb-8 opacity-40 dark:opacity-20 items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-gray-600 dark:text-white">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <svg width="22" height="22" viewBox="0 0 384 512" fill="currentColor" class="text-gray-600 dark:text-white">
+                <path
+                    d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+            </svg>
+            <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android"
+                style="width:22px; height:22px; object-fit: contain; filter: brightness(0) invert(1);"
+                class="dark:invert filter invert-0 dark:invert" />
+        </div>
+        <p class="text-[10px] text-gray-400 dark:text-white/20 uppercase tracking-[0.5em] font-bold">© 2026 DOWNAPK/ ALL
+            RIGHTS RESERVED</p>
+        <div class="mt-6 flex justify-center gap-6 text-[10px] text-gray-400 dark:text-white/10 font-bold">
+            <span class="cursor-pointer hover:text-gray-600 dark:hover:text-white/30 transition-colors">PRIVACY
+                POLICY</span>
+            <span class="cursor-pointer hover:text-gray-600 dark:hover:text-white/30 transition-colors">TERMS OF
+                SERVICE</span>
+            <span class="cursor-pointer hover:text-gray-600 dark:hover:text-white/30 transition-colors">ABOUT US</span>
+        </div>
+    </footer>
+
+    <div id="modalOverlay" class="fixed inset-0 z-[100] modal-overlay items-center justify-center px-6">
+        <div class="absolute inset-0 bg-black/60 dark:bg-black/90" id="modalClose"></div>
+        <div class="relative glass-blur w-full max-w-sm rounded-3xl overflow-hidden animate-spring">
+            <div id="modalContent"></div>
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-inner">
-                <div class="footer-copyright">
-                    MODXPLAY.ONLINE © Copyright <span id="currentYear"></span>. All Rights Reserved.
-                </div>
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Privacy Policy</a>
-                    <a href="#" class="footer-link">About Us</a>
-                    <a href="#" class="footer-link">Contact Us</a>
-                    <a href="#" class="footer-link">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+
+    </div>
+
+    <button id="backToTop" class="glass" aria-label="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6" />
+        </svg>
+    </button>
     
-    <nav class="bottom-nav">
-        <div class="bottom-nav-inner">
-            <a href="/" class="bottom-nav-item active">
-                <svg class="icon" fill="none" stroke="hsl(210, 100%, 50%)" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                <span>Home</span>
-            </a>
-            <a href="#games" class="bottom-nav-item">
-                <svg class="icon" fill="none" stroke="hsl(11, 100%, 50%)" viewBox="0 0 24 24"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/></svg>
-                <span>Games</span>
-            </a>
-            <a href="#blog" class="bottom-nav-item">
-                <svg class="icon" fill="none" stroke="hsl(36, 100%, 50%)" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
-                <span>How To Unlock</span>
-            </a>
-            <button class="bottom-nav-item" id="bottomThemeToggle">
-                <svg class="icon bottom-moon" fill="none" stroke="hsl(113, 100%, 38%)" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                <svg class="icon bottom-sun hidden" fill="none" stroke="hsl(113, 100%, 38%)" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                <span>Theme</span>
-            </button>
+    <div id="locker-overlay" class="locker-overlay" onclick="closeLocker(event)">
+        <div class="locker-container" onclick="event.stopPropagation()">
+            <div class="close-locker" onclick="closeLocker(event)">✕</div>
+            <iframe id="locker-iframe" class="locker-iframe" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" loading="lazy"></iframe>
         </div>
-    </nav>
-    
+    </div>
+
     <script>
-        // Data
-        const games = [
-          {title:"My Voice Zoo Mobile",category:"Casual",version:"v3.01",size:"150 MB",image:"https://apktodo.io/uploads/2025/12/my-voice-zoo-icon.jpg",url:"https://modxplay.online/My Voice Zoo Mobile/"},
-            { title: "BeamNG Drive Mobile™", category: "Cars", version: "v1.0", size: "Varies", image: "https://avatars.githubusercontent.com/u/6404024?s=280&v=4", isMobile: true, isMod: true, url: "https://modxplay.online/BeamNG Dirve Mobile" },
-            { title: "Forza Horizon 4 Mobile", category: "Open World", version: "v2.6.3", size: "2.8 GB", image: "https://i1.sndcdn.com/artworks-000362346639-4nqkqf-t1080x1080.jpg", isMobile: true, url: "https://modxplay.online/Forza Horizon4 Mobile/" },
-            { title: "Red Dead Redemption NETFLIX", category: "Adventure", version: "v1.50", size: "2.5 GB", image: "https://mingapks.com/wp-content/uploads/2025/12/480-red-dead-redemption-netflix.webp", isMod: true, isUpdate: true, url: "https://modxplay.online/Red Dead Redemption Mod Apk" },
-            { title: "Assetto Corsa Moble", category: "Racing", version: "v8.9.0", size: "1.8 GB", image: "https://i.postimg.cc/mgStnz0K/Picsart-25-10-16-14-24-02-706.jpg", isMod: true, url: "https://modxplay.online/Assetto Corsa Mobile" },
-             { title: "Traffic Racer", category: "Cars", version: "v1.42", size: "850 MB", image: "https://apktodo.io/uploads/2025/3/traffic-racer-russian-village-icon.jpg", isMod: true, url: "https://modxplay.online/Traffic Racer" },
-            { title: "CarX Street Mod Apk", category: "Cars", version: "v1.5.2", size: "2.6 GB", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9cR4pqJlpezWAKhl0bwwWy1GIc_zVOGXjHvz9Q&s", isMod: true, url: "https://modxplay.online/CarX Street Mod Apk" },
-            { title: "Car Parking Multiplayer 2", category: "Cars", version: "v1.42", size: "2.3 GB", image: "https://play-lh.googleusercontent.com/1DhZDejbhLxExB4o4WyhtcIrpO5s4BaWqbk3nsjl64TM9nwO3iCQqpV18ZO3PyklnA=w240-h480-rw", url: "https://modxplay.online/Car Parking Multiplayer" },
-             { title: "Tomb Raider™", category: "Action", version: "v1.0", size: "Varies", image: "https://mingapks.com/wp-content/uploads/2026/01/489-tomb-raider.webp", isUpdate: true, url: "https://downapk.online/Coming Soon ..." },
-            { title: "SnowRunner Mobile", category: "Heavy Trucks", version: "v1.0.25", size: "2.2 GB", image: "https://cdn.focus-home.com/fhi-fastforward-admin/resources/games/snowrunner/images/10042025_9ea4150ca57244068421faecdbc3215b.jpeg", isMod: true, url: "/poppy-playtime-chapter-3" },
-            { title: "The Crew Motorfest Mobile", category: "Open world", version: "v1.4.5", size: "3.1 GB", image: "https://i.pinimg.com/736x/4d/cc/24/4dcc245b74b92bfcf3d447eafc39a98b.jpg", url: "/streets-of-rage-4" },
-            { title: "Grand Theft Auto V Mobile", category: "", version: "v8.9.0", size: "1.8 GB", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9cRGD7M8gzVQtpayN0kdH2m8FbHnVhlf7Remyg&s",isMobile: true, url: "https://downapk.online/Coming Soon ..." },
-            { title: "Hollow Knight", category: "Action", version: "v22.10", size: "914 MB", image: "https://images.sftcdn.net/images/t_app-icon-m/p/b0bb283f-9192-4104-ae0f-ac6f274a360e/173199076/hollow-knight-silksong-download-Hollow-Knight-Silksong.jpg", isMod: true, url: "https://downapk.online/Coming Soon ..." },
-            { title: "Euro Truck Simulator2 Mobile", category: "Trucks", version: "v1.1.1a", size: "3.2 GB", image: "https://i.pinimg.com/736x/bf/9a/48/bf9a48c60a44f0fb95e68cccc41bff47.jpg", isMobile: true, url: "https://modxplay.online/ForzaHorizon4 Mobile" }
+        const GAMES_DATA = [
+            { id: '1', title: 'NightGamer', category: 'Simulation', thumbnail: 'https://www.latestmodapks.com/wp-content/uploads/2024/10/nightgamer-mod-3-media.webp', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '2', title: 'Kunoichi Sekiren', category: 'Action', thumbnail: 'https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/67cf0321785b53001dad9298.png', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '3', title: 'College Brawl', category: 'Action', thumbnail: 'https://qa-apk.com/wp-content/uploads/2024/04/college-brawl.png', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '4', title: 'Tag After School', category: 'Horror', thumbnail: 'https://myvideogamelist-com.s3.amazonaws.com/assets/boxart/NBSOjcDLZoMdlLDfS7n4EwQuxnboe0DeeL7Cq7Q5.jpg', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '5', title: 'Spooky Milk', category: 'Simulation', thumbnail: 'https://www.latestmodapks.com/wp-content/uploads/2023/07/Spooky.Milk_.Life-1.jpeg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '6', title: 'Handyman Legend', category: 'Simulation', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2127010/capsule_616x353.jpg?t=1748937113', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '7', title: 'Aeons Echo', category: 'Visual Novel', thumbnail: 'https://gamefaqs.gamespot.com/a/box/4/2/9/1041429_front.jpg', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '8', title: 'Helltaker', category: 'Puzzle', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1289310/header.jpg', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '9', title: 'Sea of Stars', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/1244090/capsule_616x353.jpg', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '10', title: 'Miko Chan', category: 'Action', thumbnail: 'https://4ap.tech/images/x22.webp', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '11', title: 'Dead Cells', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/588650/capsule_616x353.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '12', title: 'Lonely Girl', category: 'Simulation', thumbnail: 'https://4ap.tech/images/x1.webp', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '13', title: 'Dave the Diver', category: 'Adventure', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1868140/header.jpg', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '14', title: 'Spirit Echoes', category: 'RPG', thumbnail: 'https://i.ytimg.com/vi/nBlELZYOLrI/maxresdefault.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '15', title: 'Sanabi', category: 'Action', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1562700/header.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '16', title: 'Fear & Hunger', category: 'RPG', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1873770/header.jpg', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '17', title: 'Cult of the Lamb', category: 'Action', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1313140/header.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '18', title: 'Lollipop Chainsaw RePop', category: 'Action', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2658450/header.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '19', title: 'Vampire Survivors', category: 'Pixel', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1794680/header.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '20', title: 'Horizon Walker', category: 'RPG', thumbnail: 'https://apktodo.io/uploads/2024/11/horizon-walker-icon-150.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '21', title: 'Castle of Temptation', category: 'RPG', thumbnail: 'https://static.wikia.nocookie.net/castle-of-temptation/images/d/d9/Temp_pic.png/revision/latest/scale-to-width-down/1200?cb=20240618121030', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '22', title: 'Signalis', category: 'Horror', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1262350/header.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '23', title: 'Coffee Talk', category: 'Simulation', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/914800/header.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '24', title: 'Lost Ruins', category: 'Action', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1306630/header.jpg', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '25', title: 'Self Defense Dojo', category: 'Simulation', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2534120/capsule_616x353_tchinese.jpg?t=1714999370', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '26', title: 'Anomalous Coffee Machine', category: 'Puzzle', thumbnail: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3797340/1a2d2a34a383647d962588972cd9a5678f3ad16b/capsule_616x353.jpg?t=1773234679', rating: 4.1, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '27', title: 'Eastward', category: 'RPG', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/971620/header.jpg', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '28', title: 'Tower of L Demo Short', category: 'Adventure', thumbnail: 'https://i.ytimg.com/vi/eD5HJEr-T9c/sddefault.jpg?v=672c3e72', rating: 4.2, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '29', title: 'Stardew Valley', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/413150/capsule_616x353.jpg', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '30', title: 'Housefestation', category: 'Horror', thumbnail: 'https://img.itch.zone/aW1nLzE5MDc1NjQ5LmdpZg==/originalm/blaoc8.gif', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '31', title: 'Chained Echoes', category: 'Pixel', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1229240/header.jpg', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '32', title: 'Battle Queen', category: 'Action', thumbnail: 'https://apktodo.io/uploads/2025/12/battle-queen-icon-150.jpg', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '33', title: 'Inscryption', category: 'Strategy', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1092790/header.jpg', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '34', title: 'Momoppu Farm ', category: 'Action', thumbnail: 'https://i.ytimg.com/vi/6jcnfYJnmpA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBXVtuDyHRQraJiIDWZmOHrmcTMaA', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '35', title: 'Graveyard Keeper', category: 'Simulation', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/599140/header.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '36', title: 'Blasphemous 2', category: 'Action', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2114740/header.jpg', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '37', title: 'Cooking Companions', category: 'Horror', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1263230/header.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '38', title: 'Potion Permit', category: 'Simulation', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1337760/header.jpg', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '39', title: 'Core Keeper', category: 'Adventure', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1621690/header.jpg', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '40', title: 'Eiyuden Chronicle', category: 'Pixel', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1658290/header.jpg', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '41', title: 'Katana ZERO', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/460950/capsule_616x353.jpg', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '42', title: 'Celeste', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/504230/capsule_616x353.jpg', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '43', title: 'Terraria', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/105600/capsule_616x353.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '44', title: 'Night Call Dojo', category: 'Action', thumbnail: 'https://4ap.tech/images/NIGHT_CALL_DOJO.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '45', title: 'Together Again', category: 'Visual Novel', thumbnail: 'https://4ap.tech/images/x8.webp', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '46', title: 'Kingdom Of Night', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1nLzI0MzM5ODkyLnBuZw==/original/e6CQr0.png', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '47', title: 'Freak Circus', category: 'Visual Novel', thumbnail: 'https://img.itch.zone/aW1nLzI0MzI1NjA3LnBuZw==/original/fsplsb.png', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '48', title: '3d Anime Girl', category: 'Simulation', thumbnail: 'https://4ap.tech/images/3d_anime_girl.png', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '49', title: 'Starbound Soul', category: 'Adventure', thumbnail: 'https://external-preview.redd.it/starbound-cloud-and-tifas-love-individuation-and-soul-v0-WNTTbH8-kB_RpNTsLfKECCVX29qi_9f8OmKG_6xa3O0.jpeg?auto=webp&s=26ad7a921a1488a036124420873541806a57c0b6', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '50', title: 'Holocure', category: 'Action', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2420510/header.jpg', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '51', title: 'The Stray Cat of Belheim', category: 'RPG', thumbnail: 'https://apktodo.io/uploads/2025/4/the-stray-cat-of-belheim-apk.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '52', title: 'Max the elf', category: 'Action', thumbnail: 'https://img.itch.zone/aW1nLzIyOTQwNjUxLnBuZw==/315x250%23c/CWvbdc.png', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '53', title: 'Me and the Summer Sisters', category: 'Visual Novel', thumbnail: 'https://d2x8kymwjom7h7.cloudfront.net/live/application_no/119001/application_no/119001/images/14_1721781780342.jpg', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '54', title: 'Octopath Traveler', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/921570/capsule_616x353.jpg', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '55', title: 'Imperial Harem', category: 'Strategy', thumbnail: 'https://apktodo.io/uploads/2026/1/screenshot-2026-01-09-214331.jpg', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '56', title: 'My State Sponsored Catgirl', category: 'Visual Novel', thumbnail: 'https://apktodo.io/uploads/2026/1/my-state-sponsored-catgirl-free.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '57', title: 'Unstrange', category: 'Adventure', thumbnail: 'https://img.itch.zone/aW1nLzI1MDE5NTQ1LmdpZg==/315x250%23c/eeAgO%2F.gif', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '58', title: 'Miko Gun', category: 'Action', thumbnail: 'https://img.itch.zone/aW1nLzU1NzA0ODAucG5n/315x250%23c/onFvUl.png', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+   { id: '59', title: 'Living Together', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2025/11/living-together-apk.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '60', title: 'Summer Melody', category: 'Visual Novel', thumbnail: 'https://atelier.wiki.gg/images/thumb/Klaudia_One_Summer_Melody_5.png/300px-Klaudia_One_Summer_Melody_5.png?1891ff', rating: 4.1, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '61', title: 'Udonge in interspecies cave', category: 'Action', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2640560/header.jpg?t=1700174220', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '62', title: 'The Killing Antidote', category: 'Action', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/2666230/capsule_616x353.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '63', title: "REISEN's ACTION", category: 'Action', thumbnail: 'https://i.ytimg.com/vi/lZsgtKTul5A/maxresdefault.jpg', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '64', title: 'Little Sis', category: 'Visual Novel', thumbnail: 'https://4ap.tech/images/little_sis.jpg', rating: 4.0, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '65', title: 'Hypnotized', category: 'Visual Novel', thumbnail: 'https://4ap.tech/images/x44.webp', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '66', title: 'My Voice Zoo Mobile', category: 'Casual', thumbnail: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4015530/efa2e94af1d2e95199ae3da5217ea59e37f8230a/page_bg_raw.jpg?t=1764608958', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '67', title: 'Last Train JK', category: 'Simulation', thumbnail: 'https://izigames.net/uploads/2023/4/jk-on-the-last-train-for-android-1.png', rating: 3.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '68', title: 'Erica: Knight of the Sun ', category: 'RPG', thumbnail: 'https://cdn.apkbine.com/userfiles/images/erica%20knight%20of%20the%20sun%20apk%20icon.jpg', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '69', title: 'Spankbot', category: 'Casual', thumbnail: 'https://4ap.tech/images/x3.webp', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '70', title: 'Neet Chan', category: 'Simulation', thumbnail: 'https://4ap.tech/images/x4.webp', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '71', title: 'Panofia', category: 'RPG', thumbnail: 'https://4ap.tech/images/panofia.jpg', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '72', title: 'Vampire s Knight - Gobline Cave', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1nLzE5NTA3NDY1LnBuZw==/original/texuCy.png', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '73', title: 'Sloppy Fields', category: 'Simulation', thumbnail: 'https://steam-repacks.net/wp-content/uploads/2025/06/sloppy-fields-cover-220x330.jpg', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '74', title: 'Cyan Brain', category: 'Action', thumbnail: 'https://www.xmodhub.com/info/wp-content/uploads/2025/12/CYAN-BRAIN.webp', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '75', title: 'Dark Hunter Kuro', category: 'Action', thumbnail: 'https://images.steamusercontent.com/ugc/1785135165615831365/D4BA543E0E041ED83851A43F15733800F7BE27B6/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false', rating: 4.1, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '76', title: 'The Gentle Priestess', category: 'RPG', thumbnail: 'https://4ap.tech/images/THE_GENTLE_PRIESTESS.jpg', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '77', title: 'Love with the devil prince', category: 'Visual Novel', thumbnail: 'https://4ap.tech/images/x5.webp', rating: 4.0, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '78', title: 'Derpixon', category: 'Casual', thumbnail: 'https://4ap.tech/images/x55.webp', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '79', title: 'Anuncio', category: 'Horror', thumbnail: 'https://4ap.tech/images/ANUNCIO.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '80', title: 'Room', category: 'Casual', thumbnail: 'https://4ap.tech/images/room.webp', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '81', title: 'Princess Request', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1hZ2UvNzE1NTIvMzI4MjQ4LmpwZw==/315x250%23c/OaP3Ln.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '82', title: 'KimiMuzi', category: 'Visual Novel', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3486810/0f2765e4eb8e3d38f2db8adc72bce16a90af4737/capsule_616x353.jpg?t=1754363669', rating: 4.2, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '83', title: 'Schoolground Fantasy', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2025/6/schoolground-fantasy-icon-150.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '84', title: "Hero's College Reminder", category: 'Visual Novel', thumbnail: 'https://img.itch.zone/aW1nLzEzOTIzODU1LnBuZw==/200x160%23c/yb9Xyn.png', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '85', title: 'Magical Angel Fairy Princess', category: 'RPG', thumbnail: 'https://cdn.steamstatic.com/steamcommunity/public/images/apps/2082810/10d89d5bfbc24ecb6e656b65a8fc6e9606fc17c4.jpg', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '86', title: 'Castle of Vania', category: 'Adventure', thumbnail: 'https://i.ytimg.com/vi/f9g_Tx7-prQ/hq720.jpg?sqp=-oaymwEXCK4FEIIDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLA1jn9w3k9TfEwIWTPBs3SIyQdnow', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '87', title: 'FEMTALITY X', category: 'Action', thumbnail: 'https://i.ytimg.com/vi/RwPOag4aKEI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBii8u7MGfEM0vc_G8zDGzuIPp__g', rating: 4.2, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '88', title: 'Under Cover Girl', category: 'Adventure', thumbnail: 'https://izigames.net/uploads/2023/3/undercover-girl.png', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '89', title: 'Cabin Fever', category: 'Horror', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAhudyprXz_y5CDtm16DleweOyyhD5c_LHWQ&s', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '90', title: 'Ryona Trap Dungeon', category: 'RPG', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3413130/517ce0409f433177e590e6abb2f31baaed3aff10/capsule_616x353.jpg?t=1763452782', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '91', title: 'Lost in the World of Succubi', category: 'Simulation', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk6LbrF8FntWqvJOvGmQfVoUGBY1Yy_c1lpQ&s', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '92', title: '7 Days Girlfriend', category: 'Simulation', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmDwJCzX-IpJjtmuyhiLXDNDMyd6wRY9gMTQ&s', rating: 4.2, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '93', title: 'Zeta Break', category: 'Action', thumbnail: 'https://apktodo.io/uploads/2025/6/zeta-break-icon-150.jpg', rating: 4.1, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '94', title: 'exit floor 8', category: 'Puzzle', thumbnail: 'https://apktodo.io/uploads/2025/6/exit-floor-8-apk.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '95', title: 'Struggles', category: 'Adventure', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOeQRWPnuMX4ht6EZJRMlknbzW_us1R3rMmQ&s', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '96', title: 'Reflexia', category: 'Puzzle', thumbnail: 'https://pbs.twimg.com/media/G0mrFhYWEAAUa8W.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '97', title: 'Faeland', category: 'Pixel', thumbnail: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1280080/extras/Faeland_Cover_600x338.jpg?t=1710307630', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '98', title: 'Piano Hazard', category: 'Arcade', thumbnail: 'https://apktodo.io/uploads/2026/1/paio-hazard-apk-1.jpg', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '99', title: 'My Forest Home', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2026/1/my-forest-home-download.jpg', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '100', title: 'Lure of Passion', category: 'Visual Novel', thumbnail: 'https://apktodo.io/uploads/2026/1/lure-of-passion-download.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '101', title: 'My NTR Girlfriend Goes Camping!', category: 'Visual Novel', thumbnail: 'https://apktodo.io/uploads/2026/1/my-ntr-girlfriend-goes-camping-apk.jpg', rating: 4.2, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '102', title: 'Princess Messy Room', category: 'Casual', thumbnail: 'https://apktodo.io/uploads/2026/1/princess-messy-room-free.jpg', rating: 4.0, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '103', title: 'My Sister-in-law Mirai-chan', category: 'Visual Novel', thumbnail: 'https://apktodo.io/uploads/2026/1/my-sister-in-lawmirai-chan-free.jpg', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '104', title: "Hau'oli", category: 'Adventure', thumbnail: 'https://apktodo.io/uploads/2026/1/hauoli-apk.jpg', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '105', title: 'Haunted Chair With Shy Girl', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2025/12/haunted-chair-with-shy-girl-free.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '106', title: 'Ran Mobile', category: 'RPG', thumbnail: 'https://i0.wp.com/blogranonline.game.blog/wp-content/uploads/2016/12/ran-online-wallpaper.jpg?fit=1200%2C960&ssl=1', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '107', title: 'Milk outside a bag of milk', category: 'Visual Novel', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1606270/header.jpg', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '108', title: 'Kingdom Of Night', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1nLzI0MzM5ODkyLnBuZw==/original/e6CQr0.png', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' }
+        ];
+
+        const CATEGORY_ACCENT = {
+            'Action': '#ff4747',
+            'RPG': '#a855f7',
+            'Strategy': '#3b82f6',
+            'Adventure': '#22c55e',
+            'Simulation': '#eab308',
+            'Horror': '#ef4444',
+            'Casual': '#ec4899',
+            'Visual Novel': '#d946ef',
+            'Puzzle': '#06b6d4',
+            'Arcade': '#f97316',
+            'Pixel': '#8b5cf6'
+        };
+
+        const NAMES = [
+           "John_Smith", "Mike_Johnson", "Sarah_Wilson", "Chris_Davis", "Emma_Miller",
+            "David_Brown", "Jessica_Taylor", "Robert_Williams", "Lisa_Anderson", "James_Thomas",
+            "Jennifer_Jackson", "Daniel_White", "Amanda_Harris", "Kevin_Martin", "Michelle_Lee",
+            "Pierre_Dubois", "Marie_Laurent", "Jean_Martin", "Sophie_Bernard", "Thomas_Petit",
+            "Julie_Roux", "Nicolas_Michel", "Camille_Fournier", "Luc_Durand", "Claire_Morel",
+            "Marco_Rossi", "Giulia_Bianchi", "Luca_Romano", "Alessia_Ferrari", "Francesco_Russo",
+            "Elena_Gallo", "Davide_Costa", "Chiara_Conti",
+            "Carlos_Garcia", "Ana_Rodriguez", "Javier_Martinez", "Laura_Hernandez", "Miguel_Lopez",
+            "Elena_Gonzalez", "Pablo_Sanchez",
+            "Ryan_Tremblay", "Olivia_Clark", "Nathan_Roy", "Sophie_Morin", "Liam_Pelletier",
+            "Oliver_Jones", "Charlotte_Williams", "Harry_Brown",
+            "Juan_Dela_Cruz", "Maria_Santos"
         ];
         
-        const blogPosts = [
-            {
-                title: "How to Unlock the Games — Quick Video Guide",
-                image: "https://img.youtube.com/vi/mkzM6dJmXwE/maxresdefault.jpg",
-                views: "1.2K",
-                date: "Apr 03, 2026",
-                videoId: "mkzM6dJmXwE",
-                url: "https://youtu.be/mkzM6dJmXwE?si=RFoDDVSOpyOaCxRC"
+        const MESSAGES = [
+            "Got all items unlocked!", "Received 50k instantly!", "Delivered to my account!", "Unlocked successfully!", 
+            "Working perfectly!", "Acquired in game!", "Hack 100% working!", "Coins delivered!",
+            "Beli received!", "Premium items unlocked!", "Generator works like a charm!", "Thank you for the resources!",
+            "Fast and secure delivery!", "My account is safe and loaded!", "Best generator I've ever used!", "Verified and working perfectly!"
+        ];
+
+        let currentActiveGame = null;
+
+        const backToTopBtn = document.getElementById('backToTop');
+        let currentCategory = 'All';
+
+        const gameGrid = document.getElementById('gameGrid');
+        const heroSlider = document.getElementById('heroSlider');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const searchContainer = document.getElementById('searchContainer');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalContent = document.getElementById('modalContent');
+        const modalClose = document.getElementById('modalClose');
+        const menuBtn = document.getElementById('menuBtn');
+        const menuContainer = document.getElementById('menuContainer');
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const htmlEl = document.documentElement;
+        const header = document.getElementById('main-header');
+
+
+        function applyTheme() {
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlEl.classList.add('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                htmlEl.classList.remove('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
             }
-        ];
-        
-        // Render functions (same)
-        function renderGameCard(item) {
-            return `
-                <a href="${item.url}" class="game-card">
-                    ${item.isUpdate ? '<div class="status-badge">Updates</div>' : ''}
-                    <div class="game-card-img-wrapper">
-                        <img src="${item.image}" alt="${item.title}" class="game-card-image" loading="lazy">
-                        ${item.isMod ? '<div class="mod-label">Mod</div>' : ''}
-                    </div>
-                    ${item.isMobile ? '<div class="mod-label">Mobile</div>' : ''}
-                    <div class="game-card-content">
-                        <h3 class="game-card-title">${item.title}</h3>
-                        <p class="game-card-category">${item.category}</p>
-                    </div>
-                    <div class="game-card-stats">
-                        <div class="game-card-stat">
-                            <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                            <span>${item.version}</span>
-                        </div>
-                        <div class="stats-divider"></div>
-                        <div class="game-card-stat">
-                            <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                            <span>${item.size}</span>
-                        </div>
-                    </div>
-                </a>
-            `;
         }
-        
-        function renderBlogCard(post) {
-            return `
-                <a href="${post.url}" class="blog-card" data-video="${post.videoId}">
-                    <div class="blog-card-img-wrapper">
-                        <img src="${post.image}" alt="${post.title}" class="blog-card-image" loading="lazy">
-                        <div class="play-overlay">
-                            <div class="play-button" aria-hidden="true">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        applyTheme();
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlEl.classList.toggle('dark');
+            localStorage.setItem('theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
+            applyTheme();
+        });
+
+        // Initialize Slider
+        function initSlider() {
+            // Show more games in the hero slider — now uses the first 12 entries (or fewer if list smaller)
+            const sliderGames = GAMES_DATA.slice(0, 12);
+            heroSlider.innerHTML = sliderGames.map((game, idx) => `
+                <div class="slide ${idx === 0 ? 'active' : ''}" style="background: url('${game.thumbnail}') center/cover no-repeat;">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="text-[10px] font-black uppercase tracking-widest" style="color: ${CATEGORY_ACCENT[game.category] || '#00f3ff'}">${game.category}</span>
+                        <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">${game.title}</h2>
+                        <button onclick="openModal('${game.id}')" class="px-6 py-2 bg-white text-black text-xs font-bold rounded-full hover:scale-105 transition-transform">VIEW GAME</button>
+                    </div>
+                </div>
+            `).join('');
+
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            if (slides.length === 0) return;
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 4000);
+        }
+
+        function renderGames(filter = '') {
+            if (!gameGrid) return;
+            gameGrid.classList.add('vertical-list');
+
+            const filtered = GAMES_DATA.filter(g => {
+                const matchesSearch = g.title.toLowerCase().includes(filter.toLowerCase());
+                const matchesCategory = currentCategory === 'All' || g.category === currentCategory;
+                return matchesSearch && matchesCategory;
+            });
+
+            gameGrid.innerHTML = filtered.length ? '' : '<div class="py-20 text-center text-gray-500 dark:text-white/20 font-bold uppercase tracking-widest text-sm">No results found</div>';
+
+            filtered.forEach((game, idx) => {
+                const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
+                const card = document.createElement('div');
+                card.className = 'fw-card';
+                card.innerHTML = `
+                    <div class="fw-left">
+                        <div class="fw-thumb">
+                            <img src="${game.thumbnail}" alt="${game.title}" decoding="async" loading="lazy">
+                            <div class="fw-rating">★ ${game.rating}</div>
+                            
+                        </div>
+                        <div class="card-content-wrapper">
+                            <div class="fw-meta">
+                                <span class="fw-category" style="color: ${accent};">${game.category}</span>
+                                <h3 class="fw-title">${game.title}</h3>
+                            </div>
+                            <div class="fw-download-container">
+                                <button onclick="openModal('${game.id}')" class="fw-download-btn">
+                                    Download
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <div class="blog-card-content">
-                        <h3 class="blog-card-title">${post.title}</h3>
-                        <div class="blog-card-meta">
-                            <span>
-                                <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                                ${post.views}
-                            </span>
-                            <span>
-                                <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-                                ${post.date}
-                            </span>
+                `;
+                gameGrid.appendChild(card);
+            });
+        }
+
+        // openModal: shows game modal with platform buttons. Platform buttons now trigger confirmation modal.
+        function openModal(gameId) {
+            const game = GAMES_DATA.find(g => g.id === gameId);
+            if (!game) return;
+            const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
+            const pulseClass = (accent === '#ff007f') ? 'animate-pulse-pink' : 'animate-pulse-cyan';
+
+            // Targeti l-container l-kbir bach t-k7el l-background kamla
+            const modalInner = modalContent.parentElement; 
+            modalInner.className = "relative w-full max-w-sm rounded-3xl overflow-hidden animate-spring";
+            modalInner.style.backgroundColor = "#1a1a1a"; // Lawn l-k7al lli bghiti
+            modalInner.style.border = "1px solid rgba(255, 255, 255, 0.1)";
+
+            modalContent.innerHTML = `
+                <div class="relative h-48 overflow-hidden">
+                    <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover" decoding="async" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] to-transparent"></div>
+                    
+                    
+                    <button onclick="closeModal()" class="absolute top-4 left-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white" aria-label="Close modal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
+                <div class="p-6 text-center relative max-h-[60vh] overflow-y-auto" style="scrollbar-width: none;">
+                    
+                    <div id="modal-step-1">
+                        <h2 class="text-2xl font-bold mb-2 text-white">${game.title}</h2>
+                        <p class="text-white/60 text-sm mb-6">Select your device to start download</p>
+                        <div class="space-y-3">
+                            <button onclick="startGenerator('${game.id}', 'iOS')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #1a1a1a;">
+                                 <svg width="18" height="18" viewBox="0 0 384 512" fill="#1a1a1a"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                                Download for iOS
+                            </button>
+
+                            <button onclick="startGenerator('${game.id}', 'Android')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #1a1a1a;">
+                                <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain; filter: brightness(0.1);" />
+                                Download for Android
+                            </button>
                         </div>
+                        <p class="mt-6 text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold">Fast & Secure</p>
                     </div>
-                </a>
+
+                    <div id="modal-step-2" class="hidden text-center py-6">
+                        <div class="relative w-20 h-20 mx-auto mb-6">
+                            <div class="absolute inset-0 border-4 border-slate-800 rounded-full"></div>
+                            <div class="absolute inset-0 border-4 border-violet-500 rounded-full border-t-transparent animate-spin"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <svg class="w-8 h-8 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v6a2 2 0 01-2-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                            </div>
+                        </div>
+                        <div id="console-logs" class="bg-[#050911] rounded-lg p-4 h-32 overflow-hidden flex flex-col justify-end items-start font-mono text-[10px] text-violet-400 border border-white/5 shadow-inner"></div>
+                    </div>
+                    
+                    <div class="mt-8 pt-8 border-t border-white/5 text-left">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse"></span>
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Recent Activity</span>
+                        </div>
+                        <div id="comments-list" class="space-y-4"></div>
+                    </div>
+
+                </div>
             `;
-        }
-        
-        // Initialize
-        document.getElementById('gamesGrid').innerHTML = games.map(renderGameCard).join('');
-        document.getElementById('blogGrid').innerHTML = blogPosts.map(renderBlogCard).join('');
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Blog video modal
-        function initBlogVideoLinks() {
-            document.querySelectorAll('.blog-card').forEach(card => {
-                card.addEventListener('click', function(e) {
-                    const videoId = this.dataset.video;
-                    if (videoId && videoId !== 'REPLACE_WITH_VIDEO_ID') {
-                        e.preventDefault();
-                        openVideoModal(videoId);
-                    } else {
-                        e.preventDefault();
-                        const href = this.getAttribute('href');
-                        if (href) window.open(href, '_blank');
-                    }
-                });
-            });
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            startFakeComments();
         }
 
-        function openVideoModal(videoId) {
-            const iframe = document.getElementById('videoPlayer');
-            iframe.src = `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0`;
-            const modal = document.getElementById('videoModal');
-            modal.classList.remove('hidden');
-        }
-
-        function closeVideoModal() {
-            const iframe = document.getElementById('videoPlayer');
-            iframe.src = '';
-            const modal = document.getElementById('videoModal');
-            modal.classList.add('hidden');
-        }
-
-        document.getElementById('videoModalClose').addEventListener('click', closeVideoModal);
-        document.getElementById('videoModal').addEventListener('click', function(e) {
-            if (e.target === this) closeVideoModal();
-        });
-
-        // Theme
-        function initTheme() {
-            const saved = localStorage.getItem('theme');
-            if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-                updateThemeIcons(true);
+        async function startGenerator(gameId, platform) {
+            currentActiveGame = GAMES_DATA.find(g => g.id === gameId);
+            document.getElementById('modal-step-1').classList.add('hidden');
+            document.getElementById('modal-step-2').classList.remove('hidden');
+            
+            const logsDiv = document.getElementById('console-logs');
+            logsDiv.innerHTML = "";
+            
+            let logs = [
+                `Connecting to ${currentActiveGame.title} Server...`, "Handshake successful.",
+                `Authenticating User on ${platform}...`, "User Verified.",
+                `Injecting MOD Data...`, "Bypassing Anti-Cheat...",
+                "Injection: 100%...", "Finalizing Installation..."
+            ];
+            
+            for(let log of logs) {
+                logsDiv.innerHTML += `<div class="terminal-text">> ${log}</div>`;
+                logsDiv.scrollTop = logsDiv.scrollHeight;
+                await new Promise(r => setTimeout(r, 800));
             }
-        }
-        
-        function toggleTheme() {
-            const isDark = document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            updateThemeIcons(isDark);
-        }
-        
-        function updateThemeIcons(isDark) {
-            document.querySelectorAll('.moon-icon, .bottom-moon').forEach(el => el.classList.toggle('hidden', isDark));
-            document.querySelectorAll('.sun-icon, .bottom-sun').forEach(el => el.classList.toggle('hidden', !isDark));
-        }
-        
-        initTheme();
-        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-        document.getElementById('bottomThemeToggle').addEventListener('click', toggleTheme);
-        
-        // Sidebar Menu Logic (New)
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebarMenu = document.getElementById('sidebarMenu');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        const sidebarClose = document.getElementById('sidebarClose');
-
-        function openSidebar() {
-            sidebarMenu.classList.add('active');
-            sidebarOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; 
+            
+            addNewComment();
+            
+            setTimeout(() => {
+                showLocker();
+            }, 2000);
         }
 
-        function closeSidebar() {
-            sidebarMenu.classList.remove('active');
-            sidebarOverlay.classList.remove('active');
-            document.body.style.overflow = ''; 
+        function showLocker() {
+            const lockerUrl = currentActiveGame ? currentActiveGame.cpa : 'about:blank';
+            document.getElementById('locker-iframe').src = lockerUrl;
+            document.getElementById('locker-overlay').classList.add('active');
         }
 
-        menuToggle.addEventListener('click', openSidebar);
-        sidebarClose.addEventListener('click', closeSidebar);
-        sidebarOverlay.addEventListener('click', closeSidebar);
-        
-        // Search
-        document.getElementById('searchToggle').addEventListener('click', function() {
-            document.getElementById('searchBar').classList.toggle('active');
+        function closeLocker(event) {
+            document.getElementById('locker-overlay').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('locker-iframe').src = 'about:blank';
+            }, 300);
+        }
+
+        function addNewComment() {
+            const name = NAMES[Math.floor(Math.random() * NAMES.length)];
+            const msg = MESSAGES[Math.floor(Math.random() * MESSAGES.length)];
+            const list = document.getElementById('comments-list');
+            if(!list) return;
+            const div = document.createElement('div');
+            div.className = "flex items-start gap-3 animate__animated animate__fadeInUp";
+            div.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center font-bold text-xs text-slate-400 border border-white/5">${name[0]}</div>
+                <div class="flex-1">
+                    <div class="flex justify-between items-center mb-0.5"><span class="text-xs font-bold text-white">${name}</span><span class="text-[9px] text-green-500 font-mono">JUST NOW</span></div>
+                    <p class="text-[10px] text-slate-400">${msg}</p>
+                </div>`;
+            list.prepend(div);
+            if(list.children.length > 4) list.lastChild.remove();
+        }
+
+        function startFakeComments() {
+            const list = document.getElementById('comments-list');
+            if(!list) return;
+            list.innerHTML = "";
+            function add() {
+                const listCheck = document.getElementById('comments-list');
+                if(!listCheck) return; 
+                const name = NAMES[Math.floor(Math.random() * NAMES.length)];
+                const msg = MESSAGES[Math.floor(Math.random() * MESSAGES.length)];
+                const div = document.createElement('div');
+                div.className = "flex items-start gap-3 animate__animated animate__fadeInUp";
+                div.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center font-bold text-xs text-slate-400 border border-white/5">${name[0]}</div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-0.5"><span class="text-xs font-bold text-white">${name}</span><span class="text-[9px] text-violet-500 font-mono">VERIFIED</span></div>
+                        <p class="text-[10px] text-slate-400">${msg}</p>
+                    </div>`;
+                listCheck.prepend(div);
+                if(listCheck.children.length > 4) listCheck.lastChild.remove();
+            }
+            for(let i=0; i<3; i++) add();
+            if(window.comInt) clearInterval(window.comInt);
+            window.comInt = setInterval(add, 2500);
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            if(window.comInt) clearInterval(window.comInt);
+        }
+
+
+
+        // Events (kept as-is behavior)
+        searchBtn.addEventListener('click', () => {
+            searchContainer.classList.toggle('opacity-0');
+            searchContainer.classList.toggle('h-0');
+            searchContainer.classList.toggle('h-16');
+            if (!searchContainer.classList.contains('opacity-0')) searchInput.focus();
         });
-        
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase();
-            document.querySelectorAll('#gamesGrid .game-card').forEach(card => {
-                const title = card.querySelector('.game-card-title').textContent.toLowerCase();
-                card.style.display = title.includes(query) ? 'block' : 'none';
+
+        searchInput.addEventListener('input', (e) => renderGames(e.target.value));
+        modalClose.addEventListener('click', closeModal);
+        menuBtn.addEventListener('click', (e) => { e.stopPropagation(); menuContainer.classList.toggle('hidden'); });
+        document.addEventListener('click', () => menuContainer.classList.add('hidden'));
+
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            header.style.transform = (window.scrollY > lastScrollY && window.scrollY > 80) ? 'translateY(-100%)' : 'translateY(0)';
+            lastScrollY = window.scrollY;
+        });
+
+        // Initialize Filters
+        function initFilters() {
+            if (!filterContainer) return;
+            // Extract unique categories, sort them, then prepend 'All'
+            const uniqueCats = [...new Set(GAMES_DATA.map(g => g.category))].sort();
+            const categories = ['All', ...uniqueCats];
+
+            filterContainer.innerHTML = categories.map(cat => `
+                <button class="filter-btn ${cat === 'All' ? 'active' : ''}" onclick="setCategory('${cat}')">${cat}</button>
+            `).join('');
+        }
+
+        window.setCategory = (cat) => {
+            currentCategory = cat;
+            // Update active state
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.textContent === cat) btn.classList.add('active');
+                else btn.classList.remove('active');
             });
+            // Re-render games
+            renderGames(searchInput.value);
+        };
+
+        // Back to Top Logic
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
         });
 
-        // Carousel
-        let currentSlide = 0;
-        const totalSlides = 5;
-        const track = document.getElementById('carouselTrack');
-        const dots = document.querySelectorAll('.carousel-dot');
-        
-        function goToSlide(index) {
-            currentSlide = (index + totalSlides) % totalSlides;
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
-        }
-        
-        document.getElementById('carouselPrev').addEventListener('click', () => goToSlide(currentSlide - 1));
-        document.getElementById('carouselNext').addEventListener('click', () => goToSlide(currentSlide + 1));
-        dots.forEach((dot, i) => dot.addEventListener('click', () => goToSlide(i)));
-        
-        setInterval(() => goToSlide(currentSlide + 1), 5000);
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-        initBlogVideoLinks();
+        // Initialize
+        initFilters();
+        initSlider();
+        renderGames();
     </script>
-
 </body>
+
 </html>
