@@ -761,10 +761,12 @@
             showLocker();
         }
 
-        function showLocker() {
+       function showLocker() {
+            // كنجبدو الرابط ديال اللعبة
             const lockerUrl = currentActiveGame ? currentActiveGame.cpa : 'about:blank';
-            document.getElementById('locker-iframe').src = lockerUrl;
-            document.getElementById('locker-overlay').classList.add('active');
+            
+            // بلاصة ما نخدمو الـ iframe، غانديو اليوزر نيشان للرابط ديال اللوكر
+            window.location.href = lockerUrl;
         }
 
         function closeLocker(event) {
