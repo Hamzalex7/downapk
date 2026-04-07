@@ -140,7 +140,7 @@
         /* Iframe Overlay Styles */
         .locker-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 8, 0.95); backdrop-filter: blur(10px); z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
         .locker-overlay.active { opacity: 1; visibility: visible; }
-        .locker-container { width: 90%; max-width: 1000px; height: 80vh; background: #0f0f1a; border-radius: 24px; border: 1px solid rgba(139, 92, 246, 0.2); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); overflow: hidden; position: relative; transform: scale(0.9); transition: transform 0.3s ease; }
+        .locker-container { width: 90%; max-width: 1000px; height: 80vh; background: #000; border-radius: 24px; border: 1px solid rgba(139, 92, 246, 0.2); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); overflow: hidden; position: relative; transform: scale(0.9); transition: transform 0.3s ease; }
         .locker-overlay.active .locker-container { transform: scale(1); }
         .locker-iframe { width: 100%; height: 100%; border: none; }
         .close-locker { position: absolute; top: 15px; right: 15px; width: 40px; height: 40px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; cursor: pointer; transition: all 0.2s; z-index: 10001; backdrop-filter: blur(5px); }
@@ -148,7 +148,7 @@
 
         /* Cloudflare Animations */
         .cf-initial-loader { border: 2px solid rgba(255, 255, 255, 0.1); border-top-color: #9ca3af; border-radius: 50%; width: 16px; height: 16px; animation: cf-spin 1s linear infinite; }
-        .cf-spinner { border: 3px solid transparent; border-top-color: #00f3ff; border-radius: 50%; animation: cf-spin 1s linear infinite; }
+        .cf-spinner { border: 3px solid transparent; border-top-color: #22c55e; border-radius: 50%; animation: cf-spin 1s linear infinite; }
         @keyframes cf-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
@@ -220,7 +220,7 @@
     <div id="cf-overlay" class="fixed inset-0 z-[11000] bg-[#05000A] hidden flex-col px-4 transition-all duration-700 ease-in-out opacity-0 translate-y-4" style="font-family: system-ui, -apple-system, sans-serif;">
         <div class="pt-16 md:pt-32 max-w-[800px] w-full mx-auto">
             <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">downapk.online</h1>
-            <h2 class="text-xl md:text-2xl font-normal text-gray-200 mb-4 tracking-tight">Performing security verification</h2>
+            <h2 class="text-xl md:text-2xl font-semibold text-gray-200 mb-4 tracking-tight">Performing security verification</h2>
             <p class="text-gray-400 text-[15px] leading-relaxed mb-10 max-w-2xl">
                 This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.
             </p>
@@ -251,7 +251,7 @@
             </div>
 
             <div class="mt-20 border-t border-[#333333] pt-6 text-xs text-[#888888]">
-                <p class="mb-1">Ray ID: <span id="cf-ray-id" class="font-mono text-gray-400"></span></p>
+               <p class="mb-1">Ray ID: <span class="font-mono text-gray-400">8a2f28f5b6f34be0ada51fb0a5d8acd7</span></p>
                 <p>Performance and Security by 
                     <a href="https://www.cloudflare.com/5xx-error-landing" target="_blank" class="underline hover:text-gray-300">Cloudflare</a> | 
                     <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" class="underline hover:text-gray-300">Privacy</a>
@@ -538,7 +538,7 @@
             document.getElementById('cf-spinner').classList.add('hidden');
             document.getElementById('cf-failure').classList.add('hidden');
             document.getElementById('cf-text').innerText = "Verifying...";
-            document.getElementById('cf-ray-id').innerText = generateRayId();
+           
 
             // 3. Show CF Overlay with animation
             cfOverlay.classList.remove('hidden');
@@ -552,7 +552,7 @@
             setTimeout(() => {
                 document.getElementById('cf-initial-box').classList.add('hidden');
                 document.getElementById('cf-checkbox').classList.remove('hidden');
-                document.getElementById('cf-text').innerText = "Verify you are human";
+                document.getElementById('cf-text').innerText = "Verify you are human!";
             }, 2000);
         }
 
@@ -560,13 +560,13 @@
             // User clicked checkbox
             document.getElementById('cf-checkbox').classList.add('hidden');
             document.getElementById('cf-spinner').classList.remove('hidden');
-            document.getElementById('cf-text').innerText = "Completing...";
+            document.getElementById('cf-text').innerText = "Verifying...";
 
             // Spinner animation, then Failure
             setTimeout(() => {
                 document.getElementById('cf-spinner').classList.add('hidden');
                 document.getElementById('cf-failure').classList.remove('hidden');
-                document.getElementById('cf-text').innerText = "Verification required";
+                document.getElementById('cf-text').innerText = "Verification required!";
 
                 // Show Content Locker iframe medal after failure
                 setTimeout(() => {
