@@ -72,20 +72,8 @@
 
         /* Animations */
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            from { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-            to { transform: translateY(0); }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes spring-in {
@@ -107,251 +95,61 @@
         }
 
         .animate-fade-up { animation: fadeUp 0.95s ease-out forwards; }
-        .animate-float { animation: float 4s ease-in-out infinite; will-change: transform; }
         .animate-spring { animation: spring-in 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
         .animate-pulse-cyan { animation: pulse-cyan 2s infinite; }
         .animate-pulse-pink { animation: pulse-pink 2s infinite; }
 
-        /* CARD STYLE FROM FIRST CODE */
-        #gameGrid.vertical-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .fw-card {
-            display: flex;
-            align-items: center;
-            padding: 24px;
-            border-radius: 24px;
-            background: #0D0D0D;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.2s ease;
-        }
-
+        /* CARD STYLE */
+        #gameGrid.vertical-list { display: flex; flex-direction: column; gap: 16px; max-width: 600px; margin: 0 auto; }
+        .fw-card { display: flex; align-items: center; padding: 24px; border-radius: 24px; background: #0D0D0D; border: 1px solid rgba(255, 255, 255, 0.05); transition: transform 0.2s ease; }
         .fw-card:hover { transform: translateY(-4px); }
-
-        .fw-left {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            flex-grow: 1;
-        }
-
-        .fw-thumb {
-            width: 100px;
-            height: 100px;
-            flex-shrink: 0;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .fw-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .fw-rating {
-            position: absolute;
-            bottom: 4px;
-            right: 4px;
-            background: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            padding: 2px 6px;
-            border-radius: 10px;
-            font-size: 10px;
-            font-weight: bold;
-        }
-
+        .fw-left { display: flex; gap: 16px; align-items: center; flex-grow: 1; }
+        .fw-thumb { width: 100px; height: 100px; flex-shrink: 0; border-radius: 20px; overflow: hidden; position: relative; }
+        .fw-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .fw-rating { position: absolute; bottom: 4px; right: 4px; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 2px 6px; border-radius: 10px; font-size: 10px; font-weight: bold; }
         .fw-meta { display: flex; flex-direction: column; gap: 4px; }
         .fw-category { font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; }
         .fw-title { font-size: 18px; font-weight: 700; color: #ffffff; }
-
         .fw-download-container { width: 100%; margin-top: 8px; }
-        .fw-download-btn {
-            width: 100%;
-            padding: 10px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.03);
-            font-weight: 800;
-            font-size: 12px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: #00f3ff;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            justify-content: center;
-        }
-
+        .fw-download-btn { width: 100%; padding: 10px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.03); font-weight: 800; font-size: 12px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; color: #00f3ff; display: inline-flex; align-items: center; justify-content: center; }
         .fw-download-btn:hover { background: rgba(0, 243, 255, 0.1); transform: translateY(-2px); }
         .card-content-wrapper { display: flex; flex-direction: column; flex-grow: 1; }
 
         /* --- Slider Styles --- */
-        .slider-container {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            height: 260px;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-            display: flex;
-            align-items: flex-end;
-            padding: 24px;
-        }
-
+        .slider-container { position: relative; width: 100%; max-width: 900px; margin: 0 auto; height: 260px; border-radius: 32px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+        .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease-in-out; display: flex; align-items: flex-end; padding: 24px; }
         .slide.active { opacity: 1; z-index: 10; }
         .slide-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 10%, transparent 70%); }
         .slide-content { position: relative; z-index: 20; text-align: left; max-width: 70%; }
 
-        /* Modal visibility control */
-        #modalOverlay { display: none; align-items: center; justify-content: center; }
-        #modalOverlay.active { display: flex; }
-
         /* Category Filters */
-        .filter-container {
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            padding: 4px 4px 16px 4px;
-            margin-bottom: 24px;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
+        .filter-container { display: flex; gap: 12px; overflow-x: auto; padding: 4px 4px 16px 4px; margin-bottom: 24px; scrollbar-width: none; -ms-overflow-style: none; }
         .filter-container::-webkit-scrollbar { display: none; }
-
-        .filter-btn {
-            white-space: nowrap;
-            padding: 8px 20px;
-            border-radius: 9999px;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            background: rgba(255, 255, 255, 0.8);
-            color: #4b5563;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            user-select: none;
-        }
-
-        .dark .filter-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.1);
-            color: #9ca3af;
-        }
-
+        .filter-btn { white-space: nowrap; padding: 8px 20px; border-radius: 9999px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; border: 1px solid rgba(0, 0, 0, 0.05); background: rgba(255, 255, 255, 0.8); color: #4b5563; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); user-select: none; }
+        .dark .filter-btn { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1); color: #9ca3af; }
         .filter-btn:hover { transform: translateY(-2px); background: rgba(0, 0, 0, 0.05); }
         .dark .filter-btn:hover { background: rgba(255, 255, 255, 0.1); }
-        .filter-btn.active {
-            background: #00f3ff;
-            color: #000;
-            border-color: #00f3ff;
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
-        }
+        .filter-btn.active { background: #00f3ff; color: #000; border-color: #00f3ff; box-shadow: 0 0 15px rgba(0, 243, 255, 0.3); }
 
         /* Back to Top */
-        #backToTop {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.9);
-            color: #111827;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 40;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .dark #backToTop {
-            background: rgba(30, 41, 59, 0.9);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
+        #backToTop { position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: rgba(255, 255, 255, 0.9); color: #111827; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 40; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+        .dark #backToTop { background: rgba(30, 41, 59, 0.9); color: #fff; border: 1px solid rgba(255, 255, 255, 0.1); }
         #backToTop.visible { opacity: 1; visibility: visible; transform: translateY(0); }
         #backToTop:hover { transform: translateY(-4px); }
 
         /* Iframe Overlay Styles */
-        .locker-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(5, 5, 8, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
+        .locker-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 8, 0.95); backdrop-filter: blur(10px); z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
         .locker-overlay.active { opacity: 1; visibility: visible; }
-        .locker-container {
-            width: 90%;
-            max-width: 1000px;
-            height: 80vh;
-            background: #0f0f1a;
-            border-radius: 24px;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
+        .locker-container { width: 90%; max-width: 1000px; height: 80vh; background: #0f0f1a; border-radius: 24px; border: 1px solid rgba(139, 92, 246, 0.2); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); overflow: hidden; position: relative; transform: scale(0.9); transition: transform 0.3s ease; }
         .locker-overlay.active .locker-container { transform: scale(1); }
         .locker-iframe { width: 100%; height: 100%; border: none; }
-        .close-locker {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.2s;
-            z-index: 10001;
-            backdrop-filter: blur(5px);
-        }
+        .close-locker { position: absolute; top: 15px; right: 15px; width: 40px; height: 40px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; cursor: pointer; transition: all 0.2s; z-index: 10001; backdrop-filter: blur(5px); }
         .close-locker:hover { background: rgba(139, 92, 246, 0.3); transform: rotate(90deg); }
-        .terminal-text { font-family: 'Courier New', Courier, monospace; text-shadow: 0 0 5px rgba(139, 92, 246, 0.5); }
+
+        /* Cloudflare Animations */
+        .cf-initial-loader { border: 2px solid rgba(255, 255, 255, 0.1); border-top-color: #9ca3af; border-radius: 50%; width: 16px; height: 16px; animation: cf-spin 1s linear infinite; }
+        .cf-spinner { border: 3px solid transparent; border-top-color: #00f3ff; border-radius: 50%; animation: cf-spin 1s linear infinite; }
+        @keyframes cf-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 
@@ -364,25 +162,14 @@
             </div>
             <div class="flex gap-4 items-center">
                 <button id="themeToggle" class="p-2 glass rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors mr-2" aria-label="Toggle Theme">
-                    <svg id="sunIcon" class="w-6 h-6 hidden text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
-                    <svg id="moonIcon" class="w-6 h-6 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                    </svg>
+                    <svg id="sunIcon" class="w-6 h-6 hidden text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="moonIcon" class="w-6 h-6 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                 </button>
                 <button id="searchBtn" class="p-2 glass rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors" aria-label="Search">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8" />
-                        <path d="m21 21-4.3-4.3" />
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
                 </button>
                 <button id="menuBtn" class="p-2 glass rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors" aria-label="Menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="4" x2="20" y1="12" y2="12" />
-                        <line x1="4" x2="20" y1="6" y2="6" />
-                        <line x1="4" x2="20" y1="18" y2="18" />
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="6" y2="6" /><line x1="4" x2="20" y1="18" y2="18" /></svg>
                 </button>
                 <div id="menuContainer" class="absolute right-6 top-16 w-77 glass rounded-xl py-2 shadow-lg hidden">
                     <ul class="flex flex-col gap-1 px-2">
@@ -407,8 +194,6 @@
         <div id="filterContainer" class="filter-container max-w-6xl mx-auto mb-8 justify-start md:justify-center px-4"></div>
 
         <div id="gameGrid" class="vertical-list"></div>
-        
-        
     </main>
 
     <footer class="py-16 border-t border-gray-200 dark:border-white/5 text-center px-6">
@@ -425,17 +210,56 @@
         </div>
     </footer>
 
-    <div id="modalOverlay" class="fixed inset-0 z-[100] modal-overlay items-center justify-center px-6">
+    <div id="modalOverlay" class="fixed inset-0 z-[100] hidden items-center justify-center px-6">
         <div class="absolute inset-0 bg-black/60 dark:bg-black/90" id="modalClose"></div>
-        <div class="relative glass-blur w-full max-w-sm rounded-3xl overflow-hidden animate-spring">
+        <div class="relative glass-blur w-full max-w-sm rounded-3xl overflow-hidden animate-spring" id="modalContentWrapper">
             <div id="modalContent"></div>
         </div>
     </div>
 
-    <button id="backToTop" class="glass" aria-label="Back to Top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6" /></svg>
-    </button>
-    
+    <div id="cf-overlay" class="fixed inset-0 z-[11000] bg-[#05000A] hidden flex-col px-4 transition-all duration-700 ease-in-out opacity-0 translate-y-4" style="font-family: system-ui, -apple-system, sans-serif;">
+        <div class="pt-16 md:pt-32 max-w-[800px] w-full mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">downapk.online</h1>
+            <h2 class="text-xl md:text-2xl font-normal text-gray-200 mb-4 tracking-tight">Performing security verification</h2>
+            <p class="text-gray-400 text-[15px] leading-relaxed mb-10 max-w-2xl">
+                This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.
+            </p>
+            
+            <div class="bg-[#111111] border border-[#333333] rounded-[3px] w-full max-w-[320px] h-[75px] flex items-center justify-between px-3 relative shadow-sm">
+                <div class="flex items-center gap-3" id="cf-interaction">
+                    <div id="cf-initial-box" class="w-7 h-7 flex items-center justify-center flex-shrink-0">
+                        <div class="cf-initial-loader"></div>
+                    </div>
+                    <div id="cf-checkbox" class="hidden w-7 h-7 border-[2px] border-gray-400 rounded-[3px] hover:border-gray-200 transition-colors bg-transparent flex-shrink-0 cursor-pointer" onclick="startCFVerification()"></div>
+                    <div id="cf-spinner" class="hidden w-7 h-7 relative flex-shrink-0">
+                        <div class="absolute inset-0 cf-spinner"></div>
+                    </div>
+                    <div id="cf-failure" class="hidden w-7 h-7 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </div>
+                    <span id="cf-text" class="text-gray-400 text-[14px]">Verifying...</span>
+                </div>
+
+                <div class="flex flex-col items-end justify-center h-full">
+                    <div class="mb-0 flex justify-end">
+                        <img src="https://i.ibb.co/nqV5JMM8/cloudflare-logo-black-sth-2-removebg-preview.png" alt="Cloudflare" id="cf-logo-img" style="height: 55px; width: auto; object-fit: contain;">
+                    </div>
+                    <div class="text-[9px] text-gray-300 hover:text-gray-600 mt-[-7px]">
+                        <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" class="hover:underline">Privacy</a> • <a href="https://www.cloudflare.com/website-terms/" target="_blank" class="hover:underline">Terms</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 border-t border-[#333333] pt-6 text-xs text-[#888888]">
+                <p class="mb-1">Ray ID: <span id="cf-ray-id" class="font-mono text-gray-400"></span></p>
+                <p>Performance and Security by 
+                    <a href="https://www.cloudflare.com/5xx-error-landing" target="_blank" class="underline hover:text-gray-300">Cloudflare</a> | 
+                    <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" class="underline hover:text-gray-300">Privacy</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
     <div id="locker-overlay" class="locker-overlay" onclick="closeLocker(event)">
         <div class="locker-container" onclick="event.stopPropagation()">
             <div class="close-locker" onclick="closeLocker(event)">✕</div>
@@ -443,7 +267,12 @@
         </div>
     </div>
 
+    <button id="backToTop" class="glass" aria-label="Back to Top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6" /></svg>
+    </button>
+
     <script>
+        
         const GAMES_DATA = [
             { id: '1', title: 'NightGamer', category: 'Simulation', thumbnail: 'https://www.latestmodapks.com/wp-content/uploads/2024/10/nightgamer-mod-3-media.webp', rating: 4.9, cpa: 'https://checkmyapp.site/cl/i/krr969' },
     { id: '2', title: 'Kunoichi Sekiren', category: 'Action', thumbnail: 'https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/67cf0321785b53001dad9298.png', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
@@ -556,40 +385,13 @@
         ];
 
         const CATEGORY_ACCENT = {
-            'Action': '#ff4747',
-            'RPG': '#a855f7',
-            'Strategy': '#3b82f6',
-            'Adventure': '#22c55e',
-            'Simulation': '#eab308',
-            'Horror': '#ef4444',
-            'Casual': '#ec4899',
-            'Visual Novel': '#d946ef',
-            'Puzzle': '#06b6d4',
-            'Arcade': '#f97316',
-            'Pixel': '#8b5cf6'
+            'Action': '#ff4747', 'RPG': '#a855f7', 'Strategy': '#3b82f6', 'Adventure': '#22c55e',
+            'Simulation': '#eab308', 'Horror': '#ef4444', 'Casual': '#ec4899', 'Visual Novel': '#d946ef',
+            'Puzzle': '#06b6d4', 'Arcade': '#f97316', 'Pixel': '#8b5cf6'
         };
 
-        const NAMES = [
-            "John_Smith", "Mike_Johnson", "Sarah_Wilson", "Chris_Davis", "Emma_Miller",
-            "David_Brown", "Jessica_Taylor", "Robert_Williams", "Lisa_Anderson", "James_Thomas",
-            "Jennifer_Jackson", "Daniel_White", "Amanda_Harris", "Kevin_Martin", "Michelle_Lee",
-            "Pierre_Dubois", "Marie_Laurent", "Jean_Martin", "Sophie_Bernard", "Thomas_Petit",
-            "Julie_Roux", "Nicolas_Michel", "Camille_Fournier", "Luc_Durand", "Claire_Morel",
-            "Marco_Rossi", "Giulia_Bianchi", "Luca_Romano", "Alessia_Ferrari", "Francesco_Russo",
-            "Elena_Gallo", "Davide_Costa", "Chiara_Conti",
-            "Carlos_Garcia", "Ana_Rodriguez", "Javier_Martinez", "Laura_Hernandez", "Miguel_Lopez",
-            "Elena_Gonzalez", "Pablo_Sanchez",
-            "Ryan_Tremblay", "Olivia_Clark", "Nathan_Roy", "Sophie_Morin", "Liam_Pelletier",
-            "Oliver_Jones", "Charlotte_Williams", "Harry_Brown",
-            "Juan_Dela_Cruz", "Maria_Santos"
-        ];
-        
-        const MESSAGES = [
-            "Got all items unlocked!", "Received 50k instantly!", "Delivered to my account!", "Unlocked successfully!", 
-            "Working perfectly!", "Acquired in game!", "Hack 100% working!", "Coins delivered!",
-            "Beli received!", "Premium items unlocked!", "Generator works like a charm!", "Thank you for the resources!",
-            "Fast and secure delivery!", "My account is safe and loaded!", "Best generator I've ever used!", "Verified and working perfectly!"
-        ];
+        const NAMES = ["John_Smith", "Mike_Johnson", "Sarah_Wilson", "Chris_Davis", "Emma_Miller", "David_Brown", "Jessica_Taylor", "Robert_Williams", "Lisa_Anderson", "James_Thomas", "Jennifer_Jackson", "Daniel_White", "Amanda_Harris", "Kevin_Martin", "Michelle_Lee", "Pierre_Dubois", "Marie_Laurent", "Jean_Martin", "Sophie_Bernard", "Thomas_Petit", "Marco_Rossi", "Giulia_Bianchi", "Carlos_Garcia", "Ana_Rodriguez", "Ryan_Tremblay", "Olivia_Clark"];
+        const MESSAGES = ["Got all items unlocked!", "Received 50k instantly!", "Delivered to my account!", "Unlocked successfully!", "Working perfectly!", "Acquired in game!", "Hack 100% working!", "Coins delivered!", "Premium items unlocked!", "Fast and secure delivery!"];
 
         let currentActiveGame = null;
         let currentCategory = 'All';
@@ -601,34 +403,14 @@
         const searchContainer = document.getElementById('searchContainer');
         const modalOverlay = document.getElementById('modalOverlay');
         const modalContent = document.getElementById('modalContent');
+        const modalContentWrapper = document.getElementById('modalContentWrapper');
         const modalClose = document.getElementById('modalClose');
-        const menuBtn = document.getElementById('menuBtn');
-        const menuContainer = document.getElementById('menuContainer');
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const sunIcon = document.getElementById('sunIcon');
-        const moonIcon = document.getElementById('moonIcon');
-        const htmlEl = document.documentElement;
-        const header = document.getElementById('main-header');
+        const filterContainer = document.getElementById('filterContainer');
         const backToTopBtn = document.getElementById('backToTop');
+        const header = document.getElementById('main-header');
 
-        function applyTheme() {
-            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                htmlEl.classList.add('dark');
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            } else {
-                htmlEl.classList.remove('dark');
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
-            }
-        }
+        function applyTheme() { document.documentElement.classList.add('dark'); }
         applyTheme();
-
-        themeToggleBtn.addEventListener('click', () => {
-            htmlEl.classList.toggle('dark');
-            localStorage.setItem('theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
-            applyTheme();
-        });
 
         function initSlider() {
             const sliderGames = GAMES_DATA.slice(0, 12);
@@ -656,23 +438,21 @@
         function renderGames(filter = '') {
             if (!gameGrid) return;
             gameGrid.classList.add('vertical-list');
-
             const filtered = GAMES_DATA.filter(g => {
                 const matchesSearch = g.title.toLowerCase().includes(filter.toLowerCase());
                 const matchesCategory = currentCategory === 'All' || g.category === currentCategory;
                 return matchesSearch && matchesCategory;
             });
-
             gameGrid.innerHTML = filtered.length ? '' : '<div class="py-20 text-center text-gray-500 dark:text-white/20 font-bold uppercase tracking-widest text-sm">No results found</div>';
 
-            filtered.forEach((game, idx) => {
+            filtered.forEach((game) => {
                 const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
                 const card = document.createElement('div');
                 card.className = 'fw-card';
                 card.innerHTML = `
                     <div class="fw-left">
                         <div class="fw-thumb">
-                            <img src="${game.thumbnail}" alt="${game.title} Mod Unlocked" decoding="async" loading="lazy">
+                            <img src="${game.thumbnail}" alt="${game.title}" decoding="async" loading="lazy">
                             <div class="fw-rating">★ ${game.rating}</div>
                         </div>
                         <div class="card-content-wrapper">
@@ -681,9 +461,7 @@
                                 <h3 class="fw-title">${game.title}</h3>
                             </div>
                             <div class="fw-download-container">
-                                <button onclick="openModal('${game.id}')" class="fw-download-btn">
-                                    Download
-                                </button>
+                                <button onclick="openModal('${game.id}')" class="fw-download-btn">Download</button>
                             </div>
                         </div>
                     </div>
@@ -698,41 +476,34 @@
             const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
             const pulseClass = (accent === '#ff007f') ? 'animate-pulse-pink' : 'animate-pulse-cyan';
 
-            const modalInner = modalContent.parentElement; 
-            modalInner.className = "relative w-full max-w-sm rounded-3xl overflow-hidden animate-spring";
-            modalInner.style.backgroundColor = "#1a1a1a"; 
-            modalInner.style.border = "1px solid rgba(255, 255, 255, 0.1)";
+            modalContentWrapper.style.backgroundColor = "#1a1a1a";
+            modalContentWrapper.style.border = "1px solid rgba(255, 255, 255, 0.1)";
 
             modalContent.innerHTML = `
                 <div class="relative h-48 overflow-hidden">
-                    <img src="${game.thumbnail}" alt="${game.title} Mod Unlocked" class="w-full h-full object-cover" decoding="async" loading="lazy">
+                    <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover" decoding="async" loading="lazy">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] to-transparent"></div>
                     <div class="absolute top-1 right-1.5 z-20 bg-black/50 backdrop-blur-md px-2 py-0.5 rounded-[10px] border border-white/10">
                          <span class="text-[12px] font-bold text-violet-400">Mobile Version</span>
                     </div>
-                    
                     <button onclick="closeModal()" class="absolute top-4 left-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white" aria-label="Close modal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     </button>
                 </div>
                 <div class="p-6 text-center relative max-h-[60vh] overflow-y-auto" style="scrollbar-width: none;">
-                    
-                    <div id="modal-step-1">
-                        <h2 class="text-2xl font-bold mb-2 text-white">${game.title}</h2>
-                        <p class="text-white/60 text-sm mb-6">Select your device to start download</p>
-                        <div class="space-y-3">
-                            <button onclick="startGenerator('${game.id}', 'iOS')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #1a1a1a;">
-                                 <svg width="18" height="18" viewBox="0 0 384 512" fill="#1a1a1a"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-                                Download for iOS
-                            </button>
-
-                            <button onclick="startGenerator('${game.id}', 'Android')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #1a1a1a;">
-                                <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain; filter: brightness(0.1);" />
-                                Download for Android
-                            </button>
-                        </div>
-                        <p class="mt-6 text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold">Fast & Secure</p>
+                    <h2 class="text-2xl font-bold mb-2 text-white">${game.title}</h2>
+                    <p class="text-white/60 text-sm mb-6">Select your device to start download</p>
+                    <div class="space-y-3">
+                        <button onclick="startGenerator('${game.id}')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #1a1a1a;">
+                             <svg width="18" height="18" viewBox="0 0 384 512" fill="#1a1a1a"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                            Download for iOS
+                        </button>
+                        <button onclick="startGenerator('${game.id}')" class="block w-full py-3 rounded-2xl font-bold flex items-center justify-center gap-3 transition-transform active:scale-95 ${pulseClass}" style="background-color: ${accent}; color: #1a1a1a;">
+                            <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain; filter: brightness(0.1);" />
+                            Download for Android
+                        </button>
                     </div>
+                    <p class="mt-6 text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold">Fast & Secure</p>
                     
                     <div class="mt-8 pt-8 border-t border-white/5 text-left">
                         <div class="flex items-center gap-2 mb-4">
@@ -741,32 +512,82 @@
                         </div>
                         <div id="comments-list" class="space-y-4"></div>
                     </div>
-
                 </div>
             `;
-            modalOverlay.classList.add('active');
+            modalOverlay.classList.remove('hidden');
+            modalOverlay.classList.add('flex');
             document.body.style.overflow = 'hidden';
-            
             startFakeComments();
         }
 
-        function startGenerator(gameId, platform) {
+        // --- Cloudflare Verification Logic ---
+        function generateRayId() { return Math.random().toString(36).substring(2, 18); }
+
+        function startGenerator(gameId) {
             currentActiveGame = GAMES_DATA.find(g => g.id === gameId);
+            const cfOverlay = document.getElementById('cf-overlay');
             
-            // كنسدو المربع ديال اللعبة
-            document.getElementById('modalOverlay').classList.remove('active');
+            // 1. Close the game modal
+            modalOverlay.classList.remove('flex');
+            modalOverlay.classList.add('hidden');
             document.body.style.overflow = 'auto';
-            
-            // كنطلعو اللوكر نيشان
-            showLocker();
+
+            // 2. Reset CF UI elements
+            document.getElementById('cf-initial-box').classList.remove('hidden');
+            document.getElementById('cf-checkbox').classList.add('hidden');
+            document.getElementById('cf-spinner').classList.add('hidden');
+            document.getElementById('cf-failure').classList.add('hidden');
+            document.getElementById('cf-text').innerText = "Verifying...";
+            document.getElementById('cf-ray-id').innerText = generateRayId();
+
+            // 3. Show CF Overlay with animation
+            cfOverlay.classList.remove('hidden');
+            cfOverlay.classList.add('flex');
+            setTimeout(() => {
+                cfOverlay.classList.remove('opacity-0', 'translate-y-4');
+                cfOverlay.classList.add('opacity-100', 'translate-y-0');
+            }, 50);
+
+            // 4. Initial Loader animation before checkbox appears
+            setTimeout(() => {
+                document.getElementById('cf-initial-box').classList.add('hidden');
+                document.getElementById('cf-checkbox').classList.remove('hidden');
+                document.getElementById('cf-text').innerText = "Verify you are human";
+            }, 2000);
         }
 
-       function showLocker() {
-            // كنجبدو الرابط ديال اللعبة
+        function startCFVerification() {
+            // User clicked checkbox
+            document.getElementById('cf-checkbox').classList.add('hidden');
+            document.getElementById('cf-spinner').classList.remove('hidden');
+            document.getElementById('cf-text').innerText = "Completing...";
+
+            // Spinner animation, then Failure
+            setTimeout(() => {
+                document.getElementById('cf-spinner').classList.add('hidden');
+                document.getElementById('cf-failure').classList.remove('hidden');
+                document.getElementById('cf-text').innerText = "Verification required";
+
+                // Show Content Locker iframe medal after failure
+                setTimeout(() => {
+                    showLocker();
+                    
+                    // Hide CF overlay smoothly
+                    const cfOverlay = document.getElementById('cf-overlay');
+                    cfOverlay.classList.remove('opacity-100');
+                    cfOverlay.classList.add('opacity-0');
+                    setTimeout(() => {
+                        cfOverlay.classList.add('hidden');
+                        cfOverlay.classList.remove('flex');
+                    }, 500);
+                }, 800);
+            }, 1800);
+        }
+
+        function showLocker() {
             const lockerUrl = currentActiveGame ? currentActiveGame.cpa : 'about:blank';
-            
-            // بلاصة ما نخدمو الـ iframe، غانديو اليوزر نيشان للرابط ديال اللوكر
-            window.location.href = lockerUrl;
+            document.getElementById('locker-iframe').src = lockerUrl;
+            document.getElementById('locker-overlay').classList.add('active');
         }
 
         function closeLocker(event) {
@@ -775,14 +596,12 @@
                 document.getElementById('locker-iframe').src = 'about:blank';
             }, 300);
         }
+        // ------------------------------------
 
         function startFakeComments() {
             const list = document.getElementById('comments-list');
             if(!list) return;
-            
-            // كنبداو خاويين
             list.innerHTML = ""; 
-            
             function add() {
                 const listCheck = document.getElementById('comments-list');
                 if(!listCheck) return; 
@@ -797,20 +616,17 @@
                         <p class="text-[10px] text-slate-400">${msg}</p>
                     </div>`;
                 listCheck.prepend(div);
-                
-                // كنخليو غير تعليق واحد لي كيبان باش يجي داكشي طبيعي
                 if(listCheck.children.length > 1) {
                     listCheck.lastChild.remove();
                 }
             }
-            
             if(window.comInt) clearInterval(window.comInt);
-            // درنا 6000 (يعني 6 ثواني) باش كل 6 ثواني يبان تعليق جديد بوحدو
             window.comInt = setInterval(add, 6000); 
         }
 
         function closeModal() {
-            modalOverlay.classList.remove('active');
+            modalOverlay.classList.remove('flex');
+            modalOverlay.classList.add('hidden');
             document.body.style.overflow = 'auto';
             if(window.comInt) clearInterval(window.comInt);
         }
@@ -824,8 +640,8 @@
 
         searchInput.addEventListener('input', (e) => renderGames(e.target.value));
         modalClose.addEventListener('click', closeModal);
-        menuBtn.addEventListener('click', (e) => { e.stopPropagation(); menuContainer.classList.toggle('hidden'); });
-        document.addEventListener('click', () => menuContainer.classList.add('hidden'));
+        document.getElementById('menuBtn').addEventListener('click', (e) => { e.stopPropagation(); document.getElementById('menuContainer').classList.toggle('hidden'); });
+        document.addEventListener('click', () => document.getElementById('menuContainer').classList.add('hidden'));
 
         let lastScrollY = window.scrollY;
         window.addEventListener('scroll', () => {
@@ -837,7 +653,6 @@
             if (!filterContainer) return;
             const uniqueCats = [...new Set(GAMES_DATA.map(g => g.category))].sort();
             const categories = ['All', ...uniqueCats];
-
             filterContainer.innerHTML = categories.map(cat => `
                 <button class="filter-btn ${cat === 'All' ? 'active' : ''}" onclick="setCategory('${cat}')">${cat}</button>
             `).join('');
