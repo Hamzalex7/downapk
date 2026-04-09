@@ -709,11 +709,11 @@
                         <p style="font-size:12px;color:var(--muted);margin:0;font-weight:500;">${msg}</p>
                     </div>`;
                 el.prepend(div);
-                if (el.children.length > 2) el.lastChild.remove();
+                if (el.children.length > 1) el.lastChild.remove();
             }
             add();
             if (window.comInt) clearInterval(window.comInt);
-            window.comInt = setInterval(add, 5000);
+            window.comInt = setInterval(add, 7000);
         }
 
         // ── CF VERIFICATION ──
