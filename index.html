@@ -463,8 +463,8 @@
             'Puzzle': '#06b6d4', 'Arcade': '#f97316', 'Pixel': '#8b5cf6'
         };
 
-        const NAMES = ["John_Smith","Mike_Johnson","Sarah_Wilson","Chris_Davis","Emma_Miller","David_Brown","Jessica_Taylor","Robert_Williams","Lisa_Anderson","James_Thomas"];
-        const MESSAGES = ["Got all items unlocked!","Received 50k instantly!","Delivered to my account!","Unlocked successfully!","Working perfectly!","Acquired in game!","Hack 100% working!"];
+        const NAMES = ["John_Smith","Mike","Sarah_Wilson","Chris_Davis","Emma_Miller","David_Brown","Jessica_Taylor","Robert_Williams","Lisa_Anderson","James_Thomas"];
+        const MESSAGES = ["Got all Games Working Thank You","Received instantly!","I got it !","Unlocked successfully!","Working perfectly!","Acquired in game!","Game 100% working!"];
 
         let currentActiveGame = null;
         let currentCategory = 'All';
@@ -614,7 +614,7 @@
                                 </div>
                             </div>
                             <div class="card-action">
-                                <button class="dl-btn-list" onclick="event.stopPropagation();openModal('${game.id}')">Download</button>
+                                <button class="dl-btn-list" onclick="event.stopPropagation();openModal('${game.id}')">get</button>
                             </div>
                         </div>
                     `;
@@ -668,11 +668,12 @@
                         <span style="font-size:13px;font-weight:600;color:var(--muted);"></span>
                     </div>
                     <div style="display:flex;flex-direction:column;gap:12px;">
-                        <button onclick="startGenerator('${game.id}')" style="width:100%;padding:14px;border-radius:14px;border:none;background:${accent};color:#000;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform 0.2s;font-family:'Outfit',sans-serif;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                        <button onclick="startGenerator('${game.id}')" style="width:85%; margin:3px auto; padding:10px;border-radius:22px;border:none;background:${accent};color:#000;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform 0.2s;font-family:'Outfit',sans-serif;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
     <svg width="16" height="16" viewBox="0 0 384 512" fill="#000"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
     Download for iOS
 </button>
-<button onclick="startGenerator('${game.id}')" style="width:100%;padding:14px;border-radius:14px;border:none;background:${accent};color:#000;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform 0.2s;font-family:'Outfit',sans-serif;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+
+<button onclick="startGenerator('${game.id}')" style="width:85%; margin:3px auto; padding:10px;border-radius:22px;border:none;background:${accent};color:#000;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform 0.2s;font-family:'Outfit',sans-serif;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
     <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:16px; height:16px; object-fit: contain; filter: brightness(0);" />
     Download for Android
 </button>
@@ -682,7 +683,7 @@
                     <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);text-align:left;">
                         <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
                             <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulse-cyan 2s infinite;"></span>
-                            <span style="font-size:11px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;">Recent Activity</span>
+                            <span style="font-size:8px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;">Recent Activity</span>
                         </div>
                         <div id="comments-list" style="display:flex;flex-direction:column;gap:12px;"></div>
                     </div>
@@ -716,17 +717,17 @@
                     <div style="width:34px;height:34px;border-radius:50%;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--muted);border:1px solid var(--border);flex-shrink:0;">${name[0]}</div>
                     <div style="flex:1;">
                         <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
-                            <span style="font-size:13px;font-weight:800;color:var(--text);">${name}</span>
-                            <span style="font-size:10px;color:#22c55e;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;">Verified</span>
+                            <span style="font-size:11px;font-weight:800;color:var(--text);">${name}</span>
+                            <span style="font-size:8px;color:#22c55e;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;">Verified</span>
                         </div>
-                        <p style="font-size:12px;color:var(--muted);margin:0;font-weight:500;">${msg}</p>
+                        <p style="font-size:8px;color:var(--muted);margin:0;font-weight:500;">${msg}</p>
                     </div>`;
                 el.prepend(div);
                 if (el.children.length > 1) el.lastChild.remove();
             }
             add();
             if (window.comInt) clearInterval(window.comInt);
-            window.comInt = setInterval(add, 7000);
+            window.comInt = setInterval(add, 9000);
         }
 
         // ── CF VERIFICATION ──
