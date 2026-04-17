@@ -153,9 +153,11 @@
         @keyframes spring-in { 0% { transform: scale(0.92); opacity: 0; } 60% { transform: scale(1.02); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
 
         /* ── CF Overlay ── */
-        .cf-overlay { position: fixed; inset: 0; z-index: 11000; background: var(--bg); display: none; flex-direction: column; padding: 16px; transition: opacity 0.5s ease; opacity: 0; }
-        .cf-overlay.open { display: flex; opacity: 1; }
-        .dark .cf-logo-adapt { filter: brightness(0) invert(1); } /* كترد اللوڭو بيض فالدارك مود */
+        .cf-overlay { position: fixed; inset: 0; z-index: 11000; background: var(--bg); display: none; flex-direction: column; padding: 16px; opacity: 0; }
+        .cf-overlay.open { display: flex; animation: cfFadeIn 0.5s ease-out forwards; }
+        /* زدنا هنا cubic-bezier باش تعطي تأثير ديال الروصور (Bounce) خفيف فاش كطلع */
+        .cf-overlay.open .cf-content-anim { animation: cfPopUp 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards; }
+        .dark .cf-logo-adapt { filter: brightness(0) invert(1); }
 
         /* ── Locker Overlay ── */
         .locker-overlay { position: fixed; inset: 0; z-index: 12000; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; }
@@ -172,6 +174,14 @@
         @keyframes pulse-cyan { 0%,100% { box-shadow: 0 0 0 0 rgba(0,243,255,0.35); } 70% { box-shadow: 0 0 0 8px rgba(0,243,255,0); } }
         @keyframes pulse-pink { 0%,100% { box-shadow: 0 0 0 0 rgba(225,29,72,0.35); } 70% { box-shadow: 0 0 0 8px rgba(225,29,72,0); } }
         @keyframes cf-spin { 100% { transform: rotate(360deg); } }
+        
+        /* كبرنا المسافة د الطلوع (50px) وصغرنا الزوم فالبداية (0.85) باش تبان الحركة مزيان */
+        @keyframes cfFadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes cfPopUp { 
+            0% { opacity: 0; transform: translateY(50px) scale(0.85); } 
+            100% { opacity: 1; transform: translateY(0) scale(1); } 
+        }
+        
         .animate-fade-up { animation: fadeUp 0.7s ease-out forwards; }
         .anim-delay-1 { animation-delay: 0.1s; opacity: 0; }
         .anim-delay-2 { animation-delay: 0.2s; opacity: 0; }
@@ -290,33 +300,41 @@
     </div>
 
     <div class="cf-overlay" id="cf-overlay" style="background-color: #000;">
-    <div class="cf-content-anim" style="padding-top:80px;max-width:800px;width:100%;margin:0 auto; font-family: 'Poppins', sans-serif;">
-        <p style="font-size:19px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Downapk.online</p>
-        <h1 style="font-size:32px;font-weight:800;color:white;margin-bottom:10px;letter-spacing:-0.02em;">Performing security<br>verification</h1>
-        <p style="color:#9ca3af;font-size:15px;line-height:1.6;margin-bottom:40px;max-width:480px;">This website uses a security service to protect against malicious bots. This page is displayed while we verify you are not a bot.</p>
+    <div class="cf-content-anim" style="padding-top:80px;max-width:800px;width:100%;flex:1;display:flex;flex-direction:column;margin:0 auto; font-family: 'Poppins', sans-serif;">
+        
+        <div>
+            <p style="font-size:19px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Downapk.online</p>
+            <h1 style="font-size:32px;font-weight:800;color:white;margin-bottom:10px;letter-spacing:-0.02em;">Performing security<br>verification</h1>
+            <p style="color:#9ca3af;font-size:15px;line-height:1.6;margin-bottom:40px;max-width:480px;">This website uses a security service to protect against malicious bots. This page is displayed while we verify you are not a bot.</p>
 
-        <div style="background:#222;border:1px solid #fff;border-radius:6px;width:100%;max-width:340px;height:75px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;box-shadow:0 4px 10px rgba(0,0,0,0.5);">
-            <div style="display:flex;align-items:center;gap:14px;" id="cf-interaction">
-                <div id="cf-initial-box" style="width:28px;height:28px;display:flex;align-items:center;justify-content:center;"><div class="cf-loader-el"></div></div>
-                <div id="cf-checkbox" style="display:none;width:28px;height:28px;border:2px solid #9ca3af;border-radius:4px;cursor:pointer;background:transparent;" onclick="startCFVerification()"></div>
-                <div id="cf-spinner" style="display:none;width:28px;height:28px;position:relative;"><div class="cf-spinner-el" style="position:absolute;inset:0;"></div></div>
-                <div id="cf-failure" style="display:none;width:28px;height:28px;display:none;align-items:center;justify-content:center;">
-                    <svg width="32" height="32" fill="none" stroke="#ef4444" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <div style="background:#222;border:1px solid #fff;border-radius:6px;width:100%;max-width:340px;height:75px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;box-shadow:0 4px 10px rgba(0,0,0,0.5);">
+                <div style="display:flex;align-items:center;gap:14px;" id="cf-interaction">
+                    <div id="cf-initial-box" style="width:28px;height:28px;display:flex;align-items:center;justify-content:center;"><div class="cf-loader-el"></div></div>
+                    <div id="cf-checkbox" style="display:none;width:28px;height:28px;border:2px solid #9ca3af;border-radius:4px;cursor:pointer;background:transparent;" onclick="startCFVerification()"></div>
+                    <div id="cf-spinner" style="display:none;width:28px;height:28px;position:relative;"><div class="cf-spinner-el" style="position:absolute;inset:0;"></div></div>
+                    
+                    <div id="cf-failure" style="display:none;width:28px;height:28px;border:2px solid #9ca3af;border-radius:4px;align-items:center;justify-content:center;">
+                        <svg width="22" height="22" fill="none" stroke="#f97316" stroke-width="4.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </div>
+                    
+                    <span id="cf-text" style="color:#9ca3af;font-size:15px;font-weight:600;">Verifying...</span>
                 </div>
-                <span id="cf-text" style="color:#9ca3af;font-size:15px;font-weight:600;">Verifying...</span>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0px;">
-                <div style="margin-bottom: -7px; display: flex; justify-content: flex-end;">
-                    <img src="https://i.ibb.co/nqV5JMM8/cloudflare-logo-black-sth-2-removebg-preview.png" alt="Cloudflare" id="cf-logo-img" style="height: 50px; width: auto; object-fit: contain;">
+                <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0px;">
+                    <div style="margin-bottom: -7px; display: flex; justify-content: flex-end;">
+                        <img src="https://i.ibb.co/nqV5JMM8/cloudflare-logo-black-sth-2-removebg-preview.png" alt="Cloudflare" id="cf-logo-img" style="height: 50px; width: auto; object-fit: contain;">
+                    </div>
+                    <div style="font-size:10px;color:#fff;"><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" style="color:#fff;text-decoration:none;">Privacy</a> · <a href="https://www.cloudflare.com/website-terms/" target="_blank" style="color:#fff;text-decoration:none;">Help</a></div>
                 </div>
-                <div style="font-size:10px;color:#fff;"><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" style="color:#fff;text-decoration:none;">Privacy</a> · <a href="https://www.cloudflare.com/website-terms/" target="_blank" style="color:#fff;text-decoration:none;">Help</a></div>
             </div>
         </div>
 
-        <div style="margin-top:150px;border-top:1px solid #333;padding-top:20px;">
-            <p style="font-size:13px;color:white;margin-bottom:4px;font-weight:600;">Ray ID: <span id="rayId" style="font-family:monospace;color:#9ca3af;font-weight:400;"></span></p>
-            <p style="font-size:13px;color:white;font-weight:600;">Performance & Security by <a href="https://www.cloudflare.com" target="_blank" style="color:#3b82f6;text-decoration:underline;font-weight:400;">Cloudflare</a> <span style="color:#9ca3af; margin:0 4px;">|</span> <a href="https://www.cloudflare.com/website-terms/" target="_blank" style="color:#3b82f6;text-decoration:underline;font-weight:400;">Privacy</a></p>
+        <div style="margin-top:auto; padding-bottom: 20px; width:100%;">
+            <div style="border-top:1px solid #333;padding-top:20px;text-align:center;">
+                <p style="font-size:13px;color:white;margin-bottom:4px;font-weight:600;">Ray ID: <span id="rayId" style="font-family:monospace;color:#9ca3af;font-weight:400;"></span></p>
+                <p style="font-size:13px;color:white;font-weight:600;">Performance & Security by <a href="https://www.cloudflare.com" target="_blank" style="color:#3b82f6;text-decoration:underline;font-weight:400;">Cloudflare</a> <span style="color:#9ca3af; margin:0 4px;">|</span> <a href="https://www.cloudflare.com/website-terms/" target="_blank" style="color:#3b82f6;text-decoration:underline;font-weight:400;">Privacy</a></p>
+            </div>
         </div>
+        
     </div>
 </div>
 
@@ -335,22 +353,30 @@
         const GAMES_DATA = [
             { id: '1', title: 'NightGamer', category: 'Simulation', thumbnail: 'https://www.latestmodapks.com/wp-content/uploads/2024/10/nightgamer-mod-3-media.webp', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '109', title: 'Cryptid Park', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2026/2/cryptid-park-2-free.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
+    { id: '122', title: 'Network Euphoria', category: 'Simulation', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2699130/5851fbbc4b98f51a1d47040436f71a428e4e63da/header.jpg?t=1753165758', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '2', title: 'Kunoichi Sekiren', category: 'Action', thumbnail: 'https://thomastaihei-hgames.net/wp-content/uploads/2020/11/HG361-01.jpg', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
     { id: '110', title: 'Rose and the magic beast', category: 'RPG', thumbnail: 'https://apktodo.io/uploads/2025/6/rose-and-the-magic-beast-icon.jpg', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
+    { id: '123', title: 'Apostate Verity', category: 'RPG', thumbnail: 'https://i.ytimg.com/vi/VD-LfRI2m_A/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAnB0QwjeiEpl44BPjRMi6tX7ZadQ', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '3', title: 'College Brawl', category: 'Action', thumbnail: 'https://qa-apk.com/wp-content/uploads/2024/04/college-brawl.png', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
     { id: '111', title: 'Rotkappchen 2', category: 'Horror', thumbnail: 'https://img.itch.zone/aW1nLzYxNDM3NTYucG5n/original/O586lm.png', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '4', title: 'Tag After School', category: 'Horror', thumbnail: 'https://myvideogamelist-com.s3.amazonaws.com/assets/boxart/NBSOjcDLZoMdlLDfS7n4EwQuxnboe0DeeL7Cq7Q5.jpg', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '124', title: 'Fallen soldier', category: 'Action', thumbnail: 'https://apktodo.io/uploads/2025/5/fallen-soldier-icon-150.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '112', title: 'Horror Book', category: 'Horror', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZEScOn1m_rBNpX1Zh90hkS_GKXYpZRdXITg&s', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
     { id: '5', title: 'Spooky Milk', category: 'Simulation', thumbnail: 'https://www.latestmodapks.com/wp-content/uploads/2023/07/Spooky.Milk_.Life-1.jpeg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '125', title: 'The Censor', category: 'Simulation', thumbnail: 'https://apktodo.io/uploads/2025/5/the-censor-game.jpg', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '6', title: 'Handyman Legend', category: 'Simulation', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2127010/capsule_616x353.jpg?t=1748937113', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
     { id: '113', title: 'Yuris Mansion', category: 'Visual Novel', thumbnail: 'https://preview.redd.it/yuris-mansion-v0-7gooksg0hjrb1.png?width=631&format=png&auto=webp&s=19145668abdea056ef73e0205de7afbe5e34b9f7', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
+    { id: '126', title: 'Adulttale', category: 'RPG', thumbnail: 'https://img.itch.zone/aW1hZ2UvMzkxMjYyMS8yMzM0MTM4OC5wbmc=/original/wyXkRL.png', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '7', title: 'Aeons Echo', category: 'Visual Novel', thumbnail: 'https://gamefaqs.gamespot.com/a/box/4/2/9/1041429_front.jpg', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
     { id: '114', title: 'Train 45', category: 'Horror', thumbnail: 'https://modhello.io/wp-content/uploads/2025/04/train-number-45-apk-free-download-1.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '8', title: 'Helltaker', category: 'Puzzle', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1289310/header.jpg', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '127', title: 'Rock Paper Scissore Ghost', category: 'Casual', thumbnail: 'https://i.ytimg.com/vi/715tP-mQuhY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLA__dqQ2ObvkCfOe51tZ_JToizXJg', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '115', title: "Monsters' Night", category: 'Action', thumbnail: 'https://img.skich.io/games/icons/5d55a725-3685-4103-b895-74ab39f25389.jpg', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
     { id: '9', title: 'Sea of Stars', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/1244090/capsule_616x353.jpg', rating: 4.9, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '128', title: 'Banny BarTalk', category: 'Simulation', thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfve0r3neLK9e6_JjixdJNXe6MYI9sjexPGw&s', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '116', title: 'EP Battle Girl', category: 'Action', thumbnail: 'https://i.ytimg.com/vi/WvSWtFB3mL8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLA4sfJ4151d3t-RRxw8HDb_y4gMWg', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '10', title: 'Miko Chan', category: 'Action', thumbnail: 'https://4ap.tech/images/x22.webp', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
+    { id: '129', title: 'Knight Sprites', category: 'Pixel', thumbnail: 'https://img.itch.zone/aW1nLzE3NTk3MDc4LmdpZg==/315x250%23c/RZhCAV.gif', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '117', title: 'Succubus Successor', category: 'RPG', thumbnail: 'https://i.ytimg.com/vi/svjBYU8VidE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCPicsr428syGKqywiJsdA1de2MTA', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '11', title: 'Dead Cells', category: 'Pixel', thumbnail: 'https://cdn.akamai.steamstatic.com/steam/apps/588650/capsule_616x353.jpg', rating: 4.8, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
     { id: '118', title: 'Tamer Vale', category: 'Strategy', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2543680/capsule_616x353.jpg?t=1737698358', rating: 4.7, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
@@ -659,12 +685,12 @@
                     </div>
                     <button onclick="closeModal()" style="position:absolute;top:12px;left:12px;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);border:none;display:flex;align-items:center;justify-content:center;color:white;cursor:pointer;font-size:18px;">✕</button>
                 </div>
-                <div style="padding:24px;text-align:center;">
+                <div style="padding:28px;text-align:center;">
                     <span style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:${accent};">${game.category}</span>
                     <h2 style="font-size:24px;font-weight:900;color:var(--text);margin:6px 0 6px;letter-spacing:-0.02em;">${game.title}</h2>
                     <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;">
-                        <span style="font-size:15px;font-weight:800;color:#fbbf24;">★ ${game.rating}</span>
-                        ${game.isNew ? '<span style="font-size:11px;font-weight:900;text-transform:uppercase;padding:2px 10px;border-radius:6px;background:rgba(0,243,255,0.15);color:#0088cc;">New</span>' : ''}
+                        <span style="font-size:11px;font-weight:800;color:#fff;">★ ${game.rating}</span>
+                        ${game.isNew ? '<span style="font-size:8px;font-weight:900;text-transform:uppercase;padding:2px 10px;border-radius:6px;background:rgba(0,243,255,0.15);color:#0088cc;">New</span>' : ''}
                         <span style="font-size:13px;font-weight:600;color:var(--muted);"></span>
                     </div>
                     <div style="display:flex;flex-direction:column;gap:12px;">
