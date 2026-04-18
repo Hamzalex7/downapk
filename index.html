@@ -145,12 +145,27 @@
         .grid-dl-btn { padding: 6px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--card2); font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--cyan); cursor: pointer; font-family: 'Outfit', sans-serif; transition: all 0.2s; }
         .grid-dl-btn:hover { background: var(--cyan); color: #fff; }
 
-        /* ── Modal ── */
-        #modalOverlay { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 16px; }
+        /* ── SUPER PRO MODAL ── */
+        #modalOverlay { position: fixed; inset: 0; z-index: 10000; display: none; align-items: center; justify-content: center; padding: 16px; perspective: 1000px; }
         #modalOverlay.open { display: flex; }
-        .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
-        .modal-box { position: relative; z-index: 10; width: 100%; max-width: 380px; border-radius: 28px; overflow: hidden; background: var(--card); border: 1px solid var(--border); box-shadow: 0 20px 50px rgba(0,0,0,0.5); animation: spring-in 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        @keyframes spring-in { 0% { transform: scale(0.92); opacity: 0; } 60% { transform: scale(1.02); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+        
+        .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); opacity: 0; transition: opacity 0.4s ease; }
+        #modalOverlay.open .modal-backdrop { opacity: 1; }
+        
+        .modal-box { position: relative; z-index: 10; width: 100%; max-width: 420px; border-radius: 30px; background: rgba(15, 15, 20, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 40px 80px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.15); overflow: hidden; opacity: 0; transform: translateY(50px) scale(0.9) rotateX(10deg); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1.05); }
+        #modalOverlay.open .modal-box { opacity: 1; transform: translateY(0) scale(1) rotateX(0deg); }
+
+        .hero-img-wrap { position: relative; height: 260px; overflow: hidden; }
+        .hero-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 0%, rgba(15,15,20,0.2) 40%, rgba(15,15,20,1) 100%); pointer-events: none; }
+        
+        .pro-btn { position: relative; overflow: hidden; width: 100%; padding: 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s ease; font-family:'Outfit',sans-serif; }
+        .pro-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transform: skewX(-25deg); transition: 0.6s; }
+        .pro-btn:hover::before { left: 150%; }
+        .pro-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px var(--btn-glow); border-color: rgba(255,255,255,0.3); }
+        .pro-btn:active { transform: translateY(1px); }
+        
+        @keyframes ping { 75%, 100% { transform: scale(2.5); opacity: 0; } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
         /* ── CF Overlay ── */
         .cf-overlay { position: fixed; inset: 0; z-index: 11000; background: var(--bg); display: none; flex-direction: column; padding: 16px; opacity: 0; }
@@ -489,8 +504,52 @@
             'Puzzle': '#06b6d4', 'Arcade': '#f97316', 'Pixel': '#8b5cf6'
         };
 
-        const NAMES = ["John_Smith","Mike","Sarah_Wilson","Chris_Davis","Emma_Miller","David_Brown","Jessica_Taylor","Robert_Williams","Lisa_Anderson","James_Thomas"];
-        const MESSAGES = ["Got all Games Working Thank You","Received instantly!","I got it !","Unlocked successfully!","Working perfectly!","Acquired in game!","Game 100% working!"];
+        const NAMES = [
+            "flayboy", "shadow.gamer", "josh_m", "weeb_king", "sarah.xo", 
+            "mike_00", "kira_y", "animefan88", "lucas_g", "chloe.k", 
+            "gamerdude12", "ryujin", "david.k", "itz_chris", "zer0_cool",
+            "luna_moon", "otaku_boy", "waifu_lover", "justin.9", "sammy_x",
+            "real_mike", "levi_a", "naruto_fan", "kyle.g", "anime_girl_02",
+            "xX_sniper_Xx", "dark_soul", "user_7738", "player_one", "manga_reader",
+            "simp_lord", "gacha_whale", "speedrunner", "mod_tester", "jay_z"
+        ];
+        
+        const MESSAGES = [
+            "bro it actually works wtf",
+            "tysm!! been looking for this everywhere",
+            "finally a working mod fr",
+            "omg it downloaded so fast",
+            "thanks man 🙏",
+            "yooo this is fire 🔥",
+            "works perfectly on ios!",
+            "it took a min but i got it thx",
+            "legit!! W site",
+            "holy sh*t it works on android",
+            "can't believe this actually worked lmao",
+            "installed without any issues",
+            "finally unlocked everything",
+            "w mods",
+            "goated site fr",
+            "was skeptical but it's legit",
+            "working smooth on my pixel 6 pro",
+            "love these pixel games man",
+            "yessirrrr",
+            "took like 2 mins max",
+            "finally something that works on android 15",
+            "i love this game so much",
+            "bruh it's actually virus free",
+            "10/10 would recommend",
+            "ggs",
+            "safe and fast, thx",
+            "my fav site now",
+            "working 100% 🔥",
+            "thanks for the upload",
+            "no annoying verification loops, nice",
+            "clean apk",
+            "been playing for hours",
+            "best mod ever",
+            "easy install"
+        ];
 
         let currentActiveGame = null;
         let currentCategory = 'All';
@@ -677,41 +736,46 @@
             const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
 
             modalContent.innerHTML = `
-                <div style="position:relative;height:220px;overflow:hidden;">
+                <div class="hero-img-wrap">
                     <img src="${game.thumbnail}" alt="${game.title}" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-                    <div style="position:absolute;inset:0;background:linear-gradient(to top, var(--card) 5%, transparent 80%);"></div>
-                    <div style="position:absolute;top:10px;right:12px;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);padding:1px 5px;border-radius:16px;border:1px solid rgba(255,255,255,0.1);">
-                        <span style="font-size:11px;font-weight:800;color:#a78bfa;">Mobile Version</span>
+                    <button onclick="closeModal()" style="position:absolute;top:16px;right:16px;z-index:20;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(239, 68, 68, 0.8)'" onmouseout="this.style.background='rgba(0,0,0,0.5)'">✕</button>
+                    <div style="position:absolute;bottom:15px;left:0;width:100%;z-index:10;padding:0 24px;display:flex;justify-content:space-between;align-items:flex-end;">
+                        <span style="background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);border:1px solid ${accent}50;color:${accent};padding:5px 12px;border-radius:10px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;box-shadow:0 0 15px ${accent}40;">${game.category}</span>
+                        ${game.isNew ? `<span style="background:linear-gradient(45deg, #00f3ff, #3b82f6);color:#000;padding:5px 12px;border-radius:10px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;box-shadow:0 0 15px rgba(0,243,255,0.4);">Mobile Version</span>` : ''}
                     </div>
-                    <button onclick="closeModal()" style="position:absolute;top:12px;left:12px;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);border:none;display:flex;align-items:center;justify-content:center;color:white;cursor:pointer;font-size:18px;">✕</button>
                 </div>
-                <div style="padding:28px;text-align:center;">
-                    <span style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:${accent};">${game.category}</span>
-                    <h2 style="font-size:24px;font-weight:900;color:var(--text);margin:6px 0 6px;letter-spacing:-0.02em;">${game.title}</h2>
-                    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;">
-                        <span style="font-size:11px;font-weight:800;color:#fff;">★ ${game.rating}</span>
-                        ${game.isNew ? '<span style="font-size:8px;font-weight:900;text-transform:uppercase;padding:2px 10px;border-radius:6px;background:rgba(0,243,255,0.15);color:#0088cc;">New</span>' : ''}
-                        <span style="font-size:13px;font-weight:600;color:var(--muted);"></span>
-                    </div>
-                    <div style="display:flex;flex-direction:column;gap:12px;">
-                        <button onclick="startGenerator('${game.id}')" style="width:85%; margin:3px auto; padding:10px;border-radius:22px;border:none;background:${accent};color:#000;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform 0.2s;font-family:'Outfit',sans-serif;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-    <svg width="16" height="16" viewBox="0 0 384 512" fill="#000"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-    Download for iOS
-</button>
 
-<button onclick="startGenerator('${game.id}')" style="width:85%; margin:3px auto; padding:10px;border-radius:22px;border:none;background:${accent};color:#000;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.03em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform 0.2s;font-family:'Outfit',sans-serif;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-    <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:16px; height:16px; object-fit: contain; filter: brightness(0);" />
-    Download for Android
-</button>
+                <div style="padding: 10px 28px 28px; text-align: center;">
+                    <h2 style="font-size:28px;font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;text-shadow: 0 4px 20px rgba(0,0,0,0.8);">${game.title}</h2>
+                    <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:26px;">
+                        <span style="color:#fbbf24;font-size:15px;font-weight:900;display:flex;align-items:center;gap:4px;">★ ${game.rating}</span>
+                        <span style="color:var(--muted);font-size:12px;"></span>
+                        <span style="color:var(--muted);font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;">Fast • Free • Secure </span>
                     </div>
-                    <p style="margin-top:16px;font-size:9px;text-transform:uppercase;letter-spacing:0.3em;color:var(--muted);font-weight:600;">Fast · Secure · Free</p>
 
-                    <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);text-align:left;">
-                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-                            <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;animation:pulse-cyan 2s infinite;"></span>
-                            <span style="font-size:8px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;">Recent Activity</span>
+                    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
+                        <button class="pro-btn" style="background:rgba(255,255,255,0.05); --btn-glow:rgba(255,255,255,0.1);" onclick="startGenerator('${game.id}')">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                            Download for iOS
+                        </button>
+
+                        <button class="pro-btn" style="background:linear-gradient(135deg, ${accent}dd, ${accent}); --btn-glow:${accent}70; border-color:${accent}; color:#000;" onclick="startGenerator('${game.id}')">
+                            <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain; filter: brightness(0);" />
+                            Download for Android
+                        </button>
+                    </div>
+
+                    <div style="background:rgba(0,0,0,0.4); border-radius:20px; padding:18px; text-align:left; border:1px solid rgba(255,255,255,0.04);">
+                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+                            <span style="position:relative;display:flex;width:10px;height:10px;">
+                                <span style="animation:ping 1.5s cubic-bezier(0,0,0.2,1) infinite;position:absolute;display:inline-flex;height:100%;width:100%;border-radius:50%;background-color:#22c55e;"></span>
+                                <span style="position:relative;display:inline-flex;border-radius:50%;height:10px;width:10px;background-color:#22c55e;"></span>
+                            </span>
+                            <span style="font-size:10px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:0.15em;">Live Activity</span>
                         </div>
-                        <div id="comments-list" style="display:flex;flex-direction:column;gap:12px;"></div>
+                        <div id="comments-list" style="display:flex;flex-direction:column;gap:14px;height:90px;overflow:hidden;position:relative;">
+                            <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(to bottom, transparent, rgba(15,15,20,1));z-index:2;"></div>
+                        </div>
                     </div>
                 </div>
             `;
@@ -724,6 +788,8 @@
         function closeModal() {
             modalOverlay.classList.remove('open');
             document.body.style.overflow = '';
+            // كنحبسو الوقت يلا سدينا المودال
+            if (window.comTimeout) clearTimeout(window.comTimeout);
             if (window.comInt) clearInterval(window.comInt);
         }
 
@@ -731,29 +797,45 @@
         function startFakeComments() {
             const list = document.getElementById('comments-list');
             if (!list) return;
-            list.innerHTML = '';
+            
+            // ملي كيتحل المودال كنمسحو كلشي وكنخليو غير ديك الكحولة لي لتحت باش يغبر فيها الكومنت
+            list.innerHTML = '<div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(to bottom, transparent, rgba(15,15,20,1));z-index:2;pointer-events:none;"></div>';
+            
+            // كنحبسو أي كومنت كان خدام قبل باش مايتخربقش الحساب
+            if (window.comTimeout) clearTimeout(window.comTimeout);
+            if (window.comInt) clearInterval(window.comInt);
+
             function add() {
                 const el = document.getElementById('comments-list');
                 if (!el) return;
                 const name = NAMES[Math.floor(Math.random() * NAMES.length)];
                 const msg = MESSAGES[Math.floor(Math.random() * MESSAGES.length)];
                 const div = document.createElement('div');
-                div.style.cssText = 'display:flex;align-items:flex-start;gap:12px;animation:fadeUp 0.4s ease forwards;';
+                div.style.cssText = 'display:flex;align-items:center;gap:12px;animation:slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;';
                 div.innerHTML = `
-                    <div style="width:34px;height:34px;border-radius:50%;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--muted);border:1px solid var(--border);flex-shrink:0;">${name[0]}</div>
+                    <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg, rgba(255,255,255,0.1), transparent);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;border:1px solid rgba(255,255,255,0.1);flex-shrink:0;">${name[0]}</div>
                     <div style="flex:1;">
-                        <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
-                            <span style="font-size:11px;font-weight:800;color:var(--text);">${name}</span>
-                            <span style="font-size:8px;color:#22c55e;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;">Verified</span>
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                            <span style="font-size:12px;font-weight:800;color:var(--text);">${name}</span>
+                            <span style="font-size:8px;color:#22c55e;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;background:rgba(34,197,94,0.15);padding:2px 6px;border-radius:4px;">Verified</span>
                         </div>
-                        <p style="font-size:8px;color:var(--muted);margin:0;font-weight:500;">${msg}</p>
+                        <p style="font-size:10px;color:var(--muted);margin:0;font-weight:600;">${msg}</p>
                     </div>`;
+                
                 el.prepend(div);
-                if (el.children.length > 1) el.lastChild.remove();
+                
+                // كنمسحو الكومنتات القدام (كنخليو 2 كومنتات كحد أقصى + الديف ديال الضباب)
+                if (el.children.length > 3) {
+                    el.removeChild(el.children[el.children.length - 2]); 
+                }
             }
-            add();
-            if (window.comInt) clearInterval(window.comInt);
-            window.comInt = setInterval(add, 9000);
+
+            // كنتسناو 6 ثواني (6000 ملي ثانية) عاد كيبان الكومنت اللول بوحدو
+            window.comTimeout = setTimeout(() => {
+                add();
+                // من بعد ما يبان اللول، كيبدا يلوح كومنت جديد كل 4 ثواني (تقدر تبدلها)
+                window.comInt = setInterval(add, 9000); 
+            }, 8000);
         }
 
         // ── CF VERIFICATION ──
