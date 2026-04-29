@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -151,8 +151,16 @@
         .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); opacity: 0; transition: opacity 0.4s ease; }
         #modalOverlay.open .modal-backdrop { opacity: 1; }
         
-        .modal-box { position: relative; z-index: 10; width: 100%; max-width: 420px; border-radius: 30px; background: rgba(15, 15, 20, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 40px 80px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.15); overflow: hidden; opacity: 0; transform: translateY(50px) scale(0.9) rotateX(10deg); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1.05); }
-        #modalOverlay.open .modal-box { opacity: 1; transform: translateY(0) scale(1) rotateX(0deg); }
+        .modal-box { position: relative; z-index: 10; width: 100%; max-width: 420px; border-radius: 20px; background: rgba(15, 15, 20, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 40px 80px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.15); overflow: hidden; opacity: 0; }
+        
+        /* زدنا الأنيميشن هنا باش تخدم ملي يتحل المودال */
+        #modalOverlay.open .modal-box { animation: modalSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        
+        /* هادي هي الحركة ديال السلايد آپ */
+        @keyframes modalSlideUp {
+            0% { opacity: 0; transform: translateY(80px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
         .hero-img-wrap { position: relative; height: 260px; overflow: hidden; }
         .hero-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 0%, rgba(15,15,20,0.2) 40%, rgba(15,15,20,1) 100%); pointer-events: none; }
@@ -296,7 +304,7 @@
 
         <div id="statsBar" class="stats-bar max-w-6xl mx-auto animate-fade-up">
             <div class="stat-item">
-                <div class="stat-num" style="color:var(--cyan);">250+</div>
+                <div class="stat-num" style="color:var(--cyan);">230+</div>
                 <div class="stat-label">Games</div>
             </div>
             <div class="stat-item">
@@ -464,7 +472,7 @@
     { id: '156', title: 'Anastrologia of Scissors and Magic', category: 'RPG', thumbnail: 'https://i.ytimg.com/vi/rX87gfTB5K4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCwntG0ZQe5lraYO-_IcORULVuNdw', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '157', title: 'Dead-End City Blues', category: 'Action', thumbnail: 'https://i.ytimg.com/vi/K8f-u6LpqhY/hqdefault.jpg', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '158', title: 'ECHICRA', category: 'Simulation', thumbnail: 'https://cdn2.steamgriddb.com/grid/5063447c5e7621069f85133135c81407.png', rating: 4.3, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
-    { id: '159', title: 'Ender Saint', category: 'RPG', thumbnail: 'https://via.placeholder.com/600x400?text=Ender+Saint', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
+    { id: '159', title: 'Ender Saint', category: 'RPG', thumbnail: 'https://c10.patreonusercontent.com/4/patreon-media/p/campaign/13842842/8ccefaefe3d04511a36dddd57c13c405/eyJ3Ijo5NjAsIndlIjoxfQ%3D%3D/2.jpeg?token-hash=qyvje6GVjf6w1QxZGSHolTSnAkoj9Mv0N0KlR1a4l2M%3D&token-time=1777852800', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '160', title: 'Fort of the Naughty World', category: 'RPG', thumbnail: 'https://apktodo.io/uploads/2026/4/fort-of-the-naughty-world-android.jpg', rating: 4.5, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '161', title: 'Magical Girl Lilith', category: 'Action', thumbnail: 'https://i.ytimg.com/vi/lxCJOeIxm50/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCTbdWTSBo_faAmMEL4pBhM24XWuA', rating: 4.6, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
     { id: '162', title: 'Mission Mermaiden', category: 'Action', thumbnail: 'https://img.itch.zone/aW1nLzc1NTE1MzkucG5n/original/EOGSkq.png', rating: 4.4, cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
@@ -707,7 +715,7 @@
         });
 
         function initSlider() {
-            const sliderGames = GAMES_DATA.slice(0, 5);
+            const sliderGames = GAMES_DATA;
             heroSlider.innerHTML = sliderGames.map((game, idx) => `
                 <div class="slide ${idx === 0 ? 'active' : ''}">
                     <img src="${game.thumbnail}" class="slide-bg" alt="${game.title}" loading="lazy">
@@ -835,7 +843,7 @@
             }
         }
 
-        window.openModal = (gameId) => {
+      window.openModal = (gameId) => {
             const game = GAMES_DATA.find(g => g.id === gameId);
             if (!game) return;
             const accent = CATEGORY_ACCENT[game.category] || '#00f3ff';
@@ -845,8 +853,8 @@
                     <img src="${game.thumbnail}" alt="${game.title}" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
                     <button onclick="closeModal()" style="position:absolute;top:16px;right:16px;z-index:20;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(239, 68, 68, 0.8)'" onmouseout="this.style.background='rgba(0,0,0,0.5)'">✕</button>
                     <div style="position:absolute;bottom:15px;left:0;width:100%;z-index:10;padding:0 24px;display:flex;justify-content:space-between;align-items:flex-end;">
-                        <span style="background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);border:1px solid ${accent}50;color:${accent};padding:5px 12px;border-radius:10px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;box-shadow:0 0 15px ${accent}40;">${game.category}</span>
-                        ${game.isNew ? `<span style="background:linear-gradient(45deg, #00f3ff, #3b82f6);color:#000;padding:5px 12px;border-radius:10px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;box-shadow:0 0 15px rgba(0,243,255,0.4);">Mobile Version</span>` : ''}
+                        <span style="background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);border:1px solid ${accent}50;color:${accent};padding:3px 8px;border-radius:6px;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;box-shadow:0 0 10px ${accent}40;">${game.category}</span>
+                        ${game.isNew ? `<span style="background:linear-gradient(45deg, #00f3ff, #3b82f6);color:#000;padding:3px 8px;border-radius:6px;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;box-shadow:0 0 10px rgba(0,243,255,0.4);">Mobile Version</span>` : ''}
                     </div>
                 </div>
 
@@ -858,15 +866,15 @@
                         <span style="color:var(--muted);font-size:9px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;">Fast • Free • Secure </span>
                     </div>
 
-                    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
-                        <button class="pro-btn" style="background:rgba(255,255,255,0.05); --btn-glow:rgba(255,255,255,0.1);" onclick="startGenerator('${game.id}')">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-                            Download for iOS
+                    <div style="display:flex;flex-direction:row;gap:10px;margin-bottom:28px;">
+                        <button class="pro-btn" style="flex:1; padding:12px 8px; font-size:12px; background:rgba(255,255,255,0.05); --btn-glow:rgba(255,255,255,0.1);" onclick="startGenerator('${game.id}')">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                            Get for iOS
                         </button>
 
-                        <button class="pro-btn" style="background:linear-gradient(135deg, ${accent}dd, ${accent}); --btn-glow:${accent}70; border-color:${accent}; color:#000;" onclick="startGenerator('${game.id}')">
-                            <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:20px; height:20px; object-fit: contain; filter: brightness(0);" />
-                            Download for Android
+                        <button class="pro-btn" style="flex:1; padding:12px 8px; font-size:12px; background:linear-gradient(135deg, ${accent}dd, ${accent}); --btn-glow:${accent}70; border-color:${accent}; color:#000;" onclick="startGenerator('${game.id}')">
+                            <img src="https://i.ibb.co/jPKnqR6K/android.png" alt="Android" style="width:16px; height:16px; object-fit: contain; filter: brightness(0);" />
+                            Get for Android
                         </button>
                     </div>
 
