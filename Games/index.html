@@ -71,6 +71,30 @@
             pointer-events: none;
         }
 
+        /* ── Top Zebra Progress Bar (رقيق كيفما بغيتي) ── */
+        #top-progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px; /* هنا نقصت الغلض د الشريط */
+            width: 0%;
+            background-color: var(--cyan);
+            background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.25) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 75%, transparent 75%, transparent);
+            background-size: 15px 15px;
+            z-index: 999999;
+            opacity: 0;
+            transition: width 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 0 8px var(--cyan);
+        }
+        #top-progress-bar.loading {
+            opacity: 1;
+            animation: stripe-move 0.8s linear infinite;
+        }
+        @keyframes stripe-move {
+            0% { background-position: 15px 0; }
+            100% { background-position: 0 0; }
+        }
+
         #main-header {
             position: fixed; top: 0; left: 0; right: 0; z-index: 50;
             transition: transform 0.3s ease, background 0.3s ease, top 0.3s ease;
@@ -129,7 +153,7 @@
         .card-title { font-size: 17px; font-weight: 800; color: var(--text); line-height: 1.2; letter-spacing: -0.01em; text-align: center; margin-bottom: 4px; }
         .card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; justify-content: center; }
         .tag { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 6px; background: var(--card2); color: var(--muted); }
-        .new-badge { font-size: 5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 6px; background: rgba(0,243,255,0.15); color: var(--cyan); }
+        .new-badge { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 6px; background: rgba(0,243,255,0.15); color: var(--cyan); }
         .card-action { padding: 12px 16px 12px 0; flex-shrink: 0; }
         .dl-btn-list { padding: 10px 18px; border-radius: 12px; border: 1px solid var(--border); background: var(--card2); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--cyan); cursor: pointer; white-space: nowrap; transition: all 0.2s; font-family: 'Outfit', sans-serif; }
         .dl-btn-list:hover { background: var(--cyan); color: #000; transform: translateY(-2px); border-color: transparent;}
@@ -171,7 +195,8 @@
         
         .grid-stats { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding: 10px 0 8px; margin-bottom: 12px; margin-top: auto; width: 100%; }
         .grid-stat-item { flex: 1; display: flex; align-items: center; justify-content: center; gap: 4px; color: var(--muted); }
-        .grid-stat-item span { font-size: 10.5px; font-weight: 800; font-family: 'Outfit', sans-serif; }
+        /* ── هنا نقصنا الغلض ديال السايز والفيرجن رديناه 500 باش يجي رقيق ومزيان ── */
+        .grid-stat-item span { font-size: 10.5px; font-weight: 500; font-family: 'Outfit', sans-serif; }
         .grid-stats-divider { width: 1px; height: 16px; background: var(--border); }
 
         .grid-bottom { display: flex; justify-content: center; align-items: center; width: 100%; }
@@ -264,6 +289,8 @@
 </head>
 
 <body>
+
+    <div id="top-progress-bar"></div>
 
     <header id="main-header" class="px-5 py-4">
         <div class="max-w-6xl mx-auto flex justify-between items-center relative">
@@ -455,7 +482,7 @@
 
     <script>
         // ── Data ──
-         const GAMES_DATA = [
+        const GAMES_DATA = [
             { id: '1', title: 'Tag After School', category: 'Horror', thumbnail: 'https://tagsafterschool.com/wp-content/uploads/2026/04/Green-light-1024x571-1-768x428.webp', rating: 4.3, size: '280 MB', version: 'v1.4', cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
             { id: '7', title: 'MotorSlice', category: 'Action', thumbnail: 'https://i0.wp.com/indiegame.com/wp-content/uploads/2026/05/MOTORSLICE-_Logo.png?fit=1024,1024&ssl=1', rating: 4.7, size: '3.1 GB', version: 'v0.5.0.0', cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
             { id: '2', title: 'Neverness to Everness Mobile Apk', category: 'Casual', thumbnail: 'https://gaming-cdn.com/images/products/20168/orig/neverness-to-everness-playstation-5-playstation-store-cover.jpg?v=1772105288', rating: 4.2, size: '1.1 GB', version: 'v0.9.5', cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
@@ -648,9 +675,10 @@
             { id: '189', title: 'Milk outside a bag of milk', category: 'Visual Novel', thumbnail: 'https://upload.wikimedia.org/wikipedia/en/8/85/Milk_outside_a_bag_of_milk_banner.jpg', rating: 4.7, size: '540 MB', version: 'v1.0', cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
             { id: '5', title: 'Network Euphoria', category: 'Simulation', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2699130/5851fbbc4b98f51a1d47040436f71a428e4e63da/header.jpg?t=1753165758', rating: 4.6, size: '420 MB', version: 'v1.1', cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true }
         ];
+
         // عزلنا الألعاب باش يبقا السيت ديما كيتجدد
         const HERO_DATA = GAMES_DATA.slice(0, 4);
-        const GAMES_SCROLL_DATA = GAMES_DATA.slice(4, 10);
+        const GAMES_SCROLL_DATA = GAMES_DATA.slice(0, 6); // بدلتها حيت الداتا فيها غير جوج للتيست
         const TRENDING_DATA = GAMES_DATA.filter(g => g.isNew).slice(0, 4);
         
         const ALL_DATA = [...GAMES_DATA];
@@ -891,7 +919,7 @@
                     <button onclick="closeModal()" style="position:absolute;top:16px;right:16px;z-index:20;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(239, 68, 68, 0.8)'" onmouseout="this.style.background='rgba(0,0,0,0.5)'">✕</button>
                     <div style="position:absolute;bottom:15px;left:0;width:100%;z-index:10;padding:0 24px;display:flex;justify-content:space-between;align-items:flex-end;">
                         <span style="background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);border:1px solid ${accent}50;color:${accent};padding:3px 8px;border-radius:6px;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;box-shadow:0 0 10px ${accent}40;">${game.category}</span>
-                        ${game.isN ? `<span style="background:linear-gradient(45deg, #00f3ff, #a855f7);color:#fff;padding:3px 8px;border-radius:6px;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;box-shadow:0 0 10px rgba(0,243,255,0.4);">Updated</span>` : ''}
+                        ${game.isNew ? `<span style="background:linear-gradient(45deg, #00f3ff, #a855f7);color:#fff;padding:3px 8px;border-radius:6px;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;box-shadow:0 0 10px rgba(0,243,255,0.4);">Updated</span>` : ''}
                     </div>
                 </div>
 
@@ -981,28 +1009,51 @@
             currentActiveGame = GAMES_DATA.find(g => g.id === gameId);
             closeModal();
 
-            const lastVerified = localStorage.getItem('cf_verified_time');
-            const now = Date.now();
-            const THREE_MINUTES = 3 * 60 * 1000;
-
-            if (lastVerified && (now - lastVerified < THREE_MINUTES)) {
-                showLocker();
-            } else {
-                const cfOverlay = document.getElementById('cf-overlay');
-                document.getElementById('cf-initial-box').style.display = 'flex';
-                document.getElementById('cf-checkbox').style.display = 'none';
-                document.getElementById('cf-spinner').style.display = 'none';
-                document.getElementById('cf-failure').style.display = 'none';
-                document.getElementById('cf-text').textContent = 'Verifying...';
-
-                cfOverlay.classList.add('open');
-
+            // ── TOP PROGRESS BAR LOGIC ──
+            const progressBar = document.getElementById('top-progress-bar');
+            progressBar.style.width = '0%';
+            progressBar.classList.add('loading');
+            
+            // محاكاة التحميل بالزربة
+            setTimeout(() => progressBar.style.width = '30%', 100);
+            setTimeout(() => progressBar.style.width = '60%', 600);
+            setTimeout(() => progressBar.style.width = '90%', 1200);
+            
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+                
                 setTimeout(() => {
-                    document.getElementById('cf-initial-box').style.display = 'none';
-                    document.getElementById('cf-checkbox').style.display = 'flex';
-                    document.getElementById('cf-text').textContent = 'Verify you are human';
-                }, 2000);
-            }
+                    progressBar.classList.remove('loading');
+                    progressBar.style.opacity = '0';
+                    
+                    // ملي كيسالي الخط كيطلع Cloudflare Verification
+                    const lastVerified = localStorage.getItem('cf_verified_time');
+                    const now = Date.now();
+                    const THREE_MINUTES = 3 * 60 * 1000;
+
+                    if (lastVerified && (now - lastVerified < THREE_MINUTES)) {
+                        showLocker();
+                    } else {
+                        const cfOverlay = document.getElementById('cf-overlay');
+                        document.getElementById('cf-initial-box').style.display = 'flex';
+                        document.getElementById('cf-checkbox').style.display = 'none';
+                        document.getElementById('cf-spinner').style.display = 'none';
+                        document.getElementById('cf-failure').style.display = 'none';
+                        document.getElementById('cf-text').textContent = 'Verifying...';
+
+                        cfOverlay.classList.add('open');
+
+                        setTimeout(() => {
+                            document.getElementById('cf-initial-box').style.display = 'none';
+                            document.getElementById('cf-checkbox').style.display = 'flex';
+                            document.getElementById('cf-text').textContent = 'Verify you are human';
+                        }, 2000);
+                    }
+                    
+                    setTimeout(() => progressBar.style.width = '0%', 300);
+                }, 400); 
+                
+            }, 1800); 
         };
 
         window.startCFVerification = () => {
@@ -1109,8 +1160,6 @@
         if(sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
         if(sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
 
-        if(backToTopBtn) backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
         if(sortSelect) {
             sortSelect.addEventListener('change', e => {
                 currentSort = e.target.value;
@@ -1146,7 +1195,5 @@
         if(rayIdElem) rayIdElem.textContent = generateRayId();
 
     </script>
-     
-    
 </body>
 </html>
